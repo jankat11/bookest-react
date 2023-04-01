@@ -1,0 +1,19 @@
+.loadingSpinner {
+  width: 5rem !important;
+  height: 5rem !important;
+}
+
+@media (max-width: 575px) and (min-width: 376px) {
+  .mw-50 {
+    max-width: 11rem !important;
+  }
+}
+@media (max-width: 376px) {
+  .mw-50 {
+    max-width: 10rem !important;
+  }
+}
+
+/* html * {
+  border: solid 1px purple;
+} */
