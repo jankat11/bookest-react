@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import BookDetails from "./pages/BookDetails";
 import BookList from "./components/BookList";
 import { loader as bookLoader } from "./components/BookList";
+import ErrorBookList from "./components/ErrorBookList";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
           {
             index: true,
             loader: bookLoader,
-            errorElement: <h1>THIS WILL BE ERROR PAGE</h1>,
+            errorElement: <ErrorBookList />,
             element: <BookList />,
           },
         ],

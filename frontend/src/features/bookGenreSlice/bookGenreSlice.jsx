@@ -5,7 +5,7 @@ export const getBooks = createAsyncThunk("booksGenreSlice/getBooks", fetchBooks)
 
 const initialState = {
   books: [],
-  isLoading: false,
+  isLoading: true,
   isError: false, 
   message: ""
 };
@@ -17,6 +17,9 @@ const bookGenreSlice = createSlice({
     setBooks (state, action) {
       state.books = action.payload
     },
+    loaded (state) {
+      state.isLoading = false
+    }
   },
 /*   extraReducers: (builder) => {
     builder

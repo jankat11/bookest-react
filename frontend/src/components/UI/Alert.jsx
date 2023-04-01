@@ -1,6 +1,11 @@
 import { Alert } from "react-bootstrap";
 
-const AlertMessage = ({ message, variant }) => {
-  return <Alert variant={variant}>{message}</Alert>;
+const AlertMessage = ({ message, variant, title }) => {
+  return (
+    <Alert variant={variant}>
+      <p className="display-6">{title} </p>
+      <p className="lead">{message} </p>
+    </Alert>
+  );
 };
 export default AlertMessage;
