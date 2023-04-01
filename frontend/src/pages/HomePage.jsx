@@ -1,21 +1,15 @@
 import React from "react";
-import BookList from "../components/BookList";
-import axios from "axios";
+import { Outlet } from "react-router-dom";
 
-const BASE_URL = "http://localhost:3000/books";
 
-const HomePage = () => {
-  
+const HomePageLayout = () => {
   return (
     <>
       <p className="display-6 px-2">BESTSELLER:</p>
-      <BookList />
+      <Outlet />
     </>
   );
 };
-export default HomePage;
+export default HomePageLayout;
 
-export const loader = async () => {
-  const {data} = await axios.get(BASE_URL)
-  return data
-}
+
