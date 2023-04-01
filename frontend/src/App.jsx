@@ -37,18 +37,3 @@ function App() {
 }
 
 export default App;
-
-
-/* if (document.querySelector("#bookGenre")) {
-  document.querySelector("#bookGenre").onchange = function () {
-      document.querySelector("#bestSeller").innerHTML = ""
-      if (this.value == "fiction") {
-          bestSellers("hardcover-fiction")
-          bestSellers("trade-fiction-paperback")
-      } else if (this.value == "nonfiction") {
-          bestSellers("hardcover-nonfiction")
-          bestSellers("advice-how-to-and-miscellaneous")
-          bestSellers("paperback-nonfiction")
-      }
-  }
-} */
