@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {fetchBook} from "./bookDetailsThunk"
 
-
-export const getBook = createAsyncThunk("booksGenreSlice/getBooks", fetchBook);
+export const getBook = createAsyncThunk("bookSlice/getBook", fetchBook);
 
 const initialState = {
   book: {},
@@ -10,7 +9,7 @@ const initialState = {
   isError: false, 
   message: ""
 };
-
+ 
 const bookSlice = createSlice({
   name: "bookSlice",
   initialState,

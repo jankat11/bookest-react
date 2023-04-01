@@ -71,7 +71,7 @@ const BookDetails = () => {
           </Row>
         </Container>
       ) : (
-        <Container className="d-flex justify-content-center w-100 h-100">
+        <Container className="d-flex justify-content-center w-100 h-100 my-3">
           <LoadingSpinner variant={"primary"} size={"xl"} />
         </Container>
       )}

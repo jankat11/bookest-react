@@ -13,10 +13,17 @@
     max-width: 10rem !important;
   }
 }
+@media (min-width: 768px) {
+  .genreSelectForm {
+    max-width: 25rem;
+  } 
+}
 
 .brand:hover {
   cursor: pointer;
 }
+
+
 
 /* html * {
   border: solid 1px purple;
