@@ -13,8 +13,12 @@ const initialState = {
 const bookGenreSlice = createSlice({
   name: "books",
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
+  reducers: {
+    setBooks (state, action) {
+      state.books = action.payload
+    },
+  },
+/*   extraReducers: (builder) => {
     builder
       .addCase(getBooks.pending, (state) => {
         state.isLoading = true
@@ -29,7 +33,9 @@ const bookGenreSlice = createSlice({
         state.isError = true
         state.message = "something went wrong:( try later..."
       });
-  },
+  }, */
 });
 
 export default bookGenreSlice.reducer;
+
+export const bookGenreActions = bookGenreSlice.actions

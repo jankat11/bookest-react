@@ -6,8 +6,7 @@ const initialState = {}
 const bookSlice = createSlice({
   name: "bookSlice",
   initialState,
-  raducers: {},
-  extraReducers: {}
+  reducers: {},
 })
 
 export default bookSlice.reducer
