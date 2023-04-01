@@ -14,6 +14,10 @@
   }
 }
 
+.brand:hover {
+  cursor: pointer;
+}
+
 /* html * {
   border: solid 1px purple;
 } */

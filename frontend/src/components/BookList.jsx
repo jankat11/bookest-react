@@ -23,7 +23,7 @@ const BookList = () => {
               className="py-3 px-2 mw-50 p-0"
             >
               <Link
-                to={`/book/${book.primary_isbn10 || book.primary_isbn13}`}
+                to={`/book/${book.primary_isbn13 || book.primary_isbn10}`}
                 className="text-decoration-none w-100"
               >
                 <Book
