@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchBooks } from "./bookGenreThunk";
+/* import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { fetchBooks } from "../bookSlice/bookGenreThunk";
 
 export const getBooks = createAsyncThunk("booksGenreSlice/getBooks", fetchBooks);
 
@@ -21,7 +21,7 @@ const bookGenreSlice = createSlice({
       state.isLoading = false
     }
   },
-/*   extraReducers: (builder) => {
+  extraReducers: (builder) => {
     builder
       .addCase(getBooks.pending, (state) => {
         state.isLoading = true
@@ -36,9 +36,9 @@ const bookGenreSlice = createSlice({
         state.isError = true
         state.message = "something went wrong:( try later..."
       });
-  }, */
+  },
 });
 
 export default bookGenreSlice.reducer;
 
-export const bookGenreActions = bookGenreSlice.actions
+export const bookGenreActions = bookGenreSlice.actions */
