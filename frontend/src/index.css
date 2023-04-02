@@ -13,9 +13,6 @@
     max-width: 10rem !important;
   }
 }
-@media (min-width: 768px) {
-
-}
 
 .brand:hover {
   cursor: pointer;
@@ -25,8 +22,8 @@
   display: flex;
   flex-direction: row !important;
   justify-content: space-around;
-  gap: 2rem
-} 
+  gap: 2rem;
+}
 
 .togglerMenu {
   border: none !important;
@@ -35,15 +32,15 @@
   bottom: 2px;
 }
 
-.bestseller, .genreSelectForm, .search-input {
-  background-color: #fbe1e011 !important;
-  border-color: #fbe1e0 !important;
+.bestseller,
+.genreSelectForm,
+.search-input {
   color: #666 !important;
 }
 
-
-
-
+.genreSelectForm {
+  border-color: #ddd !important;
+}
 
 /* html * {
   border: solid 1px purple;

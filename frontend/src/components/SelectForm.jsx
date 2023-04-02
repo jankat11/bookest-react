@@ -4,7 +4,7 @@ const SelectForm = ({ getBooksGenre, genre }) => {
   return (
     <div class=" d-flex my-3">
       <span
-        class="bestseller input-group-text rounded-0 border-none border-end-0 pe-1"
+        class="bestseller input-group-text rounded-0 bg-white border-none border-end-0 pe-1"
         id="inputGroup-sizing-default"
       >
         Bestseller:
@@ -12,7 +12,7 @@ const SelectForm = ({ getBooksGenre, genre }) => {
         <Form.Select
           value={genre || "hardcover-fiction"}
           onChange={getBooksGenre}
-          className="genreSelectForm w-100 rounded-0 border-start-0  ps-1 shadow-none"
+          className="genreSelectForm w-100 rounded-0 border-start-0 ps-2 shadow-none"
           aria-describedby="inputGroup-sizing-default"
         >
           <option value="hardcover-fiction">hardcover fiction</option>
