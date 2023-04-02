@@ -20,7 +20,7 @@ const Header = () => {
       <Navbar bg="primary" variant="dark" expand="sm">
         <Container>
           <Link to={"/"} className="text-decoration-none">
-            <Navbar.Brand className="px-3">HELLO</Navbar.Brand>
+            <Navbar.Brand className="px-3">HEll</Navbar.Brand>
           </Link>
 
           <Navbar.Toggle
