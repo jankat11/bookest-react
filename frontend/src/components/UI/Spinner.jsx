@@ -1,8 +1,15 @@
-import { Spinner } from "react-bootstrap"
+import { Spinner, Container } from "react-bootstrap";
 
-const LoadingSpinner = ({variant, size}) => {
+const LoadingSpinner = () => {
   return (
-    <Spinner className="loadingSpinner" animation="grow" variant={variant} size={size} />
-  )
-}
-export default LoadingSpinner
+    <Container className="d-flex justify-content-center w-100 h-100 my-3">
+      <Spinner
+        className="loadingSpinner"
+        animation="grow"
+        variant="primary"
+        size="xl"
+      />
+    </Container>
+  );
+};
+export default LoadingSpinner;

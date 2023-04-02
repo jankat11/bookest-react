@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Await } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { bookGenreActions } from "../features/bookGenreSlice/bookGenreSlice";
@@ -40,3 +40,5 @@ const HomePageLayout = () => {
   );
 };
 export default HomePageLayout;
+
+

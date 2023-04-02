@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import BookDetails from "./pages/BookDetails";
 import BookList from "./components/BookList";
-import { loader as AllBookLoader } from "./components/BookList";
+import { loader as loaderOfBooks } from "./components/BookList";
 import ErrorBookList from "./components/ErrorBookList";
 
 const router = createBrowserRouter([
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            loader: AllBookLoader,
+            loader: loaderOfBooks,
             errorElement: <ErrorBookList />,
             element: <BookList />,
           },
