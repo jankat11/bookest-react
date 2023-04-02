@@ -25,6 +25,7 @@ const router = createBrowserRouter([
           },
         ],
       },
+      { path: "/about", element: <h1>about page</h1> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       { path: "/book/:bookISBN", element: <BookDetails /> },

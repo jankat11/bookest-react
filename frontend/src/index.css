@@ -23,6 +23,22 @@
   cursor: pointer;
 }
 
+.navsHeader {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-around;
+  gap: 2rem
+} 
+
+.togglerMenu {
+  border: none !important;
+  font-size: larger !important;
+  position: relative;
+  bottom: 2px;
+}
+
+
+
 
 
 /* html * {

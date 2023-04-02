@@ -13,7 +13,7 @@ const initialState = {
 
 const bookGenreSlice = createSlice({
   name: "books",
-  initialState,
+  initialState, 
   reducers: {
     setBooks (state, action) {
       state.books = action.payload
