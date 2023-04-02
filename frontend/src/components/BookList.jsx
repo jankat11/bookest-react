@@ -51,7 +51,7 @@ export default BookList;
 
 async function loaderBooks() {
   const { data } = await axios.get(
-    BASE_URL + "hardcover-fiction.json?api-key=" + API_KEY
+    "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=LqUHIwL9cMprnPyH5reZJcaOH0In51Am"
   );
   return await data.results.books;
 }
