@@ -3,10 +3,7 @@ import { Spinner } from "react-bootstrap";
 
 const SearchForm = () => {
   const navigation = useNavigation();
-
   const isSubmitting = navigation.state === "submitting";
-
-  console.log(isSubmitting);
 
   return (
     <Form method="post" className="input-group rounded-0 my-3">

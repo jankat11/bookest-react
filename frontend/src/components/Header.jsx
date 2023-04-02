@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { SlMenu } from "react-icons/sl";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
-import SearchForm from "./SearchForm";
 
 const Header = () => {
   const navigate = useNavigate();

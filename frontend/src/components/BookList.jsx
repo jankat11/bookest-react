@@ -1,16 +1,15 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import BookCover from "./BookCover";
 import { useLoaderData, Await, defer } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import LoadingSpinner from "../components/UI/Spinner";
 import { Suspense } from "react";
-
-const BASE_URL = "http://localhost:3000/books";
+const BASE_URL = import.meta.env.VITE_NYT_URL;
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 const BookList = () => {
   let { bookList } = useLoaderData();
-  console.log();
   const { books, isLoading, genre } = useSelector((store) => store.books);
 
   const list = (initialRender) => {
@@ -51,8 +50,10 @@ const BookList = () => {
 export default BookList;
 
 async function loaderBooks() {
-  const { data } = await axios.get(BASE_URL);
-  return await data;
+  const { data } = await axios.get(
+    BASE_URL + "hardcover-fiction.json?api-key=" + API_KEY
+  );
+  return await data.results.books;
 }
 
 export function loader() {
