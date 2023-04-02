@@ -3,18 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { SlMenu } from "react-icons/sl";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
+import SearchForm from "./SearchForm";
 
 const Header = () => {
   const navigate = useNavigate();
   const redirect = (e) => {
     navigate(`/${e.target.name}`);
   };
-  const [togglerOpen, setTogglerOpen] = useState(false)
+  const [togglerOpen, setTogglerOpen] = useState(false);
 
   const handleToggler = () => {
-    setTogglerOpen(prev => !prev)
+    setTogglerOpen((prev) => !prev);
   };
-
 
   return (
     <>
@@ -23,6 +23,7 @@ const Header = () => {
           <Link to={"/"} className="text-decoration-none">
             <Navbar.Brand className="px-3 brand">THE BOOKEST</Navbar.Brand>
           </Link>
+
           <Navbar.Toggle
             onClick={handleToggler}
             className="shadow-none togglerMenu"

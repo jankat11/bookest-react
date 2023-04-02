@@ -14,9 +14,7 @@
   }
 }
 @media (min-width: 768px) {
-  .genreSelectForm {
-    max-width: 25rem;
-  } 
+
 }
 
 .brand:hover {
@@ -37,6 +35,18 @@
   bottom: 2px;
 }
 
+.bestseller, .genreSelectForm {
+  background-color: #fbe1e01f !important;
+  border-color: #fbe1e0 !important;
+  color: #555 !important;
+  font-weight: 500 !important;
+}
+
+
+.search-input {
+  background-color: #fbe1e01f !important;
+  border-color: #fbe1e0 !important
+}
 
 
 
