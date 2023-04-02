@@ -35,18 +35,12 @@
   bottom: 2px;
 }
 
-.bestseller, .genreSelectForm {
-  background-color: #fbe1e01f !important;
+.bestseller, .genreSelectForm, .search-input {
+  background-color: #fbe1e011 !important;
   border-color: #fbe1e0 !important;
-  color: #555 !important;
-  font-weight: 500 !important;
+  color: #666 !important;
 }
 
-
-.search-input {
-  background-color: #fbe1e01f !important;
-  border-color: #fbe1e0 !important
-}
 
 
 
