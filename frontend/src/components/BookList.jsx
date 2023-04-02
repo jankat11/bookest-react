@@ -14,57 +14,43 @@ const BookList = () => {
   console.log();
   const { books, isLoading, genre } = useSelector((store) => store.books);
 
-
-  
+  const list = (initialRender) => {
+    if (books.length === 0) {
+      return initialRender;
+    } else {
+      return books;
+    }
+  };
 
   return (
-    <>
-      <Suspense fallback={"asd"}>
-        <Await resolve={bookList}>
-          {(loadedBooks) => {
-            const list = () => {
-              if (books.length === 0) {
-                return loadedBooks;
-              } else {
-                return books;
-              }
-            };
-            console.log(loadedBooks);
-            return !isLoading || genre === "" ? (
-              <Container className="">
-                <Row className="d-flex justify-content-center bookRow">
-                  {list().map((book, i) => (
-                    <Col
-                      key={i}
-                      xl={2}
-                      lg={3}
-                      md={4}
-                      sm={6}
-                      className="py-3 mw-50"
+    <Suspense fallback={<LoadingSpinner />}>
+      <Await resolve={bookList}>
+        {(loadedBooks) => {
+          return !isLoading || genre === "" ? (
+            <Container>
+              <Row className="d-flex justify-content-center bookRow">
+                {list(loadedBooks).map((book, i) => (
+                  <Col key={i} xl={2} lg={3} sm={4} className="py-3 mw-50">
+                    <Link
+                      to={`/book/${book.primary_isbn13 || book.primary_isbn10}`}
+                      className="text-decoration-none w-100"
                     >
-                      <Link
-                        to={`/book/${
-                          book.primary_isbn13 || book.primary_isbn10
-                        }`}
-                        className="text-decoration-none w-100"
-                      >
-                        <Book
-                          image={book.book_image}
-                          title={book.title}
-                          author={book.author}
-                        />
-                      </Link>
-                    </Col>
-                  ))}
-                </Row>
-              </Container>
-            ) : (
-              <LoadingSpinner />
-            );
-          }}
-        </Await>
-      </Suspense>
-    </>
+                      <Book
+                        image={book.book_image}
+                        title={book.title}
+                        author={book.author}
+                      />
+                    </Link>
+                  </Col>
+                ))}
+              </Row>
+            </Container>
+          ) : (
+            <LoadingSpinner />
+          );
+        }}
+      </Await>
+    </Suspense>
   );
 };
 export default BookList;
