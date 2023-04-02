@@ -27,7 +27,7 @@ const BookList = () => {
       <Await resolve={bookList}>
         {(loadedBooks) => {
           return !isLoading || genre === "" ? (
-            <Container>
+            <Container> 
               <Row className="d-flex justify-content-center bookRow">
                 {list(loadedBooks).map((book, i) => (
                   <Col key={i} xl={2} lg={3} sm={4} className="py-3 mw-50">

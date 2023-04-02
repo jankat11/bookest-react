@@ -7,6 +7,7 @@ import BookDetails from "./pages/BookDetails";
 import BookList from "./components/BookList";
 import { loader as loaderBooks } from "./components/BookList";
 import ErrorBookList from "./components/ErrorBookList";
+import { action as searchAction } from "./components/SearchForm";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+        action: searchAction,
         children: [
           {
             index: true,
