@@ -21,18 +21,18 @@ const Header = () => {
       <Navbar bg="primary" variant="dark" expand="sm">
         <Container>
           <Link to={"/"} className="text-decoration-none">
-            <Navbar.Brand className="px-3 brand">THE BOOKEST</Navbar.Brand>
+            <Navbar.Brand className="px-3">THE BOOKEST</Navbar.Brand>
           </Link>
 
           <Navbar.Toggle
             onClick={handleToggler}
-            className="shadow-none togglerMenu"
+            className="shadow-none togglerMenu border-0"
             aria-controls="basic-navbar-nav"
           >
             {!togglerOpen ? <SlMenu /> : <AiOutlineClose />}
           </Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto navsHeader">
+            <Nav className="d-flex flex-row justify-content-around ms-auto navsHeader">
               <Nav.Link name="" onClick={redirect}>
                 Home
               </Nav.Link>

@@ -1,6 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import Book from "./Book";
-import { Link } from "react-router-dom";
+import BookCover from "./BookCover";
 import { useLoaderData, Await, defer } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -27,21 +26,17 @@ const BookList = () => {
       <Await resolve={bookList}>
         {(loadedBooks) => {
           return !isLoading || genre === "" ? (
-            <Container> 
+            <Container>
               <Row className="d-flex justify-content-center bookRow">
                 {list(loadedBooks).map((book, i) => (
-                  <Col key={i} xl={2} lg={3} sm={4} className="py-3 mw-50">
-                    <Link
-                      to={`/book/${book.primary_isbn13 || book.primary_isbn10}`}
-                      className="text-decoration-none w-100"
-                    >
-                      <Book
-                        image={book.book_image}
-                        title={book.title}
-                        author={book.author}
-                      />
-                    </Link>
-                  </Col>
+                  <BookCover
+                    key={i}
+                    image={book.book_image}
+                    title={book.title}
+                    author={book.author}
+                    isbn13={book.primary_isbn13}
+                    isbn10={book.primary_isbn10}
+                  />
                 ))}
               </Row>
             </Container>
