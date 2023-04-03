@@ -10,6 +10,7 @@ import BookHeadlines from "../components/BookHeadlines";
 import axios from "axios";
 
 const BASE_URL = "https://www.googleapis.com/books/v1/volumes/";
+const google_id_length = 12
 
 const BookDetails = () => {
   const params = useParams();
@@ -29,30 +30,26 @@ const BookDetails = () => {
   }
 
   useEffect(() => {
-    console.log(book.selfLink);
-    if(!isFromResults) {
-      dispatch(getBook(params.bookISBN));
+    if (params.bookISBN.length === google_id_length) {
+      dispatch(getBook({isbn: null, id: params.bookISBN}));
+    }
+    else if (!isFromResults) {
+      dispatch(getBook({isbn: params.bookISBN, id: null}));
     } else {
-      console.log(isFromResults);
-      dispatch(getResult(selfLink))
+      dispatch(getResult(selfLink));
     }
     return () => {
       dispatch(setBookEmpty());
     };
   }, [isFromResults]);
 
+
   useEffect(() => {
-    if (book.id) {
+    if (book.id && !isFromResults) {
       getDescription();
     }
   }, [book.id]);
 
-/*   useEffect(() => {
-    if (book.selfLink) {
-      dispatch(getResult(book.selfLink))
-    }
-    console.log(book);
-  }, [book.selfLink]) */
 
   if (isError) {
     return (
@@ -80,7 +77,9 @@ const BookDetails = () => {
           <Row>
             <p
               dangerouslySetInnerHTML={{
-                __html: description,
+                __html: !isFromResults
+                  ? description
+                  : book?.volumeInfo?.description,
               }}
               className="lead my-3"
             ></p>
