@@ -25,7 +25,7 @@ const Header = () => {
 
           <Navbar.Toggle
             onClick={handleToggler}
-            className="shadow-none togglerMenu border-0"
+            className="shadow-none togglerMenu position-relative border-0"
             aria-controls="basic-navbar-nav"
           >
             {!togglerOpen ? <SlMenu /> : <AiOutlineClose />}
