@@ -15,7 +15,7 @@ const initialState = {
   results: [],
   isLoading: true,
   isError: false,
-  genre: "",
+  genre: "hardcover-fiction",
   message: "",
   isResultsLoading: false,
   isFromResults: false

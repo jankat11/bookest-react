@@ -11,15 +11,9 @@ const BookList = () => {
   const { getGenre } = bookGenreActions;
  
 
-  useEffect(() => {
-    if ( !isFromResults) {
-      dispatch(getGenre("hardcover-fiction"))
-    }
-  }, [])
-
   return (
     <>
-      {!isLoading || genre === "" ? (
+      {!isLoading ? (
         <Container>
           <Row className="d-flex justify-content-center bookRow">
             {books.map((book, i) => (

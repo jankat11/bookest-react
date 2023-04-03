@@ -10,15 +10,16 @@ import SelectForm from "../components/SelectForm";
 const HomePageLayout = () => {
   const [show, setShow] = useState(true);
   const dispatch = useDispatch();
-  const { genre } = useSelector((store) => store.books);
+  const { genre, isFromResults } = useSelector((store) => store.books);
   const { getGenre } = bookGenreActions;
 
   const getBooksGenre = (e) => {
     dispatch(getGenre(e.target.value));
+    dispatch(getBooks(e.target.value));
   };
 
   useEffect(() => {
-    if (genre) {
+    if (genre && !isFromResults) {
       dispatch(getBooks(genre));
     }
   }, [genre]);
