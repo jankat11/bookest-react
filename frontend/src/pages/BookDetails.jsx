@@ -10,13 +10,14 @@ import BookHeadlines from "../components/BookHeadlines";
 import axios from "axios";
 
 const BASE_URL = "https://www.googleapis.com/books/v1/volumes/";
-const google_id_length = 12;
+const google_id_length = 12; // current google's book id length
+const imageDesignHeight = 208; // 13rem * 16 -> 13 * 16px
 
 const BookDetails = () => {
   const params = useParams();
   const imageRef = useRef();
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
   const [description, setDescription] = useState();
   const { book, isLoading, isError, message, selfLink } = useSelector(
     (store) => store.book
@@ -61,10 +62,11 @@ const BookDetails = () => {
   }
 
   useEffect(() => {
-    const imageHeight = imageRef?.current?.offsetHeight
-    const loaded = imageHeight > 100;
-    setShow(loaded && true)
-  }, [imageRef?.current?.offsetHeight]);
+    if (imageRef?.current?.offsetHeight === imageDesignHeight) {
+      setShow(true);
+    }
+    console.log(imageRef?.current?.offsetWidth);
+  }, [imageRef?.current?.offsetHeight, imageRef?.current?.offsetWidth, show]);
 
   return (
     <>
@@ -74,10 +76,11 @@ const BookDetails = () => {
             <p className="display-6">
               <strong>{book?.volumeInfo?.title}</strong>
             </p>
-            <Col className="d-flex w-100 mt-3" sm={12}>
+            <Col className="d-flex w-100 mt-3 " sm={12}>
               <Image
+                className="detailImage w-100"
                 ref={imageRef}
-                src={book?.volumeInfo?.imageLinks.thumbnail || ""}
+                src={book?.volumeInfo?.imageLinks?.thumbnail || ""}
               />
               <BookHeadlines book={book?.volumeInfo} />
             </Col>
@@ -102,3 +105,5 @@ const BookDetails = () => {
   );
 };
 export default BookDetails;
+
+/* ${!show && "opacity-0"} */

@@ -17,6 +17,11 @@
   min-width: 4.8rem;
 }
 
+.detailImage {
+  height: 13rem;
+  max-width: 11rem;
+}
+
 .smooth {
   animation-name: smooth;
   animation-iteration-count: 1;
