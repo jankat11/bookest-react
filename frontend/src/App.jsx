@@ -5,7 +5,6 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import BookDetails from "./pages/BookDetails";
 import BookList from "./components/BookList";
-import ErrorBookList from "./components/ErrorBookList";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +28,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-//moved inside
+
 function App() {
   return <RouterProvider router={router}></RouterProvider>;
 }
