@@ -36,6 +36,7 @@ const bookGenreSlice = createSlice({
     builder
       .addCase(getBooks.pending, (state) => {
         state.isLoading = true;
+        state.isError = false;
       })
       .addCase(getBooks.fulfilled, (state, { payload }) => {
         state.books = payload;
@@ -50,6 +51,8 @@ const bookGenreSlice = createSlice({
       })
       .addCase(getResults.pending, (state) => {
         state.isResultsLoading = true;
+        state.isLoading = true;
+        state.isError = false;
       })
       .addCase(getResults.fulfilled, (state, { payload }) => {
         const results = payload.map((book) => ({
@@ -60,12 +63,14 @@ const bookGenreSlice = createSlice({
           selfLink: book.selfLink
         }));
         state.books = results
+        state.isResultsLoading = false;
         state.isLoading = false;
         state.isError = false;
         state.isFromResults = true
       })
       .addCase(getResults.rejected, (state, { payload }) => {
         state.isResultsLoading = false;
+        state.isLoading = false;
         state.isError = true;
         state.message = payload;
       });
