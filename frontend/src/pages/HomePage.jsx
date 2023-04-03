@@ -8,7 +8,6 @@ import SearchForm from "../components/SearchForm";
 import SelectForm from "../components/SelectForm";
 
 const HomePageLayout = () => {
-  const [show, setShow] = useState(true);
   const dispatch = useDispatch();
   const { genre, isFromResults } = useSelector((store) => store.books);
   const { getGenre } = bookGenreActions;
@@ -36,7 +35,7 @@ const HomePageLayout = () => {
           </Col>
         </Row>
       </Container>
-      {show && <Outlet />}
+      <Outlet />
     </>
   );
 };
