@@ -7,12 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 
 const BookList = () => {
   const dispatch = useDispatch()
-  const { books, isLoading, genre } = useSelector((store) => store.books);
+  const { books, isLoading, genre, isFromResults } = useSelector((store) => store.books);
   const { getGenre } = bookGenreActions;
  
 
   useEffect(() => {
-    dispatch(getGenre("hardcover-fiction"))
+    if ( !isFromResults) {
+      dispatch(getGenre("hardcover-fiction"))
+    }
   }, [])
 
   return (

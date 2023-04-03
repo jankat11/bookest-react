@@ -6,7 +6,7 @@ export const fetchBook = async (idData, thunkAPI) => {
     const { data } = await axios.get(
       `${BASE_URL}${idData.id ? "/" + idData.id : "?q=isbn:" + idData.isbn}`
     );
-    return data.isbn ? data.items[0] : data;
+    return idData.isbn ? data.items[0] : data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
