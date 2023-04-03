@@ -14,7 +14,7 @@ const BookCover = ({ image, title, author, isbn10, isbn13, google_id, selfLink})
   }
 
   return (
-    <Col xl={2} lg={3} sm={4} onClick={handleClick} className="py-3 mw-50">
+    <Col xl={2} lg={3} sm={4} onClick={handleClick} className="py-3 mw-50 hide">
       <Link
         to={`/book/${isbn13 || isbn10 || google_id}`}
         className="text-decoration-none w-100"

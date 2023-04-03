@@ -18,13 +18,6 @@ const SearchForm = () => {
     setWords(e.target.value)
   }
 
-  useEffect(() => {
-   console.log(books);
-   console.log(results);
-  }, [words, books, results])
-  
-
-
   return (
     <form onSubmit={handleSubmit} className="input-group rounded-0 my-3">
       <input
