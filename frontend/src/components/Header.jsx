@@ -2,10 +2,11 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { SlMenu } from "react-icons/sl";
 import { AiOutlineClose } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
+  const navref = useRef()
   const redirect = (e) => {
     navigate(`/${e.target.name}`);
   };
@@ -15,9 +16,14 @@ const Header = () => {
     setTogglerOpen((prev) => !prev);
   };
 
+
+  window.onclick = () => {
+    console.log(navref.current.offsetHeight);
+  }
+
   return (
     <>
-      <Navbar bg="primary" variant="dark" expand="sm">
+      <Navbar ref={navref} className="navbar" bg="primary" variant="dark" expand="sm">
         <Container>
           <Link to={"/"} className="text-decoration-none">
             <Navbar.Brand className="px-3">THE BOOKEST</Navbar.Brand>

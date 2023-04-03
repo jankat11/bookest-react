@@ -22,6 +22,12 @@
   max-width: 11rem;
 }
 
+@media (min-width: 576px) {
+  .navbar {
+    height: 47px
+  }
+}
+
 .smooth {
   animation-name: smooth;
   animation-iteration-count: 1;

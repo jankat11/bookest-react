@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 const SearchForm = () => {
-  const {books, results} = useSelector(store => store.books)
+  const {isResultsLoading} = useSelector(store => store.books)
   const [words, setWords] = useState() 
   const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
    e.preventDefault()
+   if (words.trim().length !== 0)
     dispatch(getResults(words))
   }
   
@@ -34,7 +35,7 @@ const SearchForm = () => {
         type="submit"
         id="button-addon2"
       >
-        {!false? "Search" : <Spinner size="sm" animation="grow" />}
+        {!isResultsLoading? "Search" : <Spinner size="sm" animation="grow" />}
       </button>
     </form>
   );
