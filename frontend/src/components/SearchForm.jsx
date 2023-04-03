@@ -1,15 +1,36 @@
-import { useNavigate, useNavigation, Form, redirect } from "react-router-dom";
+import { Form } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
+import { getResults } from "../features/bookGenreSlice/bookGenreSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 const SearchForm = () => {
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
+  const {books, results} = useSelector(store => store.books)
+  const [words, setWords] = useState() 
+  const dispatch = useDispatch()
+
+  const handleSubmit = (e) => {
+   e.preventDefault()
+    dispatch(getResults(words))
+  }
+  
+  const handleChange = (e) => {
+    setWords(e.target.value)
+  }
+
+  useEffect(() => {
+   console.log(books);
+   console.log(results);
+  }, [words, books, results])
+  
+
 
   return (
-    <Form method="post" className="input-group rounded-0 my-3">
+    <form onSubmit={handleSubmit} className="input-group rounded-0 my-3">
       <input
         type="text"
-        name="searchData"
+        value={words}
+        onChange={handleChange}
         className="form-control rounded-0 search-input"
         placeholder="Search a book or author"
         aria-label="Search a book or author"
@@ -20,15 +41,9 @@ const SearchForm = () => {
         type="submit"
         id="button-addon2"
       >
-        {!isSubmitting ? "Search" : <Spinner size="sm" animation="grow" />}
+        {!false? "Search" : <Spinner size="sm" animation="grow" />}
       </button>
-    </Form>
+    </form>
   );
 };
 export default SearchForm;
-
-export async function action({ request }) {
-  const data = await request.formData();
-  console.log(data.get("searchData"));
-  return redirect("/");
-}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getBook } from "../features/bookSlice/bookSlice";
+import { getBook, getResult } from "../features/bookSlice/bookSlice";
 import { bookActions } from "../features/bookSlice/bookSlice";
 import { Container, Image, Row, Col } from "react-bootstrap";
 import LoadingSpinner from "../components/UI/Spinner";
@@ -15,9 +15,10 @@ const BookDetails = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const [description, setDescription] = useState();
-  const { book, isLoading, isError, message } = useSelector(
+  const { book, isLoading, isError, message, selfLink } = useSelector(
     (store) => store.book
   );
+  const { isFromResults } = useSelector((store) => store.books);
   const { setBookEmpty } = bookActions;
 
   async function getDescription() {
@@ -28,15 +29,30 @@ const BookDetails = () => {
   }
 
   useEffect(() => {
-    dispatch(getBook(params.bookISBN));
+    console.log(book.selfLink);
+    if(!isFromResults) {
+      dispatch(getBook(params.bookISBN));
+    } else {
+      console.log(isFromResults);
+      dispatch(getResult(selfLink))
+    }
     return () => {
       dispatch(setBookEmpty());
     };
-  }, [dispatch]);
+  }, [isFromResults]);
 
   useEffect(() => {
-    getDescription();
+    if (book.id) {
+      getDescription();
+    }
   }, [book.id]);
+
+/*   useEffect(() => {
+    if (book.selfLink) {
+      dispatch(getResult(book.selfLink))
+    }
+    console.log(book);
+  }, [book.selfLink]) */
 
   if (isError) {
     return (

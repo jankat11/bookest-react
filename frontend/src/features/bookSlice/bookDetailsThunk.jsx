@@ -9,3 +9,13 @@ export const fetchBook = async (bookISBN, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message)
   }
 }
+
+export const fetchResult = async (selfLink, thunkAPI) => {
+  try {
+    const {data} = await axios.get(selfLink)
+    console.log("hello");
+    return data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message)
+  }
+}
