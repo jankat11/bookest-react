@@ -62,14 +62,14 @@ const BookDetails = () => {
 
   useEffect(() => {
     const imageHeight = imageRef?.current?.offsetHeight
-    const loaded = imageHeight > 150;
+    const loaded = imageHeight > 100;
     setShow(loaded && true)
   }, [imageRef?.current?.offsetHeight]);
 
   return (
     <>
       {!isLoading ? (
-        <Container className={`px-3 ${!show && "opacity-0"}`}>
+        <Container className={`px-3 smooth ${!show && "opacity-0"}`}>
           <Row className="my-3">
             <p className="display-6">
               <strong>{book?.volumeInfo?.title}</strong>

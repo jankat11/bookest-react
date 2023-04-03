@@ -34,6 +34,22 @@
   min-width: 4.8rem;
 }
 
+.smooth {
+  animation-name: smooth;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+}
+
+@keyframes smooth {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+  
+}
+
 
 /* html * {
   border: solid 1px purple;
