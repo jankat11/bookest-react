@@ -65,7 +65,6 @@ const BookDetails = () => {
     if (imageRef?.current?.offsetHeight === imageDesignHeight) {
       setShow(true);
     }
-    console.log(imageRef?.current?.offsetWidth);
   }, [imageRef?.current?.offsetHeight, imageRef?.current?.offsetWidth, show]);
 
   return (

@@ -17,9 +17,9 @@ const Header = () => {
   };
 
 
-  window.onclick = () => {
+/*   window.onclick = () => {
     console.log(navref.current.offsetHeight);
-  }
+  } */
 
   return (
     <>
