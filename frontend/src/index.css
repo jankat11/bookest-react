@@ -59,8 +59,7 @@
   min-height: 1.1rem;
 }
 
-.shadow-none:hover, .shadow-none:active {
-  box-shadow: none !important;
+.shadow-none {
   outline: none !important;
 }
 
