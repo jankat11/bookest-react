@@ -20,7 +20,11 @@ const userSlice = createSlice({
     },
     resetSuccessStatus (state) {
       state.succesfullyLoggedIn = false
+    },
+    logout (state) {
+      state.user = null
     }
+
   },
   extraReducers: (builder) => {
     builder
