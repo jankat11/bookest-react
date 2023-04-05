@@ -23,7 +23,8 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(logout())
-    toast.success("logged out!", { autoClose: 2500 })
+    localStorage.removeItem("user")
+    toast.success("logged out!", { autoClose: 1500 })
   }
 
   useEffect(() => {

@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchUser } from "./userThunk";
+import { getUserData } from "../../utils";
 
 export const getUser = createAsyncThunk("userSlice/getUser", fetchUser);
 
 const initialState = {
   isLoading: false,
   isError: false,
-  user: null,
+  user: getUserData(),
   message: "",
   succesfullyLoggedIn: false
 };

@@ -24,7 +24,7 @@ const Login = () => {
     useSelector((store) => store.user);
 
   const notify = () =>
-    toast.success("logged in!", { autoClose: 2500 });
+    toast.success("logged in!", { autoClose: 1500 });
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -19,6 +19,7 @@ export const fetchUser = async (userData, thunkAPI) => {
         "Content-Type": "application/json",
       }
     );
+    localStorage.setItem("user", JSON.stringify(data))
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(
