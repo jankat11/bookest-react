@@ -22,10 +22,10 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    dispatch(logout())
-    localStorage.removeItem("user")
-    toast.success("logged out!", { autoClose: 1500 })
-  }
+    dispatch(logout());
+    localStorage.removeItem("user");
+    toast.success("logged out!", { autoClose: 1500 });
+  };
 
   useEffect(() => {
     console.log(user);
@@ -64,29 +64,41 @@ const Header = () => {
           </Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="d-flex flex-row justify-content-around ms-auto navsHeader">
-              <Nav.Link name="" onClick={redirect}>
+              <Nav.Link className="shadow-none" name="" onClick={redirect}>
                 Home
               </Nav.Link>
-              <Nav.Link name="about" onClick={redirect}>
+              <Nav.Link className="shadow-none" name="about" onClick={redirect}>
                 About
               </Nav.Link>
               {!user ? (
                 <>
-                  <Nav.Link name="login/?mode=login" onClick={redirect}>
+                  <Nav.Link
+                    className="shadow-none"
+                    name="login/?mode=login"
+                    onClick={redirect}
+                  >
                     Login
                   </Nav.Link>
-                  <Nav.Link name="login/?mode=register" onClick={redirect}>
+                  <Nav.Link
+                    className="shadow-none"
+                    name="login/?mode=register"
+                    onClick={redirect}
+                  >
                     Register
                   </Nav.Link>
                 </>
               ) : (
                 <>
-                  <Nav.Link name="" onClick={redirect}>
+                  <Nav.Link className="shadow-none" name="" onClick={redirect}>
                     My Books
                   </Nav.Link>
-                  <Nav.Link name="" onClick={handleLogout}>
+                  <Nav.Links
+                    className="shadow-none"
+                    name=""
+                    onClick={handleLogout}
+                  >
                     Logout
-                  </Nav.Link>
+                  </Nav.Links>
                 </>
               )}
             </Nav>
