@@ -92,13 +92,13 @@ const Header = () => {
                   <Nav.Link className="shadow-none" name="" onClick={redirect}>
                     My Books
                   </Nav.Link>
-                  <Nav.Links
+                  <Nav.Link
                     className="shadow-none"
                     name=""
                     onClick={handleLogout}
                   >
                     Logout
-                  </Nav.Links>
+                  </Nav.Link>
                 </>
               )}
             </Nav>
