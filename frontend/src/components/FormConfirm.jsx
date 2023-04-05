@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 const FormConfirm = ({ mode }) => {
   return (
     <Container className="p-0 d-flex align-items-center">
-      <Button variant="primary" type="submit">
+      <Button className="rounded-0" variant="primary" type="submit">
         {mode === "register" ? "Register" : "Login"}
       </Button>
-      <p className="mx-3 my-0">
+      <p className="mx-3 my-0 small">
         {mode === "register"
-          ? "Already have an account? "
-          : "Don't have an account? "}
+          ? "have an account? "
+          : "don't have an account? "}
         <Link to={`/login/?mode=${mode === "register" ? "login" : "register"}`}>
           {mode === "register" ? "login" : "register"}
         </Link>

@@ -17,27 +17,31 @@ const Login = () => {
   const { emptyMessage } = userSliceActions;
   const emailRef = useRef();
   const dispatch = useDispatch();
-  const { user, message } = useSelector((store) => store.user);
+  const { user, isLoading, message } = useSelector((store) => store.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(emptyMessage());
     setPasswordsDismatch(false);
-    if (searchParams.get("mode") === "register") {
+    const isRegister = searchParams.get("mode") === "register" 
+    if (isRegister) {
       if (password !== confirmPassword) {
         setPasswordsDismatch(true);
         return;
       }
-      dispatch(getUser({ email, password })).then((data) => {
-        console.log(data.meta.requestStatus);
-        console.log(message);
-      });
     }
+    dispatch(getUser({ email, password, isRegister })).then((data) => {
+      console.log(data.meta.requestStatus);
+      console.log(message);
+    });
   };
 
   useEffect(() => {
-    console.log(searchParams.get("mode"));
-  }, [searchParams]);
+    dispatch(emptyMessage());
+    setPassword("")
+    setConfirmPassword("")
+    setUsername("")
+  }, [searchParams.get("mode")])
 
   useEffect(() => {
     if (message) {
@@ -70,6 +74,7 @@ const Login = () => {
             value={email}
             name="email"
             onChange={(e) => setUsername(e.target.value)}
+            className="rounded-0"
             type="email"
             placeholder="Enter email"
             required
@@ -94,6 +99,7 @@ const Login = () => {
             value={password}
             name="password"
             onChange={(e) => setPassword(e.target.value)}
+            className="rounded-0"
             type="password"
             placeholder="Password"
             required
@@ -104,6 +110,7 @@ const Login = () => {
             <Form.Control
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              className="rounded-0"
               type="password"
               placeholder="Confirm password"
               required
