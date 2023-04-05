@@ -59,6 +59,11 @@
   min-height: 1.1rem;
 }
 
+.shadow-none:hover, .shadow-none:active {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
 /* html * {
   border: solid 1px purple;
 } */
