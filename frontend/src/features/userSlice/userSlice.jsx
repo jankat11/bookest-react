@@ -7,7 +7,8 @@ const initialState = {
   isLoading: false,
   isError: false,
   user: null,
-  message: ""
+  message: "",
+  succesfullyLoggedIn: false
 };
 
 const userSlice = createSlice({
@@ -16,11 +17,15 @@ const userSlice = createSlice({
   reducers: {
     emptyMessage (state) {
       state.message = ""
+    },
+    resetSuccessStatus (state) {
+      state.succesfullyLoggedIn = false
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(getUser.pending, (state) => {
+        state.succesfullyLoggedIn = false
         state.isLoading = true;
         state.isError = false;
         state.message = ""
@@ -28,11 +33,13 @@ const userSlice = createSlice({
       .addCase(getUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload;
+        state.succesfullyLoggedIn = true
       })
       .addCase(getUser.rejected, (state, action) => {
         state.isError = true
         state.isLoading = false
         state.message = action.payload
+        state.succesfullyLoggedIn = false
         console.log(action.payload);
       })
   },
