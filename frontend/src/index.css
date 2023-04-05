@@ -43,6 +43,9 @@
   }
 }
 
+.label {
+  min-height: 1.1rem;
+}
 
 /* html * {
   border: solid 1px purple;

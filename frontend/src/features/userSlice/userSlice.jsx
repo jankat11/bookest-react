@@ -13,12 +13,17 @@ const initialState = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    emptyMessage (state) {
+      state.message = ""
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getUser.pending, (state) => {
         state.isLoading = true;
         state.isError = false;
+        state.message = ""
       })
       .addCase(getUser.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -28,8 +33,11 @@ const userSlice = createSlice({
         state.isError = true
         state.isLoading = false
         state.message = action.payload
+        console.log(action.payload);
       })
   },
 });
 
 export default userSlice.reducer
+
+export const userSliceActions = userSlice.actions

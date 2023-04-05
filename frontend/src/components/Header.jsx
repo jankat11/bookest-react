@@ -44,10 +44,10 @@ const Header = () => {
               <Nav.Link name="about" onClick={redirect}>
                 About
               </Nav.Link>
-              <Nav.Link name="login" onClick={redirect}>
+              <Nav.Link name="login/?mode=login" onClick={redirect}>
                 Login
               </Nav.Link>
-              <Nav.Link name="register" onClick={redirect}>
+              <Nav.Link name="login/?mode=register" onClick={redirect}>
                 Register
               </Nav.Link>
             </Nav>
