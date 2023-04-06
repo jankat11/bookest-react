@@ -1,12 +1,11 @@
 import { useEffect, useState, useRef } from "react";
-import { useNavigate, useSearchParams, Link } from "react-router-dom";
-import { Form, Button, Container, Col, Row } from "react-bootstrap";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { Form, Container, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../features/userSlice/userSlice";
 import { userSliceActions } from "../features/userSlice/userSlice";
 import AlertMessage from "../components/UI/Alert";
 import FormConfirm from "../components/FormConfirm";
-
 import React from "react";
 import { toast } from "react-toastify";
 
@@ -20,11 +19,11 @@ const Login = () => {
   const { emptyMessage, resetSuccessStatus } = userSliceActions;
   const emailRef = useRef();
   const dispatch = useDispatch();
-  const { isLoading, message, succesfullyLoggedIn } =
-    useSelector((store) => store.user);
+  const { isLoading, message, succesfullyLoggedIn } = useSelector(
+    (store) => store.user
+  );
 
-  const notify = () =>
-    toast.success("logged in!", { autoClose: 1500 });
+  const notify = () => toast.success("logged in!", { autoClose: 1500 });
 
   const handleSubmit = (e) => {
     e.preventDefault();

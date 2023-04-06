@@ -89,7 +89,11 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <Nav.Link className="shadow-none" name="" onClick={redirect}>
+                  <Nav.Link
+                    className="shadow-none"
+                    name="mybooks"
+                    onClick={redirect}
+                  >
                     My Books
                   </Nav.Link>
                   <Nav.Link

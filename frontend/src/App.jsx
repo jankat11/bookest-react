@@ -2,9 +2,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Layout from "./components/UI/Layout";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
 import BookDetails from "./pages/BookDetails";
 import BookList from "./components/BookList";
+import MyPage from "./pages/MyBooks";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       },
       { path: "/about", element: <h1>about page</h1> },
       { path: "/login", element: <Login /> },
-      { path: "/register", element: <Register /> },
+      { path: "/mybooks", element: <MyPage /> },
       { path: "/book/:bookISBN", element: <BookDetails /> },
     ],
   },

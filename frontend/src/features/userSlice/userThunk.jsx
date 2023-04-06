@@ -1,6 +1,6 @@
 import axios from "axios";
-const BASE_URL = "https://bookest-server.up.railway.app/api/users/";
-/* const BASE_URL = "http://127.0.0.1:8000/api/users/"; */
+/* const BASE_URL = "https://bookest-server.up.railway.app/api/users/"; */
+const BASE_URL = "http://127.0.0.1:8000/api/users/";
 
 export const fetchUser = async (userData, thunkAPI) => {
   const { isRegister, ...userCredentials } = userData;

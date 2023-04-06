@@ -9,7 +9,7 @@ const initialState = {
   isError: false,
   user: getUserData(),
   message: "",
-  succesfullyLoggedIn: false
+  succesfullyLoggedIn: false,
 };
 
 const userSlice = createSlice({
