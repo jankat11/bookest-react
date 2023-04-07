@@ -31,7 +31,7 @@ const MyBooks = () => {
         ))}
       </div>
       <p className="my-3 mt-5 display-6">has been read</p>
-      <div className="d-flex">
+      <div className="d-flex flex-wrap">
         {userBooks?.has_been_read?.map((book, i) => (
           <Link to={`/book/${book.id}`} key={i}>
             <Image src={getImageUrl(book.id)} />
