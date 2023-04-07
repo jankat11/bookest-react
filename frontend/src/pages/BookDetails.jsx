@@ -30,12 +30,10 @@ const BookDetails = () => {
   );
   const { isFromResults } = useSelector((store) => store.books);
   const { setBookEmpty } = bookActions;
-  const {
-    user: { token },
-  } = useSelector((store) => store.user);
+  const {user} = useSelector((store) => store.user);
 
   const addToBookShelf = () => {
-    dispatch(addBook({ token, state })).then(() => navigate("/mybooks"))
+    dispatch(addBook({ user, state })).then(() => navigate("/mybooks"))
   };
 
   const handleCheckBoxes = (e) => {
