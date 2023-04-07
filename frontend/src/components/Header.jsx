@@ -5,6 +5,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userSliceActions } from "../features/userSlice/userSlice";
+import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
 import { toast } from "react-toastify";
 
 const Header = () => {
@@ -15,6 +16,7 @@ const Header = () => {
   };
   const [togglerOpen, setTogglerOpen] = useState(false);
   const { user } = useSelector((store) => store.user);
+  const {setEmptyUserBooks} = userBooksActions
   const { logout } = userSliceActions;
   const dispatch = useDispatch();
   const handleToggler = () => {
@@ -22,13 +24,15 @@ const Header = () => {
   };
 
   const handleLogout = () => {
+    navigate("/")
     dispatch(logout());
+    dispatch(setEmptyUserBooks())
     localStorage.removeItem("user");
     toast.success("logged out!", { autoClose: 1500 });
   };
 
   useEffect(() => {
-    console.log(user);
+    console.log("user is: ", user);
   }, [user]);
 
   /*   window.onclick = () => {

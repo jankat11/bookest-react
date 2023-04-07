@@ -1,12 +1,18 @@
-import { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState, useRef, useReducer } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBook, getResult } from "../features/bookSlice/bookSlice";
 import { bookActions } from "../features/bookSlice/bookSlice";
-import { Container, Image, Row, Col } from "react-bootstrap";
+import { Container, Image, Row, Col, Button, Form } from "react-bootstrap";
 import LoadingSpinner from "../components/UI/Spinner";
 import AlertMessage from "../components/UI/Alert";
 import BookHeadlines from "../components/BookHeadlines";
+import { addBook } from "../features/userBooksSlice/userBooksSlice";
+import {
+  shelfInitialState,
+  shelfReducer,
+} from "../features/bookDetailsReducer";
+import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
 import axios from "axios";
 
 const BASE_URL = "https://www.googleapis.com/books/v1/volumes/";
@@ -14,23 +20,36 @@ const google_id_length = 12; // current google's book id length
 const imageDesignHeight = 208; // 13rem * 16 -> 13 * 16px
 
 const BookDetails = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const imageRef = useRef();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [description, setDescription] = useState();
+  const [state, shelfDispatch] = useReducer(shelfReducer, shelfInitialState);
+  const { setUserBooks } = userBooksActions;
   const { book, isLoading, isError, message, selfLink } = useSelector(
     (store) => store.book
   );
   const { isFromResults } = useSelector((store) => store.books);
   const { setBookEmpty } = bookActions;
-
+  const {
+    user: { token },
+  } = useSelector((store) => store.user);
   async function getDescription() {
     if (book.id) {
       const { data } = await axios.get(`${BASE_URL}${book.id}`);
       setDescription(data.volumeInfo.description);
     }
   }
+
+  const addToBookShelf = () => {
+    dispatch(addBook({ token, state })).then(() => navigate("/mybooks"))
+  };
+
+  const handleCheckBoxes = (e) => {
+    shelfDispatch({ type: "SWITCH_CHECKBOXES", payload: e.target.name });
+  };
 
   useEffect(() => {
     if (params.bookISBN.length === google_id_length) {
@@ -50,6 +69,18 @@ const BookDetails = () => {
       getDescription();
     }
   }, [book.id]);
+
+  useEffect(() => {
+    const bookData = {
+      googleId: book?.id,
+      title: book?.volumeInfo?.title,
+      isbn: book?.volumeInfo?.industryIdentifiers
+        ? book?.volumeInfo?.industryIdentifiers[0]?.identifier
+        : null,
+      noCover: Boolean(!book?.volumeInfo?.imageLinks?.thumbnail),
+    };
+    shelfDispatch({ type: "ADD_BOOK_IDS", payload: bookData });
+  }, [book]);
 
   if (isError) {
     return (
@@ -85,6 +116,38 @@ const BookDetails = () => {
             </Col>
           </Row>
           <Row>
+            <Container>
+              <div key="default-checkbox" className="mb-3">
+                <Form.Check
+                  type="checkbox"
+                  id="default-checkbox"
+                  label="will be read"
+                  name="will_be_read"
+                  value={state.willBeRead}
+                  checked={state.willBeRead}
+                  onChange={handleCheckBoxes}
+                />
+
+                <Form.Check
+                  type="checkbox"
+                  label="has been read"
+                  id="disabled-default-checkbox"
+                  name="has_been_read"
+                  value={state.hasBeenRead}
+                  checked={state.hasBeenRead}
+                  onChange={handleCheckBoxes}
+                />
+              </div>
+              <Button
+                type="button"
+                className="rounded-0 "
+                onClick={addToBookShelf}
+              >
+                Add To Bookshelf
+              </Button>
+            </Container>
+          </Row>
+          <Row>
             <p
               dangerouslySetInnerHTML={{
                 __html: !isFromResults
@@ -104,5 +167,3 @@ const BookDetails = () => {
   );
 };
 export default BookDetails;
-
-/* ${!show && "opacity-0"} */
