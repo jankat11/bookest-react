@@ -13,9 +13,7 @@ import {
   shelfReducer,
 } from "../features/bookDetailsReducer";
 import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
-import axios from "axios";
 
-const BASE_URL = "https://www.googleapis.com/books/v1/volumes/";
 const google_id_length = 12; // current google's book id length
 const imageDesignHeight = 208; // 13rem * 16 -> 13 * 16px
 
@@ -25,7 +23,6 @@ const BookDetails = () => {
   const imageRef = useRef();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const [description, setDescription] = useState();
   const [state, shelfDispatch] = useReducer(shelfReducer, shelfInitialState);
   const { setUserBooks } = userBooksActions;
   const { book, isLoading, isError, message, selfLink } = useSelector(
@@ -36,12 +33,6 @@ const BookDetails = () => {
   const {
     user: { token },
   } = useSelector((store) => store.user);
-  async function getDescription() {
-    if (book.id) {
-      const { data } = await axios.get(`${BASE_URL}${book.id}`);
-      setDescription(data.volumeInfo.description);
-    }
-  }
 
   const addToBookShelf = () => {
     dispatch(addBook({ token, state })).then(() => navigate("/mybooks"))
@@ -64,11 +55,6 @@ const BookDetails = () => {
     };
   }, [isFromResults]);
 
-  useEffect(() => {
-    if (book.id && !isFromResults) {
-      getDescription();
-    }
-  }, [book.id]);
 
   useEffect(() => {
     const bookData = {
@@ -150,9 +136,7 @@ const BookDetails = () => {
           <Row>
             <p
               dangerouslySetInnerHTML={{
-                __html: !isFromResults
-                  ? description
-                  : book?.volumeInfo?.description,
+                __html: book?.volumeInfo?.description,
               }}
               className="lead my-3"
             ></p>
