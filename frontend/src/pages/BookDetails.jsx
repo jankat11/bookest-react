@@ -30,7 +30,7 @@ import {
 } from "react-bootstrap";
 
 const google_id_length = 12; // current google's book id length
-const imageDesignHeight = 208; // 13rem * 16 -> 13 * 16px
+const imageDesignHeight = 195; // 12.18rem * 16 -> 13 * 16px
 
 const BookDetails = () => {
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ const BookDetails = () => {
     } else {
       dispatch(addBook({ user, state })).then((data) => {
         if (data.meta.requestStatus === "fulfilled") {
-          toast.success("book added!", { autoClose: 1500 });
+          toast.success("Added to bookshelf!", { autoClose: 1500 });
         }
       });
     }
@@ -167,11 +167,13 @@ const BookDetails = () => {
               <strong>{book?.volumeInfo?.title}</strong>
             </p>
             <Col className="d-flex w-100 mt-3 " sm={12}>
-              <Image
-                className="detailImage w-100"
-                ref={imageRef}
-                src={book?.volumeInfo?.imageLinks?.thumbnail || ""}
-              />
+              <span style={{width: "195px"}}>
+                <Image
+                  className="detailImage"
+                  ref={imageRef}
+                  src={book?.volumeInfo?.imageLinks?.thumbnail || ""}
+                />
+              </span>
               <BookHeadlines book={book?.volumeInfo} />
             </Col>
           </Row>

@@ -34,8 +34,8 @@
 }
 
 .detailImage {
-  height: 13rem;
-  max-width: 11rem;
+  height: 12.18rem;
+  width: 8rem;
 }
 
 @media (min-width: 576px) {
