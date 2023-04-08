@@ -46,28 +46,9 @@ const Header = () => {
         className="navbar"
         bg="info"
         variant="dark"
-        expand="sm"
       >
-        <Container>
-          {!user && (
-            <Link to={"/"} className="text-decoration-none">
-              <Navbar.Brand className="px-3 pe-0 mx-0">
-                THE BOOKEST
-              </Navbar.Brand>
-            </Link>
-          )}
-          <Nav className="px-3">
-            <Nav.Link onClick={redirect}>{user?.username}</Nav.Link>
-          </Nav>
-          <Navbar.Toggle
-            onClick={handleToggler}
-            className="shadow-none togglerMenu position-relative border-0"
-            aria-controls="basic-navbar-nav"
-          >
-            {!togglerOpen ? <SlMenu /> : <AiOutlineClose />}
-          </Navbar.Toggle>
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="d-flex flex-row justify-content-around ms-auto navsHeader">
+        <Container className="w-100">
+            <Nav className="d-flex flex-row justify-content-end  w-100 ms-auto">
               <Nav.Link className="shadow-none" name="" onClick={redirect}>
                 Home
               </Nav.Link>
@@ -110,7 +91,7 @@ const Header = () => {
                 </>
               )}
             </Nav>
-          </Navbar.Collapse>
+         
         </Container>
       </Navbar>
     </>

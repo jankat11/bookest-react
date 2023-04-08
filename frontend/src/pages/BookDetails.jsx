@@ -110,7 +110,7 @@ const BookDetails = () => {
             </Col>
           </Row>
           <Row>
-            <Col className="col-12">
+            <Col className="col-12 p-0">
               <Container className="p-0 d-flex">
                 <Form.Check
                   type="checkbox"
@@ -141,7 +141,7 @@ const BookDetails = () => {
                 >
                   <ImBooks className="mb-1" /> Add To Bookshelf
                 </Button>
-                <Button className="me-3 mt-3 mt-sm-0 btn-danger rounded-0 detail-button">
+                <Button className="me-3  mt-3 mt-sm-0 btn-danger rounded-0 detail-button">
                   <CgPlayListRemove
                     style={{ scale: "1.5", position: "relative", top: "2px" }}
                     className="mb-1"
