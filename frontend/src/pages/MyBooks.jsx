@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { getBooks } from "../features/userBooksSlice/userBooksSlice";
 import { useEffect } from "react";
-import { Container, Button, Spinner, Image } from "react-bootstrap";
+import { Container, Button, Spinner, Row, Col, Image } from "react-bootstrap";
 import { getImageUrl } from "../utils";
 import { Link } from "react-router-dom";
 

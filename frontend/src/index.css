@@ -38,6 +38,9 @@
   .navbar {
     height: 47px
   }
+  .detail-button {
+    width: fit-content !important;
+  }
 }
 
 .smooth {
@@ -63,8 +66,33 @@
   outline: none !important;
 }
 
+.note {
+  background-image: linear-gradient(to bottom ,hsla(0, 0%, 100%, 0.726),rgba(255, 255, 255, 0.712)), url("../public/Grid.png");
+  background-repeat: repeat;
+  background-position: center;
+}
+
+.detail-button {
+  white-space: nowrap;
+  width: 100%;
+}
+
+
+.form-check-input:checked {
+  background-color: #369 !important;
+  border-color: #369 !important;
+  box-shadow: none !important;
+}
+
+input {
+  box-shadow: none !important;
+}
+
+input:focus, input:active {
+  border: solid 1px #369 !important;
+}
+
+
 /* html * {
   border: solid 1px purple;
 } */
-
-

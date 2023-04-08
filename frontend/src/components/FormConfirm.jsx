@@ -9,7 +9,7 @@ const FormConfirm = ({ mode, isLoading }) => {
         className={`rounded-0 ${
           !isRegister ? "login-button" : "register-button"
         }`}
-        variant="primary"
+        variant="info"
         type="submit"
       >
         {!isLoading ? (
@@ -24,7 +24,7 @@ const FormConfirm = ({ mode, isLoading }) => {
       </Button>
       <p className="mx-3 my-0 small">
         {isRegister ? "have an account? " : "don't have an account? "}
-        <Link to={`/login/?mode=${isRegister ? "login" : "register"}`}>
+        <Link className="text-info" to={`/login/?mode=${isRegister ? "login" : "register"}`}>
           {isRegister ? "login" : "register"}
         </Link>
       </p>

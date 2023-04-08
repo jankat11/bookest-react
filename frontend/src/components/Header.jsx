@@ -44,7 +44,7 @@ const Header = () => {
       <Navbar
         ref={navref}
         className="navbar"
-        bg="primary"
+        bg="info"
         variant="dark"
         expand="sm"
       >

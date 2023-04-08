@@ -6,7 +6,7 @@ const LoadingSpinner = ({size}) => {
       <Spinner
         className="loadingSpinner"
         animation="grow"
-        variant="primary"
+        variant="info"
         size={size || "xl"}
       />
     </Container>
