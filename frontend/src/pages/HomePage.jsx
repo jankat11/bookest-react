@@ -6,11 +6,20 @@ import { bookGenreActions } from "../features/bookGenreSlice/bookGenreSlice";
 import { getBooks } from "../features/bookGenreSlice/bookGenreSlice";
 import SearchForm from "../components/SearchForm";
 import SelectForm from "../components/SelectForm";
+import { getBooks as myBooks } from "../features/userBooksSlice/userBooksSlice";
 
 const HomePageLayout = () => {
   const dispatch = useDispatch();
+  const {user} = useSelector((store) => store.user);
   const { genre, isFromResults } = useSelector((store) => store.books);
+  const { userBooks } = useSelector((store) => store.userBooks);
   const { getGenre } = bookGenreActions;
+
+  useEffect(() => {
+    if (user && !userBooks) {
+      dispatch(myBooks(user));
+    }
+  }, []);
 
   const getBooksGenre = (e) => {
     dispatch(getGenre(e.target.value));

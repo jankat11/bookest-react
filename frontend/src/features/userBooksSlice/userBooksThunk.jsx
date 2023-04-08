@@ -10,7 +10,6 @@ export const fetchBooks = async (userData, thunkAPI) => {
         Authorization: `Bearer ${userData.token}`,
       },
     });
-    console.log("initial books: ",data)
     if (!data) {
       throw error;
     }
@@ -24,21 +23,31 @@ export const fetchBooks = async (userData, thunkAPI) => {
 
 export const fetchAddBook = async (userData, thunkAPI) => {
   try {
-    const { data } = await axios.post(
-      `${BASE_URL}addbook/`,
-      userData.state,
+    const { data } = await axios.post(`${BASE_URL}addbook/`, userData.state, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userData.user.token}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data);
+  }
+};
+
+export const fetchRemoveBook = async (userData, thunkAPI) => {
+  try {
+    const { data } = await axios.get(
+      `${BASE_URL}removeBook/${userData.bookId}`,
       {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${userData.user.token}`,
+          Authorization: `Bearer ${userData.token}`,
         },
-      },
+      }
     );
-    console.log("after book add: ",data);
-    return data;
+    return userData.bookId;
   } catch (error) {
-    return thunkAPI.rejectWithValue(
-      "something went interesting!"
-    );
+    return thunkAPI.rejectWithValue("book could not removed!");
   }
 };

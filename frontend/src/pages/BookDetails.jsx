@@ -2,9 +2,25 @@ import { useEffect, useState, useRef, useReducer } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBook, getResult } from "../features/bookSlice/bookSlice";
+import { getBooks as myBooks } from "../features/userBooksSlice/userBooksSlice";
 import { bookActions } from "../features/bookSlice/bookSlice";
+import LoadingSpinner from "../components/UI/Spinner";
+import AlertMessage from "../components/UI/Alert";
+import BookHeadlines from "../components/BookHeadlines";
+import { addBook } from "../features/userBooksSlice/userBooksSlice";
+import { removeBook } from "../features/userBooksSlice/userBooksSlice";
+import { SlNote } from "react-icons/sl";
+import { ImBooks } from "react-icons/im";
+import { CgPlayListRemove } from "react-icons/cg";
+import { toast } from "react-toastify";
+import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
+import {
+  shelfInitialState,
+  shelfReducer,
+} from "../features/bookDetailsReducer";
 import {
   Container,
+  Spinner,
   Image,
   Row,
   Col,
@@ -12,18 +28,6 @@ import {
   Form,
   Card,
 } from "react-bootstrap";
-import LoadingSpinner from "../components/UI/Spinner";
-import AlertMessage from "../components/UI/Alert";
-import BookHeadlines from "../components/BookHeadlines";
-import { addBook } from "../features/userBooksSlice/userBooksSlice";
-import {
-  shelfInitialState,
-  shelfReducer,
-} from "../features/bookDetailsReducer";
-import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
-import { SlNote } from "react-icons/sl";
-import { ImBooks } from "react-icons/im";
-import { CgPlayListRemove } from "react-icons/cg";
 
 const google_id_length = 12; // current google's book id length
 const imageDesignHeight = 208; // 13rem * 16 -> 13 * 16px
@@ -34,22 +38,84 @@ const BookDetails = () => {
   const imageRef = useRef();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const [removeButton, setRemoveButton] = useState(false);
   const [state, shelfDispatch] = useReducer(shelfReducer, shelfInitialState);
-  const { setUserBooks } = userBooksActions;
+  const { isFromResults } = useSelector((store) => store.books);
+  const { user } = useSelector((store) => store.user);
+  const {setEmptyRemoveMessage} = userBooksActions
+  const { userBooks, isRemoving, removeMessage, isBookError } = useSelector(
+    (store) => store.userBooks
+  );
+  const { setBookEmpty } = bookActions;
   const { book, isLoading, isError, message, selfLink } = useSelector(
     (store) => store.book
   );
-  const { isFromResults } = useSelector((store) => store.books);
-  const { setBookEmpty } = bookActions;
-  const { user } = useSelector((store) => store.user);
 
   const addToBookShelf = () => {
-    dispatch(addBook({ user, state })).then(() => navigate("/mybooks"));
+    if (!user) {
+      navigate("/login/?mode=login");
+    } else {
+      dispatch(addBook({ user, state })).then((data) => {
+        if (data.meta.requestStatus === "fulfilled") {
+          toast.success("book added!", { autoClose: 1500 });
+        }
+      });
+    }
   };
 
   const handleCheckBoxes = (e) => {
     shelfDispatch({ type: "SWITCH_CHECKBOXES", payload: e.target.name });
   };
+
+  const handleRemove = () => {
+    dispatch(removeBook({ bookId: book.id, token: user.token })).then(
+      (data) => {
+        setRemoveButton(false);
+        toast.success("book removed!", { autoClose: 1500 });
+      }
+    );
+  };
+
+  const stickNote = () => {
+    if (!user) {
+      navigate("/login/?mode=login");
+    }
+  };
+
+  useEffect(() => {
+    if (user && !userBooks) {
+      dispatch(myBooks(user));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (removeMessage && isBookError) {
+      toast.warning(removeMessage.replaceAll("_", " "), { autoClose: 2500 });
+      dispatch(setEmptyRemoveMessage())
+    }
+  }, [removeMessage, isBookError]);
+
+  useEffect(() => {
+    if (userBooks) {
+      let check = false;
+      userBooks["will_be_read"].forEach((userBook) => {
+        if (userBook.id == book.id) {
+          setRemoveButton(true);
+          check = true;
+          return;
+        }
+      });
+      if (!check) {
+        userBooks["has_been_read"].forEach((userBook) => {
+          if (userBook.id == book.id) {
+            setRemoveButton(true);
+            check = true;
+            return;
+          }
+        });
+      }
+    }
+  }, [book, userBooks]);
 
   useEffect(() => {
     if (params.bookISBN.length === google_id_length) {
@@ -141,32 +207,48 @@ const BookDetails = () => {
                 >
                   <ImBooks className="mb-1" /> Add To Bookshelf
                 </Button>
-                <Button className="me-3  mt-3 mt-sm-0 btn-danger rounded-0 detail-button">
-                  <CgPlayListRemove
-                    style={{ scale: "1.5", position: "relative", top: "2px" }}
-                    className="mb-1"
-                  />{" "}
-                  Remove From Bookshelf
-                </Button>
-                <Button className="rounded-0 btn-info detail-button mt-3 mt-md-0">
+                {removeButton && (
+                  <Button
+                    onClick={handleRemove}
+                    className="me-3 mt-3 mt-sm-0 btn-danger rounded-0 detail-button"
+                  >
+                    {!isRemoving ? (
+                      <>
+                        <CgPlayListRemove
+                          style={{
+                            scale: "1.5",
+                            position: "relative",
+                            top: "2px",
+                          }}
+                          className="mb-1"
+                        />
+                        <span>Remove From Bookshelf</span>{" "}
+                      </>
+                    ) : (
+                      <Spinner size="sm" animation="grow" />
+                    )}
+                  </Button>
+                )}
+                <Button
+                  onClick={stickNote}
+                  className="rounded-0 btn-info detail-button mt-3 mt-md-0"
+                >
                   <SlNote className="p-0 mb-1" /> Stick a Note
                 </Button>
               </Col>
             </Col>
           </Row>
           <Row className="my-5">
-            <Card className="rounded-0 shadow note border-0">
+            <p className="display-6">Your notes:</p>
+            <Card className="rounded-0 shadow note border ">
               <Card.Body>
                 <Card.Text>
-                  <blockquote>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content. Some quick example text
-                    to build on the card title and make up the bulk of the
-                    card's content. Some quick example text to build on the card
-                    title and make up the bulk of the card's content. Some quick
-                    example text to build on the card title and make up the bulk
-                    of the card's content.
-                  </blockquote>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Magni velit, repudiandae illum ex laboriosam magnam voluptate
+                  quisquam repellendus, modi corrupti consequuntur, possimus et.
+                  Officia maiores, laudantium id architecto nostrum enim
+                  deserunt voluptatem fuga necessitatibus veritatis delectus
+                  doloribus quidem alias nihil excepturi cum quaerat quis.
                 </Card.Text>
               </Card.Body>
             </Card>

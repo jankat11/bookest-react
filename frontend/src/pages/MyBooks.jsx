@@ -7,18 +7,12 @@ import { Link } from "react-router-dom";
 
 const MyBooks = () => {
   const dispatch = useDispatch();
-  const {
-    user: { token },
-  } = useSelector((store) => store.user);
+  const {user} = useSelector((store) => store.user);
   const { userBooks } = useSelector((store) => store.userBooks);
 
   useEffect(() => {
-    if (!userBooks) dispatch(getBooks({ token }));
+    if (!userBooks) dispatch(getBooks(user));
   }, []);
-
-  /* useEffect(() => {
-    
-  }, [userBooks]) */
 
   return (
     <>
