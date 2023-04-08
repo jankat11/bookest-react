@@ -45,9 +45,7 @@
 }
 
 .smooth {
-  animation-name: smooth;
-  animation-iteration-count: 1;
-  animation-duration: 1s;
+  animation: smooth 0.6s ease-out
 }
 
 @keyframes smooth {
@@ -119,6 +117,9 @@ input:active {
     padding-left: 15px !important;
   }
 }
+
+
+
 
 /* html * {
   border: solid 1px purple;

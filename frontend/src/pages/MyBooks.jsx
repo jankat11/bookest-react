@@ -15,7 +15,7 @@ const MyBooks = () => {
   }, []);
 
   return (
-    <>
+    <div className="smooth">
       <p className="my-3 display-6 shelfItem">will be read</p>
       <div className="d-flex flex-wrap container shelfItem">
         {userBooks?.will_be_read?.map((book, i) => (
@@ -32,7 +32,7 @@ const MyBooks = () => {
           </Link> 
         ))}
       </div>
-    </>
+    </div>
   );
 };
 export default MyBooks;
