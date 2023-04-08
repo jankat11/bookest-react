@@ -136,7 +136,7 @@ const BookDetails = () => {
       title: book?.volumeInfo?.title,
       isbn: book?.volumeInfo?.industryIdentifiers
         ? book?.volumeInfo?.industryIdentifiers[0]?.identifier
-        : null,
+        : "no-isbn",
       noCover: Boolean(!book?.volumeInfo?.imageLinks?.thumbnail),
     };
     shelfDispatch({ type: "ADD_BOOK_IDS", payload: bookData });

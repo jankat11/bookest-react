@@ -1,5 +1,5 @@
 :root {
-  --toastify-color-success: #369
+  --toastify-color-success: #369;
 }
 
 .loadingSpinner {
@@ -8,7 +8,7 @@
 }
 
 .navbar {
-  height: 47px
+  height: 47px;
 }
 
 .bestseller,
@@ -68,7 +68,12 @@
 }
 
 .note {
-  background-image: linear-gradient(to bottom ,hsla(0, 0%, 100%, 0.726),rgba(255, 255, 255, 0.712)), url("../public/Grid.png");
+  background-image: linear-gradient(
+      to bottom,
+      hsla(0, 0%, 100%, 0.726),
+      rgba(255, 255, 255, 0.712)
+    ),
+    url("../public/Grid.png");
   background-repeat: repeat;
   background-position: center;
 }
@@ -78,7 +83,6 @@
   width: 100%;
   min-width: 13rem;
 }
-
 
 .form-check-input:checked {
   background-color: #369 !important;
@@ -94,10 +98,27 @@ input {
   box-shadow: none !important;
 }
 
-input:focus, input:active {
+input:focus,
+input:active {
   border: solid 1px #369 !important;
 }
 
+
+.shelfItem {
+  padding-left: 28px !important;
+}
+
+@media (min-width: 400px) and (max-width: 465px) {
+  .shelfItem {
+    padding-left: 40px !important;
+  }
+}
+
+@media (max-width: 369px) {
+  .shelfItem {
+    padding-left: 15px !important;
+  }
+}
 
 /* html * {
   border: solid 1px purple;

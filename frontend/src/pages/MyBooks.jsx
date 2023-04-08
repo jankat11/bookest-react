@@ -16,19 +16,19 @@ const MyBooks = () => {
 
   return (
     <>
-      <p className="my-3 display-6">will be read</p>
-      <div className="d-flex flex-wrap">
+      <p className="my-3 display-6 shelfItem">will be read</p>
+      <div className="d-flex flex-wrap container shelfItem">
         {userBooks?.will_be_read?.map((book, i) => (
           <Link to={`/book/${book.id}`} key={i}>
-            <Image className="w-100 h-100" src={getImageUrl(book.id)} />
+            <Image style={{width: "100px"}} src={getImageUrl(book.id)} />
           </Link>
         ))}
       </div>
-      <p className="my-3 mt-5 display-6">has been read</p>
-      <div className="d-flex flex-wrap">
+      <p className="my-3 mt-5 display-6 shelfItem">has been read</p>
+      <div className="d-flex flex-wrap container shelfItem">
         {userBooks?.has_been_read?.map((book, i) => (
           <Link to={`/book/${book.id}`} key={i}>
-            <Image src={getImageUrl(book.id)} />
+            <Image style={{width: "100px"}} src={getImageUrl(book.id)} />
           </Link> 
         ))}
       </div>
