@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 const SearchForm = () => {
   const {isResultsLoading} = useSelector(store => store.books)
-  const [words, setWords] = useState() 
+  const [words, setWords] = useState("") 
   const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
