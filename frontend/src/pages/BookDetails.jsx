@@ -13,6 +13,8 @@ import { SlNote } from "react-icons/sl";
 import { ImBooks } from "react-icons/im";
 import { CgPlayListRemove } from "react-icons/cg";
 import { toast } from "react-toastify";
+import defaultImage from "../../public/nocover.png";
+import CheckBoxes from "../components/CheckBoxes";
 import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
 import {
   shelfInitialState,
@@ -42,7 +44,7 @@ const BookDetails = () => {
   const [state, shelfDispatch] = useReducer(shelfReducer, shelfInitialState);
   const { isFromResults } = useSelector((store) => store.books);
   const { user } = useSelector((store) => store.user);
-  const {setEmptyRemoveMessage} = userBooksActions
+  const { setEmptyRemoveMessage } = userBooksActions;
   const { userBooks, isRemoving, removeMessage, isBookError } = useSelector(
     (store) => store.userBooks
   );
@@ -91,7 +93,7 @@ const BookDetails = () => {
   useEffect(() => {
     if (removeMessage && isBookError) {
       toast.warning(removeMessage.replaceAll("_", " "), { autoClose: 2500 });
-      dispatch(setEmptyRemoveMessage())
+      dispatch(setEmptyRemoveMessage());
     }
   }, [removeMessage, isBookError]);
 
@@ -167,11 +169,11 @@ const BookDetails = () => {
               <strong>{book?.volumeInfo?.title}</strong>
             </p>
             <Col className="d-flex w-100 mt-3 " sm={12}>
-              <span style={{width: "195px"}}>
+              <span style={{ width: "128px", height: "195px" }}>
                 <Image
                   className="detailImage"
                   ref={imageRef}
-                  src={book?.volumeInfo?.imageLinks?.thumbnail || ""}
+                  src={book?.volumeInfo?.imageLinks?.thumbnail || defaultImage}
                 />
               </span>
               <BookHeadlines book={book?.volumeInfo} />
@@ -179,28 +181,7 @@ const BookDetails = () => {
           </Row>
           <Row>
             <Col className="col-12 p-0">
-              <Container className="p-0 d-flex">
-                <Form.Check
-                  type="checkbox"
-                  id="default-checkbox"
-                  label="will be read"
-                  name="will_be_read"
-                  value={state.willBeRead}
-                  checked={state.willBeRead}
-                  onChange={handleCheckBoxes}
-                  className="me-3"
-                />
-                <Form.Check
-                  type="checkbox"
-                  label="has been read"
-                  id="disabled-default-checkbox"
-                  name="has_been_read"
-                  value={state.hasBeenRead}
-                  checked={state.hasBeenRead}
-                  onChange={handleCheckBoxes}
-                />
-              </Container>
-
+              <CheckBoxes handleCheckBoxes={handleCheckBoxes} state={state} />
               <Col className="col-12 mt-3">
                 <Button
                   type="button"
@@ -233,7 +214,9 @@ const BookDetails = () => {
                 )}
                 <Button
                   onClick={stickNote}
-                  className="rounded-0 btn-info detail-button mt-3 mt-md-0"
+                  className={`rounded-0 btn-info detail-button mt-3 ${
+                    removeButton ? "mt-md-0" : "mt-sm-0"
+                  }`}
                 >
                   <SlNote className="p-0 mb-1" /> Stick a Note
                 </Button>

@@ -13,7 +13,7 @@ const BookHeadlines = ({book}) => {
         ))}
       </p>
       <p className="text-smaller">published: {book?.publishedDate?.slice(0,4)}</p>
-      <p>{book?.categories}</p>
+      <p>{book?.categories?.slice(0,5)}</p>
     </Container>
   );
 };

@@ -35,10 +35,6 @@ const Header = () => {
     console.log("user is: ", user);
   }, [user]);
 
-  /*   window.onclick = () => {
-    console.log(navref.current.offsetHeight);
-  } */
-
   return (
     <>
       <Navbar

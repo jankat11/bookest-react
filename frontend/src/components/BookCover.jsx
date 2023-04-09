@@ -2,7 +2,7 @@ import { Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { bookActions } from "../features/bookSlice/bookSlice";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import defaultImage from "../../public/nocover.png"
 
 const BookCover = ({
   image,
@@ -35,8 +35,8 @@ const BookCover = ({
         className="text-decoration-none w-100"
       >
         <Card className="h-100 w-100 rounded-0 border-0 shadow">
-          <span style={{ minHeight: "240px" }}>
-            <Card.Img className="rounded-0" variant="top" src={image} />
+          <span style={{ minHeight: "240px", maxHeight: "370px" }}>
+            <Card.Img className="rounded-0" variant="top" src={image || defaultImage} />
           </span>
           <Card.Body className="bg-light border-0 w-100 d-flex flex-column justify-content-start">
             <Card.Title className="py-0 my-0 text-center w-100 border-0 ">
