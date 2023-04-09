@@ -1,7 +1,7 @@
 import { ImBooks } from "react-icons/im";
 import { CgPlayListRemove } from "react-icons/cg";
 import { Col, Button, Spinner } from "react-bootstrap";
-import Checkboxes from "../components/Checkboxes"
+import Checkboxes from "./SelectShelf";
 
 
 const ShiftButtons = ({
