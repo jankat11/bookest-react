@@ -1,35 +1,29 @@
 import { useEffect, useState, useRef, useReducer } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getBook, getResult } from "../features/bookSlice/bookSlice";
 import { getBooks as myBooks } from "../features/userBooksSlice/userBooksSlice";
-import { bookActions } from "../features/bookSlice/bookSlice";
 import LoadingSpinner from "../components/UI/Spinner";
 import AlertMessage from "../components/UI/Alert";
 import BookHeadlines from "../components/BookHeadlines";
 import { addBook } from "../features/userBooksSlice/userBooksSlice";
 import { removeBook } from "../features/userBooksSlice/userBooksSlice";
-import { SlNote } from "react-icons/sl";
-import { ImBooks } from "react-icons/im";
-import { CgPlayListRemove } from "react-icons/cg";
+import Note from "../components/Note";
+import ShiftButtons from "../components/ShiftButtons";
 import { toast } from "react-toastify";
 import defaultImage from "../../public/nocover.png";
-import CheckBoxes from "../components/CheckBoxes";
 import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
+import {
+  addNote,
+  getNotes,
+  getBook,
+  getResult,
+  bookActions,
+} from "../features/bookSlice/bookSlice";
 import {
   shelfInitialState,
   shelfReducer,
 } from "../features/bookDetailsReducer";
-import {
-  Container,
-  Spinner,
-  Image,
-  Row,
-  Col,
-  Button,
-  Form,
-  Card,
-} from "react-bootstrap";
+import { Container, Image, Row, Col } from "react-bootstrap";
 
 const google_id_length = 12; // current google's book id length
 const imageDesignHeight = 195; // 12.18rem * 16 -> 13 * 16px
@@ -44,14 +38,14 @@ const BookDetails = () => {
   const [state, shelfDispatch] = useReducer(shelfReducer, shelfInitialState);
   const { isFromResults } = useSelector((store) => store.books);
   const { user } = useSelector((store) => store.user);
+  const [noteContent, setNoteContent] = useState("");
   const { setEmptyRemoveMessage } = userBooksActions;
   const { userBooks, isRemoving, removeMessage, isBookError } = useSelector(
     (store) => store.userBooks
   );
   const { setBookEmpty } = bookActions;
-  const { book, isLoading, isError, message, selfLink } = useSelector(
-    (store) => store.book
-  );
+  const { book, isLoading, isError, message, selfLink, bookNotes } =
+    useSelector((store) => store.book);
 
   const addToBookShelf = () => {
     if (!user) {
@@ -72,8 +66,14 @@ const BookDetails = () => {
   const handleRemove = () => {
     dispatch(removeBook({ bookId: book.id, token: user.token })).then(
       (data) => {
-        setRemoveButton(false);
-        toast.success("book removed!", { autoClose: 1500 });
+        if (data.meta.requestStatus === "fulfilled") {
+          toast.success("book removed!", { autoClose: 1500 });
+          setRemoveButton(false);
+        } else if (data.meta.requestStatus === "rejected") {
+          toast.warning("something went wrong:( try later", {
+            autoClose: 2500,
+          });
+        }
       }
     );
   };
@@ -81,8 +81,30 @@ const BookDetails = () => {
   const stickNote = () => {
     if (!user) {
       navigate("/login/?mode=login");
+    } else if (!noteContent.trim()) {
+      return;
+    } else {
+      const { willBeRead, hasBeenRead, ...bookCredentials } = state;
+      const noteItem = { ...bookCredentials, content: noteContent };
+      dispatch(addNote({ user, noteItem })).then((data) => {
+        if (data.meta.requestStatus === "rejected") {
+          toast.warning("something went wrong:( try later", {
+            autoClose: 2500,
+          });
+        } else if (data.meta.requestStatus === "fulfilled") {
+          toast.success("Your note added", { autoClose: 1500 });
+        }
+      });
     }
   };
+
+  useEffect(() => {
+    if (user && state.googleId) {
+      const { willBeRead, hasBeenRead, ...bookItem } = state;
+      console.log("inside effect", bookItem);
+      dispatch(getNotes({ user, bookItem }));
+    }
+  }, [state.googleId]);
 
   useEffect(() => {
     if (user && !userBooks) {
@@ -144,6 +166,12 @@ const BookDetails = () => {
     shelfDispatch({ type: "ADD_BOOK_IDS", payload: bookData });
   }, [book]);
 
+  useEffect(() => {
+    if (imageRef?.current?.offsetHeight === imageDesignHeight) {
+      setShow(true);
+    }
+  }, [imageRef?.current?.offsetHeight, imageRef?.current?.offsetWidth, show]);
+
   if (isError) {
     return (
       <AlertMessage
@@ -153,12 +181,6 @@ const BookDetails = () => {
       />
     );
   }
-
-  useEffect(() => {
-    if (imageRef?.current?.offsetHeight === imageDesignHeight) {
-      setShow(true);
-    }
-  }, [imageRef?.current?.offsetHeight, imageRef?.current?.offsetWidth, show]);
 
   return (
     <>
@@ -180,64 +202,22 @@ const BookDetails = () => {
             </Col>
           </Row>
           <Row>
-            <Col className="col-12 p-0">
-              <CheckBoxes handleCheckBoxes={handleCheckBoxes} state={state} />
-              <Col className="col-12 mt-3">
-                <Button
-                  type="button"
-                  className="rounded-0 btn-info me-3 detail-button"
-                  onClick={addToBookShelf}
-                >
-                  <ImBooks className="mb-1" /> Add To Bookshelf
-                </Button>
-                {removeButton && (
-                  <Button
-                    onClick={handleRemove}
-                    className="me-3 mt-3 mt-sm-0 btn-danger rounded-0 detail-button"
-                  >
-                    {!isRemoving ? (
-                      <>
-                        <CgPlayListRemove
-                          style={{
-                            scale: "1.5",
-                            position: "relative",
-                            top: "2px",
-                          }}
-                          className="mb-1"
-                        />
-                        <span>Remove From Bookshelf</span>{" "}
-                      </>
-                    ) : (
-                      <Spinner size="sm" animation="grow" />
-                    )}
-                  </Button>
-                )}
-                <Button
-                  onClick={stickNote}
-                  className={`rounded-0 btn-info detail-button mt-3 ${
-                    removeButton ? "mt-md-0" : "mt-sm-0"
-                  }`}
-                >
-                  <SlNote className="p-0 mb-1" /> Stick a Note
-                </Button>
-              </Col>
-            </Col>
+            <ShiftButtons
+              addToBookShelf={addToBookShelf}
+              handleCheckBoxes={handleCheckBoxes}
+              handleRemove={handleRemove}
+              removeButton={removeButton}
+              isRemoving={isRemoving}
+              state={state}
+            />
           </Row>
-          <Row className="my-5">
-            <p className="display-6">Your notes:</p>
-            <Card className="rounded-0 shadow note border ">
-              <Card.Body>
-                <Card.Text>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Magni velit, repudiandae illum ex laboriosam magnam voluptate
-                  quisquam repellendus, modi corrupti consequuntur, possimus et.
-                  Officia maiores, laudantium id architecto nostrum enim
-                  deserunt voluptatem fuga necessitatibus veritatis delectus
-                  doloribus quidem alias nihil excepturi cum quaerat quis.
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Row>
+          <Note
+            bookNotes={bookNotes}
+            stickNote={stickNote}
+            setNoteContent={setNoteContent}
+            noteContent={noteContent}
+            removeButton={removeButton}
+          />
           <Row>
             <p
               dangerouslySetInnerHTML={{

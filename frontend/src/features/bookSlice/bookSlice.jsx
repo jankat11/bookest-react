@@ -1,15 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {fetchBook, fetchResult} from "./bookDetailsThunk"
+import {fetchBook, fetchResult, fetchAddNote, fetchGetNotes} from "./bookDetailsThunk"
 
 export const getBook = createAsyncThunk("bookSlice/getBook", fetchBook);
 export const getResult = createAsyncThunk("bookSlice/getResult", fetchResult);
+export const addNote = createAsyncThunk("bookSlice/addNote", fetchAddNote);
+export const getNotes = createAsyncThunk("bookSlice/getNotes", fetchGetNotes);
 
 const initialState = {
   book: {},
   isLoading: false,
   isError: false, 
   message: "",
-  selfLink: ""
+  selfLink: "",
+  isErrorNote: false,
+  isNoteLoading: false,
+  bookNotes: null
 };
  
 const bookSlice = createSlice({
@@ -50,6 +55,31 @@ const bookSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = payload;
+      })
+      .addCase(addNote.pending, (state) => {
+        state.isNoteLoading = true;
+        state.isErrorNote = false;
+      })
+      .addCase(addNote.fulfilled, (state, { payload }) => {
+        state.isNoteLoading = false;
+        state.isErrorNote = false;
+      })
+      .addCase(addNote.rejected, (state, { payload }) => {
+        state.isNoteLoading = false;
+        state.isErrorNote = true;
+      })
+      .addCase(getNotes.pending, (state) => {
+        state.isNoteLoading = true;
+        state.isErrorNote = false;
+      })
+      .addCase(getNotes.fulfilled, (state, { payload }) => {
+        state.isNoteLoading = false;
+        state.isErrorNote = false;
+        state.bookNotes = payload
+      })
+      .addCase(getNotes.rejected, (state, { payload }) => {
+        state.isNoteLoading = false;
+        state.isErrorNote = true;
       })
   },
 });

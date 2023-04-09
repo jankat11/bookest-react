@@ -76,11 +76,11 @@
   outline: none !important;
 }
 
-.note {
+.note, .note-textinput {
   background-image: linear-gradient(
       to bottom,
       hsla(0, 0%, 100%, 0.726),
-      rgba(255, 255, 255, 0.712)
+      rgba(255, 255, 255, 0.582)
     ),
     url("../public/Grid.png");
   background-repeat: repeat;
@@ -97,6 +97,14 @@
   background-color: #369 !important;
   border-color: #369 !important;
   box-shadow: none !important;
+}
+
+.note-textinput {
+
+}
+
+.note-textinput:focus, .note-textinput:active {
+  border-color: #369 !important;
 }
 
 .form-check-input {
