@@ -1,7 +1,7 @@
 import { Container, Form } from "react-bootstrap";
 
 
-const CheckBoxes = ({state, handleCheckBoxes}) => {
+const Checkboxes = ({state, handleCheckBoxes}) => {
   return (
     <Container className="p-0 d-flex">
       <Form.Check
@@ -26,4 +26,4 @@ const CheckBoxes = ({state, handleCheckBoxes}) => {
     </Container>
   );
 };
-export default CheckBoxes;
+export default Checkboxes;
