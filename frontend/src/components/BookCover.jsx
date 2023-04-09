@@ -35,7 +35,7 @@ const BookCover = ({
         className="text-decoration-none w-100"
       >
         <Card className="h-100 w-100 rounded-0 border-0 shadow">
-          <span style={{ minHeight: "250px" }}>
+          <span style={{ minHeight: "240px" }}>
             <Card.Img className="rounded-0" variant="top" src={image} />
           </span>
           <Card.Body className="bg-light border-0 w-100 d-flex flex-column justify-content-start">
