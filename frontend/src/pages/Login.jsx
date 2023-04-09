@@ -57,7 +57,7 @@ const Login = () => {
   }, [message, succesfullyLoggedIn]);
 
   return (
-    <Container>
+    <Container className="smoothLittle">
       <Row className="justify-content-center">
         <Col md={6}>
           <p className="display-6 mt-3">

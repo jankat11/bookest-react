@@ -8,7 +8,7 @@ const BookList = () => {
   return (
     <>
       {!isLoading ? (
-        <Container className="smooth">
+        <Container className="smoothLittle">
           <Row className="d-flex justify-content-center bookRow">
             {books.map((book, i) => (
               <BookCover
