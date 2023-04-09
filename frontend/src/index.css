@@ -77,12 +77,7 @@
 }
 
 .note, .note-textinput {
-  background-image: linear-gradient(
-      to bottom,
-      hsla(0, 0%, 100%, 0.726),
-      rgba(255, 255, 255, 0.582)
-    ),
-    url("../public/Grid.png");
+  background-color: hsla(56, 91%, 55%, 0.205) !important;
   background-repeat: repeat;
   background-position: center;
 }
@@ -99,9 +94,6 @@
   box-shadow: none !important;
 }
 
-.note-textinput {
-
-}
 
 .note-textinput:focus, .note-textinput:active {
   border-color: #369 !important;

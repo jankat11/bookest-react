@@ -2,7 +2,7 @@ import { Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { bookActions } from "../features/bookSlice/bookSlice";
 import { useDispatch } from "react-redux";
-import defaultImage from "../../public/nocover.png"
+import defaultImage from "../assets/nocover.png"
 
 const BookCover = ({
   image,

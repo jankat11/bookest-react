@@ -10,7 +10,7 @@ import { removeBook } from "../features/userBooksSlice/userBooksSlice";
 import Note from "../components/Note";
 import ShiftButtons from "../components/ShiftButtons";
 import { toast } from "react-toastify";
-import defaultImage from "../../public/nocover.png";
+import defaultImage from "../assets/nocover.png"
 import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
 
 import {

@@ -1,4 +1,4 @@
-import defaultImage from "../../public/nocover.png";
+import defaultImage from "../assets/nocover.png"
 import { Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getImageUrl } from "../utils";

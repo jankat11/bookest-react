@@ -1,4 +1,4 @@
-import defaultImage from "../../public/nocover.png";
+import defaultImage from "../assets/nocover.png"
 import MyBookItem from "../components/MyBookItem";
 import { Image } from "react-bootstrap";
 
