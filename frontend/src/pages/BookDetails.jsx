@@ -36,7 +36,7 @@ const BookDetails = () => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [noteId, setNoteId] = useState("")
+  const [noteId, setNoteId] = useState("");
   const [removeButton, setRemoveButton] = useState(false);
   const [state, shelfDispatch] = useReducer(shelfReducer, shelfInitialState);
   const { isFromResults } = useSelector((store) => store.books);
@@ -100,14 +100,14 @@ const BookDetails = () => {
           });
         } else if (data.meta.requestStatus === "fulfilled") {
           toast.success("Your note added", { autoClose: 1500 });
-          setNoteContent("")
+          setNoteContent("");
         }
       });
     }
   };
 
   const handleDeleteNote = () => {
-    setShowModal(false)
+    setShowModal(false);
     const noteData = { user, noteId };
     dispatch(deleteNote(noteData)).then((data) => {
       if (data.meta.requestStatus === "rejected") {
@@ -119,8 +119,6 @@ const BookDetails = () => {
       }
     });
   };
-
-
 
   useEffect(() => {
     if (user && state.googleId) {

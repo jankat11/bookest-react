@@ -9,7 +9,6 @@ const BookHeadlines = ({ book, show, setShow }) => {
 
   useEffect(() => {
     if (imageRef?.current?.offsetHeight === imageDesignHeight) {
-      console.log("inside");
       setShow(true);
     }
   }, [imageRef?.current?.offsetHeight, imageRef?.current?.offsetWidth, show]);

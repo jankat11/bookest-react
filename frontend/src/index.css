@@ -107,6 +107,10 @@
   border-color: #369 !important;
 }
 
+.note-textinput:disabled {
+  background-color: #fff !important;
+}
+
 .form-check-input {
   border-radius: 0% !important;
 }
