@@ -77,10 +77,19 @@
 }
 
 .note{
-  background-color: rgba(245, 231, 36, 0.11) !important;
+  background-image:linear-gradient(rgba(245, 231, 36, 0.137), rgba(245, 231, 36, 0.089)) !important;
   background-repeat: repeat;
   background-position: center;
   transition: all 3s ease-in;
+  clip-path: polygon(20px 0, 100% 0, 100% 100%, 0 100px, 0 20px );
+}
+
+.clipCorner {
+  width: 20px;
+  height: 20px;
+  left: -17px;
+  top: -17px;
+  background-color: rgba(245, 231, 36, 0.096) !important;
 }
 
 .note-text {
