@@ -12,7 +12,7 @@ const ShiftButtons = ({
   state,
 }) => {
   return (
-    <Col lg={7} className="col-12 p-0">
+    <Col className="col-12 p-0 mt-3">
       <Checkboxes handleCheckBoxes={handleCheckBoxes} state={state} />
       <Col className="d-flex justify-content-start align-items-center flex-wrap">
         <Button
@@ -25,7 +25,7 @@ const ShiftButtons = ({
         {removeButton && (
           <Button
             onClick={handleRemove}
-            className="mt-3  btn-danger rounded-0 detail-button"
+            className="mt-3  btn-primary rounded-0 detail-button"
           >
             {!isRemoving ? (
               <>

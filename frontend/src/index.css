@@ -98,6 +98,10 @@
   box-shadow: none !important;
 }
 
+.note-delete:hover {
+  transform: scale(1.3);
+  cursor: pointer;
+}
 
 .note-textinput:focus, .note-textinput:active {
   border-color: #369 !important;

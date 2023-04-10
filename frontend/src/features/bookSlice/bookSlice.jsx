@@ -63,6 +63,8 @@ const bookSlice = createSlice({
       .addCase(addNote.fulfilled, (state, { payload }) => {
         state.isNoteLoading = false;
         state.isErrorNote = false;
+        const noteItem = {_id: payload._id, on_book: payload.googleId, content: payload.content }
+        state.bookNotes.reviews.unshift(noteItem)
       })
       .addCase(addNote.rejected, (state, { payload }) => {
         state.isNoteLoading = false;

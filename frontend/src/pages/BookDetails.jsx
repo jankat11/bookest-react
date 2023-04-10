@@ -11,8 +11,8 @@ import Note from "../components/Note";
 import ShiftButtons from "../components/ShiftButtons";
 import { toast } from "react-toastify";
 import defaultImage from "../assets/nocover.png"
+import uuid from 'react-uuid';
 import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
-
 import {
   addNote,
   getNotes,
@@ -41,10 +41,10 @@ const BookDetails = () => {
   const { user } = useSelector((store) => store.user);
   const [noteContent, setNoteContent] = useState("");
   const { setEmptyRemoveMessage } = userBooksActions;
+  const { setBookEmpty } = bookActions;
   const { userBooks, isRemoving, removeMessage, isBookError } = useSelector(
     (store) => store.userBooks
   );
-  const { setBookEmpty } = bookActions;
   const { book, isLoading, isError, message, selfLink, bookNotes } =
     useSelector((store) => store.book);
 
@@ -86,7 +86,7 @@ const BookDetails = () => {
       return;
     } else {
       const { willBeRead, hasBeenRead, ...bookCredentials } = state;
-      const noteItem = { ...bookCredentials, content: noteContent };
+      const noteItem = { ...bookCredentials, content: noteContent, _id: uuid() };
       dispatch(addNote({ user, noteItem })).then((data) => {
         if (data.meta.requestStatus === "rejected") {
           toast.warning("something went wrong:( try later", {
@@ -188,7 +188,8 @@ const BookDetails = () => {
   return (
     <>
       {!isLoading ? (
-        <Container className={`px-3 smooth ${!show && "opacity-0"}`}>
+        <Container className={`px-3 smooth ${!show && "opacity-0"} w-100 d-flex justify-content-center`}>
+          <Col lg={8} className="col-12">
           <Row className="my-3">
             <p className="display-6">
               <strong>{book?.volumeInfo?.title}</strong>
@@ -229,6 +230,7 @@ const BookDetails = () => {
               className="lead my-3"
             ></p>
           </Row>
+          </Col>
         </Container>
       ) : (
         <Container className="d-flex justify-content-center w-100 h-100 my-3">

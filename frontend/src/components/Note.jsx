@@ -1,11 +1,12 @@
 import { SlNote } from "react-icons/sl";
+import { BsTrash3 } from "react-icons/bs";
 import { Row, Button, Card, Col } from "react-bootstrap";
 
 const Note = ({ bookNotes, stickNote, setNoteContent, noteContent }) => {
   return (
     <>
       <Row className="mt-5 ">
-        <Col className="col-12 px-0" lg={7}>
+        <Col className="col-12 px-0">
           <textarea
             value={noteContent}
             onChange={(e) => setNoteContent(e.target.value)}
@@ -26,14 +27,19 @@ const Note = ({ bookNotes, stickNote, setNoteContent, noteContent }) => {
           <strong>Your notes:</strong>
         </p>
         {bookNotes?.reviews?.map((note) => (
-          <Card key={note.id} className="rounded-0 shadow-sm note border mb-3">
+          <Card key={note._id} className="rounded-0 shadow-sm note border mb-3">
             <Card.Body>
-              <Card.Text
-                className="note-text"
-                dangerouslySetInnerHTML={{
-                  __html: note.content,
-                }}
-              ></Card.Text>
+              <div className="position-relative pb-3">
+                <Card.Text
+                  className="note-text blockquote"
+                  dangerouslySetInnerHTML={{
+                    __html: note.content,
+                  }}
+                ></Card.Text>
+                <div className="w-100 position-absolute d-flex justify-content-end">
+                  <BsTrash3 className="text-primary blockquote note-delete" />
+                </div>
+              </div>
             </Card.Body>
           </Card>
         ))}

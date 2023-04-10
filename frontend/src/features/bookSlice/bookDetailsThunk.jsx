@@ -40,7 +40,8 @@ export const fetchAddNote = async (userData, thunkAPI) => {
         },
       }
     );
-    return data;
+    console.log(userData.noteItem);
+    return userData.noteItem;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
