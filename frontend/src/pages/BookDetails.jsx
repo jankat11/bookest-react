@@ -38,6 +38,7 @@ const BookDetails = () => {
   const [showModal, setShowModal] = useState(false);
   const [noteId, setNoteId] = useState("");
   const [removeButton, setRemoveButton] = useState(false);
+  const [removeBookModal, setRemoveBookModal] = useState(false);
   const [state, shelfDispatch] = useReducer(shelfReducer, shelfInitialState);
   const { isFromResults } = useSelector((store) => store.books);
   const { user } = useSelector((store) => store.user);
@@ -67,6 +68,8 @@ const BookDetails = () => {
   };
 
   const handleRemove = () => {
+    setShowModal(false);
+    setRemoveBookModal(false)
     dispatch(removeBook({ bookId: book.id, token: user.token })).then(
       (data) => {
         if (data.meta.requestStatus === "fulfilled") {
@@ -211,11 +214,11 @@ const BookDetails = () => {
         >
           {showModal && (
             <Modal
-              header={"Delete note?"}
-              confirmText={"Delete"}
+              header={!removeBookModal ? "Delete note?" : "Remove book?"}
+              confirmText={!removeBookModal ? "Delete" : "Remove"}
               show={showModal}
               handleClose={() => setShowModal(false)}
-              handleConfirm={handleDeleteNote}
+              handleConfirm={!removeBookModal ? handleDeleteNote : handleRemove}
             />
           )}
           <Col xl={9} className="col-12 p-o">
@@ -226,7 +229,8 @@ const BookDetails = () => {
               <ShiftButtons
                 addToBookShelf={addToBookShelf}
                 handleCheckBoxes={handleCheckBoxes}
-                handleRemove={handleRemove}
+                handleRemove={setRemoveBookModal}
+                openModal={setShowModal}
                 removeButton={removeButton}
                 isRemoving={isRemoving}
                 state={state}
@@ -247,7 +251,7 @@ const BookDetails = () => {
                 dangerouslySetInnerHTML={{
                   __html: book?.volumeInfo?.description,
                 }}
-                className="lead"
+                className="blockquote"
               ></p>
             </Row>
           </Col>

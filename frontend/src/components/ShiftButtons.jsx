@@ -9,6 +9,7 @@ const ShiftButtons = ({
   removeButton,
   isRemoving,
   handleRemove,
+  openModal,
   state,
 }) => {
   return (
@@ -24,7 +25,10 @@ const ShiftButtons = ({
         </Button>
         {removeButton && (
           <Button
-            onClick={handleRemove}
+            onClick={() => {
+              handleRemove(true)
+              openModal(true)
+            }}
             className="mt-3  btn-primary rounded-0 detail-button"
           >
             {!isRemoving ? (
