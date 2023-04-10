@@ -10,8 +10,8 @@ import { removeBook } from "../features/userBooksSlice/userBooksSlice";
 import Note from "../components/Note";
 import ShiftButtons from "../components/ShiftButtons";
 import { toast } from "react-toastify";
-import defaultImage from "../assets/nocover.png"
-import uuid from 'react-uuid';
+
+import uuid from "react-uuid";
 import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
 import {
   addNote,
@@ -24,15 +24,13 @@ import {
   shelfInitialState,
   shelfReducer,
 } from "../features/bookDetailsReducer";
-import { Container, Image, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 const google_id_length = 12; // current google's book id length
-const imageDesignHeight = 195; // 12.18rem * 16 -> 13 * 16px
 
 const BookDetails = () => {
   const navigate = useNavigate();
   const params = useParams();
-  const imageRef = useRef();
   const dispatch = useDispatch();
   const [show, setShow] = useState(true);
   const [removeButton, setRemoveButton] = useState(false);
@@ -86,7 +84,11 @@ const BookDetails = () => {
       return;
     } else {
       const { willBeRead, hasBeenRead, ...bookCredentials } = state;
-      const noteItem = { ...bookCredentials, content: noteContent, _id: uuid() };
+      const noteItem = {
+        ...bookCredentials,
+        content: noteContent,
+        _id: uuid(),
+      };
       dispatch(addNote({ user, noteItem })).then((data) => {
         if (data.meta.requestStatus === "rejected") {
           toast.warning("something went wrong:( try later", {
@@ -154,7 +156,6 @@ const BookDetails = () => {
     };
   }, [isFromResults]);
 
-
   useEffect(() => {
     const bookData = {
       googleId: book?.id,
@@ -166,14 +167,6 @@ const BookDetails = () => {
     };
     shelfDispatch({ type: "ADD_BOOK_IDS", payload: bookData });
   }, [book]);
-
-
-  useEffect(() => {
-    if (imageRef?.current?.offsetHeight === imageDesignHeight) {
-      console.log("inside");
-      setShow(true);
-    }
-  }, [imageRef?.current?.offsetHeight, imageRef?.current?.offsetWidth, show]);
 
   if (isError) {
     return (
@@ -188,48 +181,45 @@ const BookDetails = () => {
   return (
     <>
       {!isLoading ? (
-        <Container fluid className={`px-3 smooth ${!show && "opacity-0"} w-100 d-flex justify-content-center`}>
+        <Container
+          fluid
+          className={`px-3 smooth ${
+            !show && "opacity-0"
+          } w-100 d-flex justify-content-center`}
+        >
           <Col xl={9} className="col-12 p-o">
-          <Row className="my-3">
-            <p className="display-6">
-              <strong>{book?.volumeInfo?.title}</strong>
-            </p>
-            <Col className="d-flex w-100 mt-3 " sm={12}>
-              <span style={{ width: "128px", height: "195px" }}>
-                <Image
-                  className="detailImage"
-                  ref={imageRef}
-                  src={book?.volumeInfo?.imageLinks?.thumbnail || defaultImage}
-                />
-              </span>
-              <BookHeadlines book={book?.volumeInfo} />
-            </Col>
-          </Row>
-          <Row>
-            <ShiftButtons
-              addToBookShelf={addToBookShelf}
-              handleCheckBoxes={handleCheckBoxes}
-              handleRemove={handleRemove}
+            <Row className="my-3">
+              <BookHeadlines
+                book={book}
+                setShow={setShow}
+                show={show}
+              />
+            </Row>
+            <Row>
+              <ShiftButtons
+                addToBookShelf={addToBookShelf}
+                handleCheckBoxes={handleCheckBoxes}
+                handleRemove={handleRemove}
+                removeButton={removeButton}
+                isRemoving={isRemoving}
+                state={state}
+              />
+            </Row>
+            <Note
+              bookNotes={bookNotes}
+              stickNote={stickNote}
+              setNoteContent={setNoteContent}
+              noteContent={noteContent}
               removeButton={removeButton}
-              isRemoving={isRemoving}
-              state={state}
             />
-          </Row>
-          <Note
-            bookNotes={bookNotes}
-            stickNote={stickNote}
-            setNoteContent={setNoteContent}
-            noteContent={noteContent}
-            removeButton={removeButton}
-          />
-          <Row>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: book?.volumeInfo?.description,
-              }}
-              className="lead my-3"
-            ></p>
-          </Row>
+            <Row>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: book?.volumeInfo?.description,
+                }}
+                className="lead my-3"
+              ></p>
+            </Row>
           </Col>
         </Container>
       ) : (
