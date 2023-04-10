@@ -1,5 +1,6 @@
 import { SlNote } from "react-icons/sl";
 import { Row, Button, Col, FloatingLabel } from "react-bootstrap";
+import { motion, AnimatePresence } from "framer-motion";
 import NoteItem from "./NoteItem";
 
 const NoteList = ({
@@ -29,6 +30,7 @@ const NoteList = ({
               className="my-0 form-control note-textinput shadow-sm rounded-0"
               style={{ height: "90px" }}
               disabled={!Boolean(user)}
+              placeholder="Leave your note here"
             />
           </FloatingLabel>
           <Button
@@ -42,19 +44,27 @@ const NoteList = ({
       <Row className="mt-4">
         {user && (
           <>
-            <p className="blockquote px-0">
+            <p className="blockquote text-muted px-0">
               {bookNotes?.reviews.length !== 0 && <span>Your notes:</span>}
             </p>
             <div className="mb-2 p-0">
-              {bookNotes?.reviews?.map((note) => (
-                <NoteItem
-                  key={note._id}
-                  id={note._id}
-                  content={note.content}
-                  openModal={openModal}
-                  getNoteId={getNoteId}
-                />
-              ))}
+              <AnimatePresence>
+                {bookNotes?.reviews?.map((note) => (
+                  <motion.div
+                    key={note._id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    <NoteItem
+                      id={note._id}
+                      content={note.content}
+                      openModal={openModal}
+                      getNoteId={getNoteId}
+                    />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </div>
           </>
         )}
