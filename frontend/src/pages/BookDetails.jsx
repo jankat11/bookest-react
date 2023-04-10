@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useReducer } from "react";
+import { useEffect, useState, useReducer } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBooks as myBooks } from "../features/userBooksSlice/userBooksSlice";
@@ -18,6 +18,7 @@ import {
   getNotes,
   getBook,
   getResult,
+  deleteNote,
   bookActions,
 } from "../features/bookSlice/bookSlice";
 import {
@@ -99,6 +100,19 @@ const BookDetails = () => {
         }
       });
     }
+  };
+
+  const handleDeleteNote = (noteId) => {
+    const noteData = { user, noteId };
+    dispatch(deleteNote(noteData)).then((data) => {
+      if (data.meta.requestStatus === "rejected") {
+        toast.warning("something went wrong:( try later", {
+          autoClose: 2500,
+        });
+      } else if (data.meta.requestStatus === "fulfilled") {
+        toast.success("Note deleted!", { autoClose: 1500 });
+      }
+    });
   };
 
   useEffect(() => {
@@ -189,11 +203,7 @@ const BookDetails = () => {
         >
           <Col xl={9} className="col-12 p-o">
             <Row className="my-3">
-              <BookHeadlines
-                book={book}
-                setShow={setShow}
-                show={show}
-              />
+              <BookHeadlines book={book} setShow={setShow} show={show} />
             </Row>
             <Row>
               <ShiftButtons
@@ -211,6 +221,8 @@ const BookDetails = () => {
               setNoteContent={setNoteContent}
               noteContent={noteContent}
               removeButton={removeButton}
+              deleteNote={handleDeleteNote}
+              user={user}
             />
             <Row>
               <p

@@ -40,7 +40,6 @@ export const fetchAddNote = async (userData, thunkAPI) => {
         },
       }
     );
-    console.log(userData.noteItem);
     return userData.noteItem;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -60,12 +59,28 @@ export const fetchGetNotes = async (userData, thunkAPI) => {
         },
       }
     );
-    console.log(data);
     return data;
   } catch (error) {
-    console.log(error);
     return thunkAPI.rejectWithValue(error.message);
   }
 };
 
+
+export const fetchDeleteNote = async (noteData, thunkAPI) => {
+  try {
+    const { data } = await axios.post(
+      `${NOTE_URL}deletenote/`,
+      noteData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${noteData.user.token}`,
+        },
+      }
+    );
+    return noteData.noteId
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+};
 

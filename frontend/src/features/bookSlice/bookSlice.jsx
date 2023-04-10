@@ -1,32 +1,43 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {fetchBook, fetchResult, fetchAddNote, fetchGetNotes} from "./bookDetailsThunk"
+import {
+  fetchBook,
+  fetchResult,
+  fetchAddNote,
+  fetchGetNotes,
+  fetchDeleteNote,
+} from "./bookDetailsThunk";
 
 export const getBook = createAsyncThunk("bookSlice/getBook", fetchBook);
 export const getResult = createAsyncThunk("bookSlice/getResult", fetchResult);
 export const addNote = createAsyncThunk("bookSlice/addNote", fetchAddNote);
 export const getNotes = createAsyncThunk("bookSlice/getNotes", fetchGetNotes);
+export const deleteNote = createAsyncThunk(
+  "bookSlice/deleteNote",
+  fetchDeleteNote
+);
 
 const initialState = {
   book: {},
   isLoading: false,
-  isError: false, 
+  isError: false,
   message: "",
   selfLink: "",
   isErrorNote: false,
   isNoteLoading: false,
-  bookNotes: null
+  isNoteDeleteLoading: false,
+  bookNotes: null,
 };
- 
+
 const bookSlice = createSlice({
   name: "bookSlice",
   initialState,
   reducers: {
-    setBookEmpty (state) {
-      state.book = {}
+    setBookEmpty(state) {
+      state.book = {};
     },
-    getSelfLink (state, action) {
-      state.selfLink = action.payload
-    } 
+    getSelfLink(state, action) {
+      state.selfLink = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -63,8 +74,12 @@ const bookSlice = createSlice({
       .addCase(addNote.fulfilled, (state, { payload }) => {
         state.isNoteLoading = false;
         state.isErrorNote = false;
-        const noteItem = {_id: payload._id, on_book: payload.googleId, content: payload.content }
-        state.bookNotes.reviews.unshift(noteItem)
+        const noteItem = {
+          _id: payload._id,
+          on_book: payload.googleId,
+          content: payload.content,
+        };
+        state.bookNotes.reviews.unshift(noteItem);
       })
       .addCase(addNote.rejected, (state, { payload }) => {
         state.isNoteLoading = false;
@@ -77,15 +92,30 @@ const bookSlice = createSlice({
       .addCase(getNotes.fulfilled, (state, { payload }) => {
         state.isNoteLoading = false;
         state.isErrorNote = false;
-        state.bookNotes = payload
+        state.bookNotes = payload;
       })
       .addCase(getNotes.rejected, (state, { payload }) => {
         state.isNoteLoading = false;
         state.isErrorNote = true;
       })
+      .addCase(deleteNote.pending, (state) => {
+        state.isNoteDeleteLoading = true;
+        state.isNoteDeleteError = false;
+      })
+      .addCase(deleteNote.fulfilled, (state, { payload }) => {
+        state.isNoteDeleteLoading = false;
+        state.isNoteDeleteError = false;
+        state.bookNotes.reviews = state.bookNotes.reviews.filter((note) => {
+          return note._id !== payload;
+        });
+      })
+      .addCase(deleteNote.rejected, (state, { payload }) => {
+        state.isNoteDeleteLoading = false;
+        state.isNoteDeleteError = true;
+      });
   },
 });
 
 export default bookSlice.reducer;
 
-export const bookActions = bookSlice.actions
+export const bookActions = bookSlice.actions;
