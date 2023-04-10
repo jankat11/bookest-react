@@ -34,7 +34,7 @@ const BookDetails = () => {
   const params = useParams();
   const imageRef = useRef();
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [removeButton, setRemoveButton] = useState(false);
   const [state, shelfDispatch] = useReducer(shelfReducer, shelfInitialState);
   const { isFromResults } = useSelector((store) => store.books);
@@ -102,7 +102,6 @@ const BookDetails = () => {
   useEffect(() => {
     if (user && state.googleId) {
       const { willBeRead, hasBeenRead, ...bookItem } = state;
-      console.log("inside effect", bookItem);
       dispatch(getNotes({ user, bookItem }));
     }
   }, [state.googleId]);
@@ -155,6 +154,7 @@ const BookDetails = () => {
     };
   }, [isFromResults]);
 
+
   useEffect(() => {
     const bookData = {
       googleId: book?.id,
@@ -167,8 +167,10 @@ const BookDetails = () => {
     shelfDispatch({ type: "ADD_BOOK_IDS", payload: bookData });
   }, [book]);
 
+
   useEffect(() => {
     if (imageRef?.current?.offsetHeight === imageDesignHeight) {
+      console.log("inside");
       setShow(true);
     }
   }, [imageRef?.current?.offsetHeight, imageRef?.current?.offsetWidth, show]);

@@ -3,7 +3,6 @@ import { CgPlayListRemove } from "react-icons/cg";
 import { Col, Button, Spinner } from "react-bootstrap";
 import Checkboxes from "./SelectShelf";
 
-
 const ShiftButtons = ({
   handleCheckBoxes,
   addToBookShelf,
@@ -13,12 +12,12 @@ const ShiftButtons = ({
   state,
 }) => {
   return (
-    <Col className="col-12 p-0">
+    <Col lg={7} className="col-12 p-0">
       <Checkboxes handleCheckBoxes={handleCheckBoxes} state={state} />
-      <Col className="col-12 mt-3">
+      <Col className="d-flex justify-content-start align-items-center flex-wrap">
         <Button
           type="button"
-          className="rounded-0 btn-info me-3 detail-button"
+          className="mt-3 me-sm-3 rounded-0 btn-info detail-button"
           onClick={addToBookShelf}
         >
           <ImBooks className="mb-1" /> Add To Bookshelf
@@ -26,7 +25,7 @@ const ShiftButtons = ({
         {removeButton && (
           <Button
             onClick={handleRemove}
-            className="me-3 mt-3 mt-sm-0 btn-danger rounded-0 detail-button"
+            className="mt-3  btn-danger rounded-0 detail-button"
           >
             {!isRemoving ? (
               <>
