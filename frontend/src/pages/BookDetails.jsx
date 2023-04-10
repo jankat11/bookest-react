@@ -188,8 +188,8 @@ const BookDetails = () => {
   return (
     <>
       {!isLoading ? (
-        <Container className={`px-3 smooth ${!show && "opacity-0"} w-100 d-flex justify-content-center`}>
-          <Col lg={8} className="col-12">
+        <Container fluid className={`px-3 smooth ${!show && "opacity-0"} w-100 d-flex justify-content-center`}>
+          <Col xl={9} className="col-12 p-o">
           <Row className="my-3">
             <p className="display-6">
               <strong>{book?.volumeInfo?.title}</strong>
