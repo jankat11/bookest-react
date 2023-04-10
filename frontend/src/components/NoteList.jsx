@@ -1,13 +1,14 @@
 import { SlNote } from "react-icons/sl";
-import { BsTrash3 } from "react-icons/bs";
-import { Row, Button, Card, Col } from "react-bootstrap";
+import { Row, Button, Col } from "react-bootstrap";
+import NoteItem from "./NoteItem";
 
-const Note = ({
+const NoteList = ({
   bookNotes,
   stickNote,
   setNoteContent,
   noteContent,
-  deleteNote,
+  openModal,
+  getNoteId,
   user,
 }) => {
   return (
@@ -36,27 +37,13 @@ const Note = ({
               <strong>Your notes:</strong>
             </p>
             {bookNotes?.reviews?.map((note) => (
-              <Card
+              <NoteItem
                 key={note._id}
-                className="rounded-0 shadow-sm note border mb-3"
-              >
-                <Card.Body>
-                  <div className="position-relative pb-3">
-                    <Card.Text
-                      className="note-text blockquote"
-                      dangerouslySetInnerHTML={{
-                        __html: note.content,
-                      }}
-                    ></Card.Text>
-                    <div className="w-100 position-absolute d-flex justify-content-end">
-                      <BsTrash3
-                        onClick={() => deleteNote(note._id)}
-                        className="text-primary blockquote note-delete"
-                      />
-                    </div>
-                  </div>
-                </Card.Body>
-              </Card>
+                id={note._id}
+                content={note.content}
+                openModal={openModal}
+                getNoteId={getNoteId}
+              />
             ))}
           </>
         )}
@@ -64,4 +51,4 @@ const Note = ({
     </>
   );
 };
-export default Note;
+export default NoteList;

@@ -2,14 +2,15 @@ import { useEffect, useState, useReducer } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBooks as myBooks } from "../features/userBooksSlice/userBooksSlice";
-import LoadingSpinner from "../components/UI/Spinner";
-import AlertMessage from "../components/UI/Alert";
-import BookHeadlines from "../components/BookHeadlines";
+import LoadingSpinner from "./UI/Spinner";
+import AlertMessage from "./UI/Alert";
+import BookHeadlines from "./BookHeadlines";
 import { addBook } from "../features/userBooksSlice/userBooksSlice";
 import { removeBook } from "../features/userBooksSlice/userBooksSlice";
-import Note from "../components/Note";
-import ShiftButtons from "../components/ShiftButtons";
+import NoteList from "./NoteList";
+import ShiftButtons from "./ShiftButtons";
 import { toast } from "react-toastify";
+import Modal from "./UI/Modal";
 
 import uuid from "react-uuid";
 import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
@@ -33,7 +34,9 @@ const BookDetails = () => {
   const navigate = useNavigate();
   const params = useParams();
   const dispatch = useDispatch();
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [noteId, setNoteId] = useState("")
   const [removeButton, setRemoveButton] = useState(false);
   const [state, shelfDispatch] = useReducer(shelfReducer, shelfInitialState);
   const { isFromResults } = useSelector((store) => store.books);
@@ -102,7 +105,8 @@ const BookDetails = () => {
     }
   };
 
-  const handleDeleteNote = (noteId) => {
+  const handleDeleteNote = () => {
+    setShowModal(false)
     const noteData = { user, noteId };
     dispatch(deleteNote(noteData)).then((data) => {
       if (data.meta.requestStatus === "rejected") {
@@ -114,6 +118,8 @@ const BookDetails = () => {
       }
     });
   };
+
+
 
   useEffect(() => {
     if (user && state.googleId) {
@@ -201,6 +207,15 @@ const BookDetails = () => {
             !show && "opacity-0"
           } w-100 d-flex justify-content-center`}
         >
+          {showModal && (
+            <Modal
+              header={"Delete note?"}
+              confirmText={"Delete"}
+              show={showModal}
+              handleClose={() => setShowModal(false)}
+              handleConfirm={handleDeleteNote}
+            />
+          )}
           <Col xl={9} className="col-12 p-o">
             <Row className="my-3">
               <BookHeadlines book={book} setShow={setShow} show={show} />
@@ -215,13 +230,14 @@ const BookDetails = () => {
                 state={state}
               />
             </Row>
-            <Note
+            <NoteList
               bookNotes={bookNotes}
               stickNote={stickNote}
               setNoteContent={setNoteContent}
               noteContent={noteContent}
               removeButton={removeButton}
-              deleteNote={handleDeleteNote}
+              getNoteId={setNoteId}
+              openModal={setShowModal}
               user={user}
             />
             <Row>

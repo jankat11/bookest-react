@@ -14,7 +14,7 @@ const ShiftButtons = ({
   return (
     <Col className="col-12 p-0 mt-3">
       <Checkboxes handleCheckBoxes={handleCheckBoxes} state={state} />
-      <Col className="d-flex justify-content-start align-items-center flex-wrap">
+      <Col className="d-flex justify-content-between align-items-center flex-wrap">
         <Button
           type="button"
           className="mt-3 me-sm-3 rounded-0 btn-info detail-button"
