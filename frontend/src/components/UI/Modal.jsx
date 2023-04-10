@@ -11,7 +11,7 @@ const ModalSection = ({
   return (
     <>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header >
           {header && <Modal.Title>{header}</Modal.Title>}
         </Modal.Header>
         {body && (

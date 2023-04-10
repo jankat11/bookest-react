@@ -217,7 +217,10 @@ const BookDetails = () => {
               header={!removeBookModal ? "Delete note?" : "Remove book?"}
               confirmText={!removeBookModal ? "Delete" : "Remove"}
               show={showModal}
-              handleClose={() => setShowModal(false)}
+              handleClose={() => {
+                setShowModal(false)
+                setRemoveBookModal(false)
+              }}
               handleConfirm={!removeBookModal ? handleDeleteNote : handleRemove}
             />
           )}
