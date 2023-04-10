@@ -30,21 +30,23 @@ const NoteList = ({
           </Button>
         </Col>
       </Row>
-      <Row className="my-3 mt-4">
+      <Row className="mt-4">
         {user && (
           <>
             <p className="lead px-0">
-              <strong>Your notes:</strong>
+              {bookNotes?.reviews.length !== 0 && <strong>Your notes:</strong>}
             </p>
-            {bookNotes?.reviews?.map((note) => (
-              <NoteItem
-                key={note._id}
-                id={note._id}
-                content={note.content}
-                openModal={openModal}
-                getNoteId={getNoteId}
-              />
-            ))}
+            <div className="mb-2 p-0">
+              {bookNotes?.reviews?.map((note) => (
+                <NoteItem
+                  key={note._id}
+                  id={note._id}
+                  content={note.content}
+                  openModal={openModal}
+                  getNoteId={getNoteId}
+                />
+              ))}
+            </div>
           </>
         )}
       </Row>

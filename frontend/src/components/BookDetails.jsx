@@ -100,6 +100,7 @@ const BookDetails = () => {
           });
         } else if (data.meta.requestStatus === "fulfilled") {
           toast.success("Your note added", { autoClose: 1500 });
+          setNoteContent("")
         }
       });
     }
@@ -132,6 +133,9 @@ const BookDetails = () => {
     if (user && !userBooks) {
       dispatch(myBooks(user));
     }
+    return () => {
+      dispatch(setBookEmpty());
+    };
   }, []);
 
   useEffect(() => {
@@ -245,7 +249,7 @@ const BookDetails = () => {
                 dangerouslySetInnerHTML={{
                   __html: book?.volumeInfo?.description,
                 }}
-                className="lead my-3"
+                className="lead"
               ></p>
             </Row>
           </Col>

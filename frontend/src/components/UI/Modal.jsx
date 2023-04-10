@@ -19,7 +19,7 @@ const ModalSection = ({
         )}
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Cancel
           </Button>
           <Button variant="primary" onClick={handleConfirm}>
             {confirmText}

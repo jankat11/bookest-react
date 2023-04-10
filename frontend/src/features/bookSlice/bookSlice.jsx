@@ -33,7 +33,8 @@ const bookSlice = createSlice({
   initialState,
   reducers: {
     setBookEmpty(state) {
-      state.book = {};
+      state.book = {}
+      state.bookNotes = null
     },
     getSelfLink(state, action) {
       state.selfLink = action.payload;
