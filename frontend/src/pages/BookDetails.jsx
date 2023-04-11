@@ -43,9 +43,10 @@ const BookDetails = () => {
   const { isFromResults } = useSelector((store) => store.books);
   const { user } = useSelector((store) => store.user);
   const [noteContent, setNoteContent] = useState("");
-  const { setEmptyRemoveMessage } = userBooksActions;
+  const { setEmptyRemoveMessage, putNewNotedBook, deleteNotedBook } =
+    userBooksActions;
   const { setBookEmpty } = bookActions;
-  const { userBooks, isRemoving, removeMessage, isBookError, isBookAdding, isBooksLoading } =
+  const { userBooks, isRemoving, removeMessage, isBookError, isBookAdding } =
     useSelector((store) => store.userBooks);
   const {
     book,
@@ -110,8 +111,15 @@ const BookDetails = () => {
             autoClose: 2500,
           });
         } else if (data.meta.requestStatus === "fulfilled") {
-          dispatch(myBooks(user));
           setNoteContent("");
+          if (bookNotes.reviews.length === 0) {
+            const currentBook = {
+              id: state.googleId,
+              title: state.title,
+              no_cover: state.noCover,
+            };
+            dispatch(putNewNotedBook(currentBook));
+          }
         }
       });
     }
@@ -126,7 +134,11 @@ const BookDetails = () => {
           autoClose: 2500,
         });
       } else if (data.meta.requestStatus === "fulfilled") {
-        dispatch(myBooks(user));
+        if (bookNotes.reviews.length === 1) {
+          const currentBook = state.googleId;
+          console.log("inside");
+          dispatch(deleteNotedBook(currentBook));
+        }
       }
     });
   };

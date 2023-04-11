@@ -28,6 +28,16 @@ const userBooksSlice = createSlice({
     setEmptyRemoveMessage(state) {
       state.removeMessage = "";
     },
+    putNewNotedBook(state, action) {
+      state.userBooks.noted_books.push(action.payload);
+    },
+    deleteNotedBook(state, action) {
+      state.userBooks.noted_books = state.userBooks.noted_books.filter(
+        (book) => {
+          return book.id !== action.payload;
+        }
+      );
+    },
   },
   extraReducers: (builder) => {
     builder

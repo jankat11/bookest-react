@@ -29,9 +29,6 @@ const Header = () => {
     toast.success("logged out!", { autoClose: 1500 });
   };
 
-  useEffect(() => {
-    console.log("user is: ", user);
-  }, [user]);
 
   return (
     <>
