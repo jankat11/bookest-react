@@ -11,7 +11,7 @@ import { getBooks as myBooks } from "../features/userBooksSlice/userBooksSlice";
 const HomePageLayout = () => {
   const dispatch = useDispatch();
   const {user} = useSelector((store) => store.user);
-  const { genre, isFromResults } = useSelector((store) => store.books);
+  const { genre, isFromResults, books  } = useSelector((store) => store.books);
   const { userBooks } = useSelector((store) => store.userBooks);
   const { getGenre } = bookGenreActions;
 
@@ -27,10 +27,10 @@ const HomePageLayout = () => {
   };
 
   useEffect(() => {
-    if (genre && !isFromResults) {
+    if (books.length === 0 && !isFromResults) {
       dispatch(getBooks(genre));
     }
-  }, [genre]);
+  }, [books]);
 
   return (
     <>
