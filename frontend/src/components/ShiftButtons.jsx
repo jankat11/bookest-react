@@ -24,9 +24,9 @@ const ShiftButtons = ({
           onClick={addToBookShelf}
         >
           {!isBookAdding ? (
-            <div>
+            <>
               <ImBooks className="mb-1" /> <span>Add To Bookshelf</span>
-            </div>
+            </>
           ) : (
             <LoadingBar />
           )}

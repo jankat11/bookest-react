@@ -24,6 +24,7 @@ const initialState = {
   selfLink: "",
   isErrorNote: false,
   isNoteLoading: false,
+  isNotesLoading: false,
   isNoteDeleteLoading: false,
   bookNotes: null,
 };
@@ -87,16 +88,16 @@ const bookSlice = createSlice({
         state.isErrorNote = true;
       })
       .addCase(getNotes.pending, (state) => {
-        state.isNoteLoading = true;
+        state.isNotesLoading = true;
         state.isErrorNote = false;
       })
       .addCase(getNotes.fulfilled, (state, { payload }) => {
-        state.isNoteLoading = false;
+        state.isNotesLoading = false;
         state.isErrorNote = false;
         state.bookNotes = payload;
       })
       .addCase(getNotes.rejected, (state, { payload }) => {
-        state.isNoteLoading = false;
+        state.isNotesLoading = false;
         state.isErrorNote = true;
       })
       .addCase(deleteNote.pending, (state) => {

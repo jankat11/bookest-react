@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 
 const LoadingBar = () => {

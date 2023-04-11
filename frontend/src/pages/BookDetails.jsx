@@ -45,11 +45,19 @@ const BookDetails = () => {
   const [noteContent, setNoteContent] = useState("");
   const { setEmptyRemoveMessage } = userBooksActions;
   const { setBookEmpty } = bookActions;
-  const { userBooks, isRemoving, removeMessage, isBookError, isBookAdding } = useSelector(
-    (store) => store.userBooks
-  );
-  const { book, isLoading, isError, message, selfLink, bookNotes } =
-    useSelector((store) => store.book);
+  const { userBooks, isRemoving, removeMessage, isBookError, isBookAdding } =
+    useSelector((store) => store.userBooks);
+  const {
+    book,
+    isLoading,
+    isError,
+    message,
+    selfLink,
+    bookNotes,
+    isNoteLoading,
+    isNotesLoading,
+    isNoteDeleteLoading,
+  } = useSelector((store) => store.book);
 
   const addToBookShelf = () => {
     if (!user) {
@@ -69,7 +77,7 @@ const BookDetails = () => {
 
   const handleRemove = () => {
     setShowModal(false);
-    setRemoveBookModal(false)
+    setRemoveBookModal(false);
     dispatch(removeBook({ bookId: book.id, token: user.token })).then(
       (data) => {
         if (data.meta.requestStatus === "fulfilled") {
@@ -220,8 +228,8 @@ const BookDetails = () => {
               confirmText={!removeBookModal ? "Delete" : "Remove"}
               show={showModal}
               handleClose={() => {
-                setShowModal(false)
-                setRemoveBookModal(false)
+                setShowModal(false);
+                setRemoveBookModal(false);
               }}
               handleConfirm={!removeBookModal ? handleDeleteNote : handleRemove}
             />
@@ -250,6 +258,9 @@ const BookDetails = () => {
               removeButton={removeButton}
               getNoteId={setNoteId}
               openModal={setShowModal}
+              isNoteLoading={isNoteLoading}
+              isNotesLoading={isNotesLoading}
+              isDelete={isNoteDeleteLoading}
               user={user}
             />
             <Row>

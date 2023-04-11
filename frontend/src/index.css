@@ -99,6 +99,7 @@
   white-space: nowrap;
   width: 100%;
   min-width: 15.3rem;
+  min-height: 2.45rem;
 }
 
 .form-check-input:checked {

@@ -2,11 +2,15 @@ import { SlNote } from "react-icons/sl";
 import { Row, Button, Col } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
 import NoteItem from "./NoteItem";
+import LoadingBar from "./UI/LoadingBar";
 
 const NoteList = ({
   bookNotes,
+  isDelete,
   stickNote,
   setNoteContent,
+  isNoteLoading,
+  isNotesLoading,
   noteContent,
   openModal,
   getNoteId,
@@ -33,16 +37,31 @@ const NoteList = ({
             onClick={stickNote}
             className={`rounded-0 btn-info detail-button w-100`}
           >
-            <SlNote className="p-0 mb-1" /> Stick The Note
+            {!isNoteLoading ? (
+              <>
+                <SlNote className="p-0 mb-1" /> <span>Stick The Note</span>
+              </>
+            ) : (
+              <LoadingBar />
+            )}
           </Button>
         </Col>
       </Row>
       <Row className="mt-4">
         {user && (
           <>
-            <p className="blockquote text-muted px-0">
-              {bookNotes?.reviews.length !== 0 && <span>Your notes:</span>}
-            </p>
+            {bookNotes?.reviews.length !== 0 ? (
+              <span>
+                {!isNotesLoading ? (
+                  <p className="blockquote text-muted px-0">Your notes:</p>
+                ) : (
+                  <LoadingBar />
+                )}
+              </span>
+            ) : (
+              "No notes yet!"
+            )}
+
             <div className="mb-2 p-0">
               <AnimatePresence>
                 {bookNotes?.reviews?.map((note) => (
@@ -57,6 +76,7 @@ const NoteList = ({
                       content={note.content}
                       openModal={openModal}
                       getNoteId={getNoteId}
+                      isDelete={isDelete}
                     />
                   </motion.div>
                 ))}
