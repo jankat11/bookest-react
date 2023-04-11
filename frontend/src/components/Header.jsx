@@ -14,14 +14,12 @@ const Header = () => {
   const redirect = (e) => {
     navigate(`/${e.target.name}`);
   };
-  const [togglerOpen, setTogglerOpen] = useState(false);
+  
   const { user } = useSelector((store) => store.user);
   const {setEmptyUserBooks} = userBooksActions
   const { logout } = userSliceActions;
   const dispatch = useDispatch();
-  const handleToggler = () => {
-    setTogglerOpen((prev) => !prev);
-  };
+ 
 
   const handleLogout = () => {
     navigate("/")

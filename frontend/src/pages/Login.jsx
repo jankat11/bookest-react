@@ -27,7 +27,7 @@ const Login = () => {
     const isRegister = searchParams.get("mode") === "register";
     if (isRegister) {
       if (password !== confirmPassword) {
-        toast.warning("Passwords does not match", { autoClose: 2500 })
+        toast.warning("Passwords does not match", { autoClose: 2500 });
         return;
       }
     }
@@ -44,9 +44,9 @@ const Login = () => {
   useEffect(() => {
     if (message) {
       emailRef.current.focus();
-      toast.warning(message, { autoClose: 2500 })
+      toast.warning(message, { autoClose: 2500 });
     } else if (!message && succesfullyLoggedIn) {
-      toast.success("logged in!", { autoClose: 1500 })
+      toast.success("logged in!", { autoClose: 1500 });
       dispatch(resetSuccessStatus());
       navigate("/");
     }
