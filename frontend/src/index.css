@@ -22,15 +22,27 @@
 }
 
 .search-button {
-  min-width: 4.8rem;
+  width: 4.8rem;
+}
+
+.load {
+  width: 4.3rem;
+  right: 10px;
+}
+
+.delay2 {
+ right: 5px;
+}
+.delay3 {
+  right: 10px
 }
 
 .login-button {
-  min-width: 4.3rem;
+  width: 4.3rem;
 }
 
 .register-button {
-  min-width: 5.2rem;
+  width: 5.2rem;
 }
 
 .detailImage {

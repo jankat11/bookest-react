@@ -2,6 +2,7 @@ import { ImBooks } from "react-icons/im";
 import { CgPlayListRemove } from "react-icons/cg";
 import { Col, Button, Spinner } from "react-bootstrap";
 import Checkboxes from "./SelectShelf";
+import LoadingBar from "./UI/LoadingBar";
 
 const ShiftButtons = ({
   handleCheckBoxes,
@@ -10,6 +11,7 @@ const ShiftButtons = ({
   isRemoving,
   handleRemove,
   openModal,
+  isBookAdding,
   state,
 }) => {
   return (
@@ -18,18 +20,24 @@ const ShiftButtons = ({
       <Col className="d-flex justify-content-between align-items-center flex-wrap">
         <Button
           type="button"
-          className="mt-3 me-sm-3 rounded-0 btn-info detail-button"
+          className="mt-3 me-sm-3  d-flex justify-content-center rounded-0 btn-info detail-button"
           onClick={addToBookShelf}
         >
-          <ImBooks className="mb-1" /> Add To Bookshelf
+          {!isBookAdding ? (
+            <div>
+              <ImBooks className="mb-1" /> <span>Add To Bookshelf</span>
+            </div>
+          ) : (
+            <LoadingBar />
+          )}
         </Button>
         {removeButton && (
           <Button
             onClick={() => {
-              handleRemove(true)
-              openModal(true)
+              handleRemove(true);
+              openModal(true);
             }}
-            className="mt-3  btn-primary rounded-0 detail-button"
+            className="mt-3 d-flex justify-content-center btn-primary rounded-0 detail-button"
           >
             {!isRemoving ? (
               <>
@@ -39,12 +47,12 @@ const ShiftButtons = ({
                     position: "relative",
                     top: "2px",
                   }}
-                  className="mb-1"
+                  className="mb-1 mt-1"
                 />
                 <span>Remove From Bookshelf</span>{" "}
               </>
             ) : (
-              <Spinner size="sm" animation="grow" />
+              <LoadingBar />
             )}
           </Button>
         )}

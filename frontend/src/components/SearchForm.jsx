@@ -1,8 +1,7 @@
-import { Form } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
 import { getResults } from "../features/bookGenreSlice/bookGenreSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import LoadingBar from "./UI/LoadingBar";
 
 const SearchForm = () => {
   const {isResultsLoading} = useSelector(store => store.books)
@@ -35,7 +34,7 @@ const SearchForm = () => {
         type="submit"
         id="button-addon2"
       >
-        {!isResultsLoading? "Search" : <Spinner size="sm" animation="grow" />}
+        {!isResultsLoading? "Search" : <LoadingBar />}
       </button>
     </form>
   );

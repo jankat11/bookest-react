@@ -1,4 +1,4 @@
-import defaultImage from "../assets/nocover.png"
+import defaultImage from "../assets/nocover.png";
 import MyBookItem from "../components/MyBookItem";
 import { Image } from "react-bootstrap";
 
@@ -6,14 +6,16 @@ const MyBookList = ({ userBooks, shelf }) => {
   return (
     <>
       <p className="my-3 display-6 shelfItem">
-        {shelf.replaceAll("_", " ")} ({userBooks ? userBooks[shelf]?.length : 0}
-        )
+        {shelf === "noted_books"
+          ? "with notes"
+          : shelf.replaceAll("_", " ")}{" "}
+        ({userBooks ? userBooks[shelf]?.length : 0})
       </p>
       <div
         style={{ minHeight: "100px" }}
         className="d-flex flex-wrap container shelfItem"
       >
-        {(userBooks && userBooks[shelf].length) ? (
+        {userBooks && userBooks[shelf].length ? (
           userBooks[shelf].map((book, i) => (
             <MyBookItem
               key={i}

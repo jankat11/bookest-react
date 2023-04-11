@@ -1,5 +1,6 @@
 import { Container, Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import LoadingBar from "./UI/LoadingBar";
 
 const FormConfirm = ({ mode, isLoading }) => {
   const isRegister = mode === "register";
@@ -19,7 +20,7 @@ const FormConfirm = ({ mode, isLoading }) => {
             "Login"
           )
         ) : (
-          <Spinner size="sm" animation="grow" />
+          <LoadingBar />
         )}
       </Button>
       <p className="mx-3 my-0 small">

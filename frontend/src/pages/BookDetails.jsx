@@ -45,7 +45,7 @@ const BookDetails = () => {
   const [noteContent, setNoteContent] = useState("");
   const { setEmptyRemoveMessage } = userBooksActions;
   const { setBookEmpty } = bookActions;
-  const { userBooks, isRemoving, removeMessage, isBookError } = useSelector(
+  const { userBooks, isRemoving, removeMessage, isBookError, isBookAdding } = useSelector(
     (store) => store.userBooks
   );
   const { book, isLoading, isError, message, selfLink, bookNotes } =
@@ -103,6 +103,7 @@ const BookDetails = () => {
           });
         } else if (data.meta.requestStatus === "fulfilled") {
           toast.success("Your note added", { autoClose: 1500 });
+          dispatch(myBooks(user));
           setNoteContent("");
         }
       });
@@ -119,6 +120,7 @@ const BookDetails = () => {
         });
       } else if (data.meta.requestStatus === "fulfilled") {
         toast.success("Note deleted!", { autoClose: 1500 });
+        dispatch(myBooks(user));
       }
     });
   };
@@ -236,6 +238,7 @@ const BookDetails = () => {
                 openModal={setShowModal}
                 removeButton={removeButton}
                 isRemoving={isRemoving}
+                isBookAdding={isBookAdding}
                 state={state}
               />
             </Row>

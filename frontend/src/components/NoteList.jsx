@@ -1,5 +1,5 @@
 import { SlNote } from "react-icons/sl";
-import { Row, Button, Col, FloatingLabel } from "react-bootstrap";
+import { Row, Button, Col } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
 import NoteItem from "./NoteItem";
 

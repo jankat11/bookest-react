@@ -10,13 +10,13 @@ const MyBooks = () => {
 
   useEffect(() => {
     if (!userBooks) dispatch(getBooks(user));
-  }, []);
+  }, []); 
 
   return (
     <div className="smoothLittle">
       <MyBookList userBooks={userBooks} shelf="will_be_read" />
       <MyBookList userBooks={userBooks} shelf="has_been_read" />
-      
+      <MyBookList userBooks={userBooks} shelf="noted_books" />
     </div>
   );
 };

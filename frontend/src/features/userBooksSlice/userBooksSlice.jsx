@@ -13,7 +13,8 @@ const initialState = {
   isBookError: false,
   userBooks: null,
   user: null,
-  removeMessage: ""
+  isBookAdding: false,
+  removeMessage: "",
 };
 
 const userBooksSlice = createSlice({
@@ -24,8 +25,8 @@ const userBooksSlice = createSlice({
       state.userBooks = null;
     },
     setEmptyRemoveMessage(state) {
-      state.removeMessage = ""
-    }
+      state.removeMessage = "";
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -35,7 +36,10 @@ const userBooksSlice = createSlice({
       })
       .addCase(getBooks.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.userBooks = action.payload;
+        state.userBooks = action.payload.mainShelf;
+        state.userBooks.noted_books = [
+          ...new Set(action.payload.noted_books.map(JSON.stringify)),
+        ].map(JSON.parse);
       })
       .addCase(getBooks.rejected, (state, action) => {
         state.isBookError = true;
@@ -43,17 +47,18 @@ const userBooksSlice = createSlice({
         console.log(action.payload);
       })
       .addCase(addBook.pending, (state) => {
-        state.isLoading = true;
+        state.isBookAdding = true;
         state.isBookError = false;
       })
       .addCase(addBook.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.userBooks = action.payload;
+        state.isBookAdding = false;
+        state.userBooks.will_be_read = action.payload.will_be_read;
+        state.userBooks.has_been_read = action.payload.has_been_read;
       })
       .addCase(addBook.rejected, (state, action) => {
-        state.isLoading = false;
+        state.isBookAdding = false;
         state.isBookError = true;
-        state.removeMessage = action.payload.detail
+        state.removeMessage = action.payload.detail;
       })
       .addCase(removeBook.pending, (state) => {
         state.isRemoving = true;
@@ -68,8 +73,8 @@ const userBooksSlice = createSlice({
         const has_been_read = state.userBooks["has_been_read"].filter(
           (book) => book.id !== action.payload
         );
-
-        state.userBooks = { will_be_read, has_been_read };
+        state.userBooks.will_be_read = will_be_read;
+        state.userBooks.has_been_read = has_been_read;
       })
       .addCase(removeBook.rejected, (state, action) => {
         state.isRemoving = false;
