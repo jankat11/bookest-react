@@ -4,7 +4,6 @@ import { Form, Container, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../features/userSlice/userSlice";
 import { userSliceActions } from "../features/userSlice/userSlice";
-import AlertMessage from "../components/UI/Alert";
 import FormConfirm from "../components/FormConfirm";
 import React from "react";
 import { toast } from "react-toastify";
@@ -15,7 +14,6 @@ const Login = () => {
   const [email, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [passwordsDismatch, setPasswordsDismatch] = useState(false);
   const { emptyMessage, resetSuccessStatus } = userSliceActions;
   const emailRef = useRef();
   const dispatch = useDispatch();
@@ -23,16 +21,13 @@ const Login = () => {
     (store) => store.user
   );
 
-  const notify = () => toast.success("logged in!", { autoClose: 1500 });
-
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(emptyMessage());
-    setPasswordsDismatch(false);
     const isRegister = searchParams.get("mode") === "register";
     if (isRegister) {
       if (password !== confirmPassword) {
-        setPasswordsDismatch(true);
+        toast.warning("Passwords does not match", { autoClose: 2500 })
         return;
       }
     }
@@ -49,8 +44,9 @@ const Login = () => {
   useEffect(() => {
     if (message) {
       emailRef.current.focus();
+      toast.warning(message, { autoClose: 2500 })
     } else if (!message && succesfullyLoggedIn) {
-      notify();
+      toast.success("logged in!", { autoClose: 1500 })
       dispatch(resetSuccessStatus());
       navigate("/");
     }
@@ -66,16 +62,7 @@ const Login = () => {
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label className=" w-100 position-relative label">
-                {!message ? (
-                  "Email address"
-                ) : (
-                  <AlertMessage
-                    styles={{ height: "1.6rem" }}
-                    classes="p-0 px-3 position-absolute password-dismatch"
-                    variant="warning"
-                    message={message}
-                  />
-                )}
+                Email address
               </Form.Label>
 
               <Form.Control
@@ -92,16 +79,7 @@ const Login = () => {
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label className="w-100 position-relative label">
-                {!passwordsDismatch ? (
-                  "Password"
-                ) : (
-                  <AlertMessage
-                    styles={{ height: "1.6rem" }}
-                    classes="p-0 px-3 position-absolute password-dismatch"
-                    variant="warning"
-                    message={"Passwords do not match"}
-                  />
-                )}
+                Password
               </Form.Label>
 
               <Form.Control
