@@ -11,12 +11,14 @@ const ModalSection = ({
   return (
     <>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header >
-          {header && <Modal.Title>{header}</Modal.Title>}
+        <Modal.Header>
+          {header && (
+            <Modal.Title style={{ textAlign: "center", width: "100%" }}>
+              {header}
+            </Modal.Title>
+          )}
         </Modal.Header>
-        {body && (
-          <Modal.Body>{body}</Modal.Body>
-        )}
+        {body && <Modal.Body>{body}</Modal.Body>}
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cancel

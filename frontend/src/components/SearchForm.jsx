@@ -30,7 +30,7 @@ const SearchForm = () => {
         aria-describedby="button-addon2"
       />
       <button
-        className="btn btn-info rounded-0 search-button"
+        className="btn btn-info rounded-0 px-0 search-button"
         type="submit"
         id="button-addon2"
       >

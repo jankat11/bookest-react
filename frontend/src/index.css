@@ -25,16 +25,11 @@
   width: 4.8rem;
 }
 
-.load {
-  width: 4.3rem;
-  right: 10px;
+.circle-1 {
+ left: 4px;
 }
-
-.delay2 {
- right: 5px;
-}
-.delay3 {
-  right: 10px
+.circle-3 {
+  right: 4px
 }
 
 .login-button {
@@ -163,5 +158,5 @@ input:active {
 
 /* html * {
   border: solid 1px purple;
-} */
-
+}
+ */
