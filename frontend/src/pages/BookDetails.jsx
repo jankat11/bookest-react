@@ -110,7 +110,6 @@ const BookDetails = () => {
             autoClose: 2500,
           });
         } else if (data.meta.requestStatus === "fulfilled") {
-          toast.success("Your note added", { autoClose: 1500 });
           dispatch(myBooks(user));
           setNoteContent("");
         }
@@ -127,7 +126,6 @@ const BookDetails = () => {
           autoClose: 2500,
         });
       } else if (data.meta.requestStatus === "fulfilled") {
-        toast.success("Note deleted!", { autoClose: 1500 });
         dispatch(myBooks(user));
       }
     });
@@ -226,6 +224,11 @@ const BookDetails = () => {
             <Modal
               header={!removeBookModal ? "Delete note?" : "Remove book?"}
               confirmText={!removeBookModal ? "Delete" : "Remove"}
+              body={
+                !removeBookModal
+                  ? ""
+                  : "Your notes will remain. If book has note you will continue to see in 'with notes' shelf."
+              }
               show={showModal}
               handleClose={() => {
                 setShowModal(false);

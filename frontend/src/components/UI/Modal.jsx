@@ -13,7 +13,7 @@ const ModalSection = ({
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
           {header && (
-            <Modal.Title style={{ textAlign: "center", width: "100%" }}>
+            <Modal.Title>
               {header}
             </Modal.Title>
           )}

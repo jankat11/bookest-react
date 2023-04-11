@@ -45,7 +45,7 @@
   width: 8rem;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   .detail-button {
     width: fit-content !important;
   }
@@ -101,6 +101,11 @@
   min-width: 15.3rem;
   min-height: 2.45rem;
 }
+
+.add-icon {
+  top: 1px;
+}
+
 
 .form-check-input:checked {
   background-color: #369 !important;

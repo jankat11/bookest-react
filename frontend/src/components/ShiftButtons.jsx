@@ -15,17 +15,18 @@ const ShiftButtons = ({
   state,
 }) => {
   return (
-    <Col className="col-12 p-0 mt-3">
+    <Col className="col-12 mt-3">
       <Checkboxes handleCheckBoxes={handleCheckBoxes} state={state} />
       <Col className="d-flex justify-content-between align-items-center flex-wrap">
         <Button
           type="button"
-          className="mt-3 me-sm-3  d-flex justify-content-center rounded-0 btn-info detail-button"
+          className="mt-3 me-md-3  d-flex justify-content-center rounded-0 btn-info detail-button"
           onClick={addToBookShelf}
         >
           {!isBookAdding ? (
             <>
-              <ImBooks className="mb-1" /> <span>Add To Bookshelf</span>
+              <ImBooks className="mt-1 me-1 position-relative add-icon" />{" "}
+              <span>Add To Bookshelf</span>
             </>
           ) : (
             <LoadingBar />
@@ -47,7 +48,7 @@ const ShiftButtons = ({
                     position: "relative",
                     top: "2px",
                   }}
-                  className="mb-1 mt-1"
+                  className="mb-1 mt-1 me-1"
                 />
                 <span>Remove From Bookshelf</span>{" "}
               </>

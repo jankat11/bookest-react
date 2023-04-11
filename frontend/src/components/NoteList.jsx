@@ -19,7 +19,7 @@ const NoteList = ({
   return (
     <>
       <Row className="mt-5 ">
-        <Col className="col-12 px-0">
+        <Col className="col-12">
           <textarea
             value={noteContent}
             onChange={(e) => setNoteContent(e.target.value)}
@@ -53,16 +53,16 @@ const NoteList = ({
             {bookNotes?.reviews.length !== 0 ? (
               <span>
                 {!isNotesLoading ? (
-                  <p className="blockquote text-muted px-0">Your notes:</p>
+                  <p className="blockquote text-muted px-0"><SlNote className="p-0 mb-1" /> Your notes:</p>
                 ) : (
                   <LoadingBar />
                 )}
               </span>
             ) : (
-              "No notes yet!"
+              <p className="blockquote text-muted"><SlNote className="p-0 mb-1" /> No notes yet!</p>
             )}
 
-            <div className="mb-2 p-0">
+            <div className="mb-2">
               <AnimatePresence>
                 {bookNotes?.reviews?.map((note) => (
                   <motion.div
