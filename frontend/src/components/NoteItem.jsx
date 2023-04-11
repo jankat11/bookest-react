@@ -3,10 +3,9 @@ import { BsTrash3 } from "react-icons/bs";
 
 const NoteItem = ({ id, content, getNoteId, openModal }) => {
   return (
-    <Card className="rounded-0 shadow-lg note border-1 mb-3">
+    <Card className="rounded-0 shadow-sm note  mb-3">
       <Card.Body>
         <div className="position-relative pb-3">
-          <div className="position-absolute clipCorner border shadow"></div>
           <Card.Text
             className="note-text blockquote"
             dangerouslySetInnerHTML={{

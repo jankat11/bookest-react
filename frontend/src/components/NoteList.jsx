@@ -16,23 +16,19 @@ const NoteList = ({
     <>
       <Row className="mt-5 ">
         <Col className="col-12 px-0">
-          <FloatingLabel
-            controlId="floatingTextarea"
-            label={`${
+          <textarea
+            value={noteContent}
+            onChange={(e) => setNoteContent(e.target.value)}
+            className="my-0 form-control note-textinput shadow-sm rounded-0"
+            style={{ height: "90px" }}
+            disabled={!Boolean(user)}
+            placeholder={`${
               Boolean(user)
                 ? "Leave your note here"
                 : "Please login to stick note"
             }`}
-          >
-            <textarea
-              value={noteContent}
-              onChange={(e) => setNoteContent(e.target.value)}
-              className="my-0 form-control note-textinput shadow-sm rounded-0"
-              style={{ height: "90px" }}
-              disabled={!Boolean(user)}
-              placeholder="Leave your note here"
-            />
-          </FloatingLabel>
+          />
+
           <Button
             onClick={stickNote}
             className={`rounded-0 btn-info detail-button w-100`}

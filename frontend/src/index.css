@@ -77,25 +77,15 @@
 }
 
 .note{
-  background-image:linear-gradient(rgba(245, 231, 36, 0.199), rgba(245, 231, 36, 0.123)) !important;
+  background-image:linear-gradient(rgba(245, 231, 36, 0.199), rgba(245, 231, 36, 0.164)) !important;
   background-repeat: repeat;
   background-position: center;
   transition: all 3s ease-in;
-  clip-path: polygon(20px 0px, 100% 0, 100% 100%, 0px 100%, 0 20px );
   border-color: rgb(240, 240, 185) !important;
 }
 
-.clipCorner {
-  width: 20px;
-  height: 20px;
-  left: -17px;
-  top: -17px;
-  background-color: rgba(245, 231, 36, 0.096) !important;
-  border-color: rgb(241, 241, 234) !important;
-}
-
 .note-text {
-  color: #444;
+  color: #555;
 }
 
 .detail-button {
