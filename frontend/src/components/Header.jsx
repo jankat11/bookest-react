@@ -1,7 +1,5 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import { SlMenu } from "react-icons/sl";
-import { AiOutlineClose } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userSliceActions } from "../features/userSlice/userSlice";
@@ -14,7 +12,7 @@ const Header = () => {
   const redirect = (e) => {
     navigate(`/${e.target.name}`);
   };
-  
+
   const { user } = useSelector((store) => store.user);
   const {setEmptyUserBooks} = userBooksActions
   const { logout } = userSliceActions;

@@ -2,6 +2,10 @@
   --toastify-color-success: #369;
 }
 
+/* body {
+  background-color: rgba(245, 231, 36, 0.001) !important;
+} */
+
 .loadingSpinner {
   width: 5rem !important;
   height: 5rem !important;

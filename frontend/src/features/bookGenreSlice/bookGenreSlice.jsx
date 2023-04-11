@@ -18,7 +18,9 @@ const initialState = {
   genre: "hardcover-fiction",
   message: "",
   isResultsLoading: false,
-  isFromResults: false
+  isFromResults: false,
+  isSearchActive: false,
+  searchWords : ""
 };
 
 const bookGenreSlice = createSlice({
@@ -31,6 +33,12 @@ const bookGenreSlice = createSlice({
     getGenre(state, action) {
       state.genre = action.payload;
     },
+    changeSearchActiveStatus(state) {
+      state.isSearchActive = !state.isSearchActive
+    },
+    setSearchWords(state, action) {
+      state.searchWords = action.payload
+    }
   },
   extraReducers: (builder) => {
     builder

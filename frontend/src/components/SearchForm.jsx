@@ -1,25 +1,50 @@
-import { getResults } from "../features/bookGenreSlice/bookGenreSlice";
+import {
+  getResults,
+  bookGenreActions,
+} from "../features/bookGenreSlice/bookGenreSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoadingBar from "./UI/LoadingBar";
 
 const SearchForm = () => {
-  const {isResultsLoading} = useSelector(store => store.books)
-  const [words, setWords] = useState("") 
-  const dispatch = useDispatch()
+  const { isResultsLoading, isSearchActive, searchWords } = useSelector(
+    (store) => store.books
+  );
+  const { changeSearchActiveStatus, setSearchWords } = bookGenreActions;
+  const [words, setWords] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-   e.preventDefault()
-   if (words.trim().length !== 0)
-    dispatch(getResults(words))
-  }
-  
+    e.preventDefault();
+    if (words.trim().length !== 0) {
+      dispatch(setSearchWords(words))
+      if (!isSearchActive) {
+        dispatch(changeSearchActiveStatus());
+      }
+      dispatch(getResults(words));
+    }
+  };
+
   const handleChange = (e) => {
-    setWords(e.target.value)
-  }
+    setWords(e.target.value);
+  };
+
+  useEffect(() => {
+    if (!isSearchActive) {
+      setWords("");
+    }
+  }, [isSearchActive]);
+
+
+  useEffect(() => {
+    setWords(searchWords)
+  }, [])
 
   return (
-    <form onSubmit={handleSubmit} className="input-group rounded-0 my-3">
+    <form
+      onSubmit={handleSubmit}
+      className="input-group shadow-sm rounded-0 my-3"
+    >
       <input
         type="text"
         value={words}
@@ -34,7 +59,7 @@ const SearchForm = () => {
         type="submit"
         id="button-addon2"
       >
-        {!isResultsLoading? "Search" : <LoadingBar />}
+        {!isResultsLoading ? "Search" : <LoadingBar />}
       </button>
     </form>
   );
