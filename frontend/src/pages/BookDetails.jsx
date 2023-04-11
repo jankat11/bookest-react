@@ -45,7 +45,7 @@ const BookDetails = () => {
   const [noteContent, setNoteContent] = useState("");
   const { setEmptyRemoveMessage } = userBooksActions;
   const { setBookEmpty } = bookActions;
-  const { userBooks, isRemoving, removeMessage, isBookError, isBookAdding } =
+  const { userBooks, isRemoving, removeMessage, isBookError, isBookAdding, isBooksLoading } =
     useSelector((store) => store.userBooks);
   const {
     book,

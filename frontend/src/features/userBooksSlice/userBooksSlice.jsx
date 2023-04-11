@@ -9,6 +9,7 @@ export const removeBook = createAsyncThunk(
 );
 
 const initialState = {
+  isBooksLoading: false,
   isLoading: false,
   isBookError: false,
   userBooks: null,
@@ -31,11 +32,11 @@ const userBooksSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getBooks.pending, (state) => {
-        state.isLoading = true;
+        state.isBooksLoading = true;
         state.isBookError = false;
       })
       .addCase(getBooks.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.isBooksLoading = false;
         state.userBooks = action.payload.mainShelf;
         state.userBooks.noted_books = [
           ...new Set(action.payload.noted_books.map(JSON.stringify)),
@@ -43,7 +44,7 @@ const userBooksSlice = createSlice({
       })
       .addCase(getBooks.rejected, (state, action) => {
         state.isBookError = true;
-        state.isLoading = false;
+        state.isBooksLoading = false;
         console.log(action.payload);
       })
       .addCase(addBook.pending, (state) => {
