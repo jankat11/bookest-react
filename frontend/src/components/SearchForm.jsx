@@ -7,38 +7,63 @@ import { useState, useEffect } from "react";
 import LoadingBar from "./UI/LoadingBar";
 
 const SearchForm = () => {
-  const { isResultsLoading, isSearchActive, searchWords } = useSelector(
-    (store) => store.books
-  );
-  const { changeSearchActiveStatus, setSearchWords } = bookGenreActions;
+  const {
+    isResultsLoading,
+    isSearchActive,
+    searchWords,
+    searchPage,
+    isFromResults,
+  } = useSelector((store) => store.books);
+  const { changeSearchActiveStatus, setSearchWords, resetPage } =
+    bookGenreActions;
   const [words, setWords] = useState("");
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (words.trim().length !== 0) {
-      dispatch(setSearchWords(words))
+      dispatch(resetPage());
+      dispatch(setSearchWords(words));
       if (!isSearchActive) {
         dispatch(changeSearchActiveStatus());
       }
-      dispatch(getResults(words));
+      dispatch(getResults({ words, searchPage }));
     }
+  };
+
+  const getMoreResult = () => {
+    console.log("inside more page word and page is: ", words, searchPage);
+    dispatch(getResults({ words, searchPage }));
   };
 
   const handleChange = (e) => {
     setWords(e.target.value);
   };
 
+  const handleScroll = () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      getMoreResult();
+      console.log("ok");
+    }
+    console.log(window.scrollY);
+  };
+
+  useEffect(() => {
+    if (isSearchActive) {
+      window.addEventListener("scroll", handleScroll);
+    }
+    return () => removeEventListener("scroll", handleScroll);
+  }, [words, searchPage]);
+
+  useEffect(() => {
+    setWords(searchWords);
+  }, []);
+
   useEffect(() => {
     if (!isSearchActive) {
       setWords("");
     }
   }, [isSearchActive]);
-
-
-  useEffect(() => {
-    setWords(searchWords)
-  }, [])
 
   return (
     <form

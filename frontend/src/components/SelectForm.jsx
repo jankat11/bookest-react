@@ -3,10 +3,11 @@ import { bookGenreActions } from "../features/bookGenreSlice/bookGenreSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const SelectForm = ({ getBooksGenre, genre }) => {
-  const { changeSearchActiveStatus, setSearchWords } = bookGenreActions;
+  const { changeSearchActiveStatus, setSearchWords, resetPage } = bookGenreActions;
   const { isSearchActive } = useSelector((store) => store.books);
   const dispatch = useDispatch();
   const handleChange = (e) => {
+    dispatch(resetPage());
     if (isSearchActive) {
       dispatch(changeSearchActiveStatus());
     }
@@ -29,7 +30,7 @@ const SelectForm = ({ getBooksGenre, genre }) => {
         aria-describedby="inputGroup-sizing-default"
       >
         {isSearchActive && (
-          <option selected value="">
+          <option defaultValue={""} >
             select a genre
           </option>
         )}

@@ -15,7 +15,7 @@ export const fetchBook = async (idData, thunkAPI) => {
     }
     return book;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue("Sorry! the book data is not available");
   }
 };
 
@@ -46,7 +46,6 @@ export const fetchAddNote = async (userData, thunkAPI) => {
   }
 };
 
-
 export const fetchGetNotes = async (userData, thunkAPI) => {
   try {
     const { data } = await axios.post(
@@ -65,22 +64,16 @@ export const fetchGetNotes = async (userData, thunkAPI) => {
   }
 };
 
-
 export const fetchDeleteNote = async (noteData, thunkAPI) => {
   try {
-    const { data } = await axios.post(
-      `${NOTE_URL}deletenote/`,
-      noteData,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${noteData.user.token}`,
-        },
-      }
-    );
-    return noteData.noteId
+    const { data } = await axios.post(`${NOTE_URL}deletenote/`, noteData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${noteData.user.token}`,
+      },
+    });
+    return noteData.noteId;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 };
-

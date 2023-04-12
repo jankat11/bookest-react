@@ -2,6 +2,7 @@ import axios from "axios";
 const BASE_URL = import.meta.env.VITE_NYT_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
 const GOOGLE_URL = "https://www.googleapis.com/books/v1/volumes?q=";
+const BOOK_AMOUNT_PER_PAGE = 18;
 
 const fetchBooks = async (genre, thunkAPI) => {
   try {
@@ -15,10 +16,13 @@ const fetchBooks = async (genre, thunkAPI) => {
 };
 export default fetchBooks;
 
-export const searchBooks = async (words, thunkAPI) => {
+export const searchBooks = async (searchData, thunkAPI) => {
   try {
+    const page = searchData.searchPage;
+    const start = (page - 1) * BOOK_AMOUNT_PER_PAGE
+   
     const { data } = await axios.get(
-      `${GOOGLE_URL}${words}&startIndex=0&maxResults=10`
+      `${GOOGLE_URL}${searchData.words}&startIndex=${start}&maxResults=${BOOK_AMOUNT_PER_PAGE}`
     );
     return data.items;
   } catch (error) {

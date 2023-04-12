@@ -20,7 +20,8 @@ const initialState = {
   isResultsLoading: false,
   isFromResults: false,
   isSearchActive: false,
-  searchWords : ""
+  searchWords: "",
+  searchPage: 1,
 };
 
 const bookGenreSlice = createSlice({
@@ -34,11 +35,17 @@ const bookGenreSlice = createSlice({
       state.genre = action.payload;
     },
     changeSearchActiveStatus(state) {
-      state.isSearchActive = !state.isSearchActive
+      state.isSearchActive = !state.isSearchActive;
     },
     setSearchWords(state, action) {
-      state.searchWords = action.payload
-    }
+      state.searchWords = action.payload;
+    },
+    nextPage(state) {
+      state.searchPage = state.searchPage + 1;
+    },
+    resetPage(state) {
+      state.searchPage = 1;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -50,7 +57,7 @@ const bookGenreSlice = createSlice({
         state.books = payload;
         state.isLoading = false;
         state.isError = false;
-        state.isFromResults = false
+        state.isFromResults = false;
       })
       .addCase(getBooks.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -58,8 +65,8 @@ const bookGenreSlice = createSlice({
         state.message = payload;
       })
       .addCase(getResults.pending, (state) => {
-        state.isResultsLoading = true;
-        state.isLoading = true;
+        state.isResultsLoading = state.searchPage === 1 ? true : false;
+        state.isLoading = state.searchPage === 1 ? true : false;
         state.isError = false;
       })
       .addCase(getResults.fulfilled, (state, { payload }) => {
@@ -68,13 +75,16 @@ const bookGenreSlice = createSlice({
           author: book.volumeInfo?.authors,
           book_image: book.volumeInfo?.imageLinks?.thumbnail,
           google_id: book.id,
-          selfLink: book.selfLink
+          selfLink: book.selfLink,
         }));
-        state.books = results
+        console.log("page: ", state.searchPage);
+        state.books =
+          state.searchPage === 1 ? results : [...state.books, ...results];
+        state.searchPage = state.searchPage + 1;
         state.isResultsLoading = false;
         state.isLoading = false;
         state.isError = false;
-        state.isFromResults = true
+        state.isFromResults = true;
       })
       .addCase(getResults.rejected, (state, { payload }) => {
         state.isResultsLoading = false;

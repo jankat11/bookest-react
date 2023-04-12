@@ -40,7 +40,7 @@ const BookHeadlines = ({ book, show, setShow }) => {
           <p className="text-smaller">
             published: {book?.volumeInfo?.publishedDate?.slice(0, 4)}
           </p>
-          <p>{book?.volumeInfo?.categories?.slice(0, 5)}</p>
+          <p>{book?.volumeInfo?.categories?.slice(0, 1)}</p>
         </Container>
       </Col>
     </>

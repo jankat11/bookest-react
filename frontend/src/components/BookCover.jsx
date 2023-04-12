@@ -40,7 +40,7 @@ const BookCover = ({
           </span>
           <Card.Body className="bg-light border-0 w-100 d-flex flex-column justify-content-start">
             <Card.Title className="py-0 blockquote my-0 text-center w-100 border-0 ">
-              {title.length > 25
+              {title?.length > 25
                 ? title.slice(0, 25) + "..."
                 : title || "no title"}
             </Card.Title>
