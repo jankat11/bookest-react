@@ -47,7 +47,7 @@ const NoteList = ({
           </Button>
         </Col>
       </Row>
-      <Container className="my-5 py-3 px-0 shadow-sm all-note-list">
+      <Container className="my-5 py-3 pb-2 px-0 shadow-sm all-note-list">
         {user && (
           <>
             {bookNotes?.reviews.length !== 0 ? (

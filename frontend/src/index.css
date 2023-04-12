@@ -88,18 +88,22 @@ body {
 }
 
 .note {
+/*   background-image: linear-gradient(
+    #e8ebee,
+    #e8ebee
+   
+  ) !important; */
   background-image: linear-gradient(
-    #fbf5a8,
-    #fcf8be,
-    #fcf8be,
-    #fcf8be
- 
-    
+    #f0d9c2,
+    #fde4cc
+   
   ) !important;
   background-repeat: repeat;
   background-position: center;
   transition: all 3s ease-in;
-  border-color: #faf392 !important;
+  border-color: #c2d1e062 !important;
+  position: relative;
+  bottom: 5px;
 }
 
 .note-text {
