@@ -41,7 +41,7 @@ const SearchForm = () => {
 
   const handleScroll = () => {
     if (
-      window.innerHeight + window.scrollY >= document.body.offsetHeight &&
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 30 &&
       !finishSearch
     ) {
       removeEventListener("scroll", handleScroll);

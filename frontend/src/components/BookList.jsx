@@ -24,7 +24,9 @@ const BookList = () => {
                 selfLink={book.selfLink}
               />
             ))}
-            {isResultsLoading && <LoadingSpinner />}
+            {isResultsLoading && (
+              <LoadingSpinner classes={"more-results-spinner"} />
+            )}
             {finishSearch && (
               <p className="display-6 blockquote text-secondary text-center">
                 end of results
