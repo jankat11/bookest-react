@@ -22,6 +22,8 @@ const initialState = {
   isSearchActive: false,
   searchWords: "",
   searchPage: 1,
+  isLoadingMoreResuls: false,
+  finishSearch: false
 };
 
 const bookGenreSlice = createSlice({
@@ -65,19 +67,19 @@ const bookGenreSlice = createSlice({
         state.message = payload;
       })
       .addCase(getResults.pending, (state) => {
-        state.isResultsLoading = state.searchPage === 1 ? true : false;
+        state.isResultsLoading = state.searchPage === 1 ? false : true;
         state.isLoading = state.searchPage === 1 ? true : false;
         state.isError = false;
       })
       .addCase(getResults.fulfilled, (state, { payload }) => {
-        const results = payload.map((book) => ({
+        state.finishSearch = payload ? false : true
+        const results = payload ? payload.map((book) => ({
           title: book.volumeInfo?.title,
           author: book.volumeInfo?.authors,
           book_image: book.volumeInfo?.imageLinks?.thumbnail,
           google_id: book.id,
           selfLink: book.selfLink,
-        }));
-        console.log("page: ", state.searchPage);
+        })) : []
         state.books =
           state.searchPage === 1 ? results : [...state.books, ...results];
         state.searchPage = state.searchPage + 1;
@@ -85,6 +87,7 @@ const bookGenreSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isFromResults = true;
+        console.log(Boolean(payload), state.finishSearch);
       })
       .addCase(getResults.rejected, (state, { payload }) => {
         state.isResultsLoading = false;

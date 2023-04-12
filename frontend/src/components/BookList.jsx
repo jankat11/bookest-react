@@ -4,7 +4,9 @@ import LoadingSpinner from "../components/UI/Spinner";
 import { useSelector } from "react-redux";
 
 const BookList = () => {
-  const { books, isLoading } = useSelector((store) => store.books);
+  const { books, isLoading, isResultsLoading, finishSearch } = useSelector(
+    (store) => store.books
+  );
   return (
     <>
       {!isLoading ? (
@@ -22,6 +24,12 @@ const BookList = () => {
                 selfLink={book.selfLink}
               />
             ))}
+            {isResultsLoading && <LoadingSpinner />}
+            {finishSearch && (
+              <p className="display-6 blockquote text-secondary text-center">
+                end of results
+              </p>
+            )}
           </Row>
         </Container>
       ) : (

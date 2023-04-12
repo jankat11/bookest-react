@@ -11,7 +11,7 @@ import { getBooks as myBooks } from "../features/userBooksSlice/userBooksSlice";
 const HomePageLayout = () => {
   const dispatch = useDispatch();
   const {user} = useSelector((store) => store.user);
-  const { genre, isFromResults, books  } = useSelector((store) => store.books);
+  const { genre, isFromResults, books } = useSelector((store) => store.books);
   const { userBooks } = useSelector((store) => store.userBooks);
   const { getGenre } = bookGenreActions;
 

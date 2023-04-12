@@ -12,7 +12,7 @@ const SearchForm = () => {
     isSearchActive,
     searchWords,
     searchPage,
-    isFromResults,
+    finishSearch,
   } = useSelector((store) => store.books);
   const { changeSearchActiveStatus, setSearchWords, resetPage } =
     bookGenreActions;
@@ -27,12 +27,11 @@ const SearchForm = () => {
       if (!isSearchActive) {
         dispatch(changeSearchActiveStatus());
       }
-      dispatch(getResults({ words, searchPage }));
+      dispatch(getResults({ words, searchPage: 1 }));
     }
   };
 
   const getMoreResult = () => {
-    console.log("inside more page word and page is: ", words, searchPage);
     dispatch(getResults({ words, searchPage }));
   };
 
@@ -41,11 +40,14 @@ const SearchForm = () => {
   };
 
   const handleScroll = () => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight &&
+      !finishSearch
+    ) {
+      removeEventListener("scroll", handleScroll);
       getMoreResult();
       console.log("ok");
     }
-    console.log(window.scrollY);
   };
 
   useEffect(() => {
