@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {getNoteTimestamp} from "../../utils"
+
 import {
   fetchBook,
   fetchResult,
@@ -80,6 +82,7 @@ const bookSlice = createSlice({
           _id: payload._id,
           on_book: payload.googleId,
           content: payload.content,
+          time: getNoteTimestamp()
         };
         state.bookNotes.reviews.unshift(noteItem);
       })

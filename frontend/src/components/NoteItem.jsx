@@ -3,7 +3,7 @@ import { BsTrash3 } from "react-icons/bs";
 import { useState } from "react";
 import { Spinner } from "react-bootstrap";
 
-const NoteItem = ({ id, content, getNoteId, openModal, isDelete }) => {
+const NoteItem = ({ id, content, getNoteId, openModal, isDelete, timestamp }) => {
   const [isDeleteThis, setIsDeleteThis] = useState(false);
 
   return (
@@ -17,6 +17,7 @@ const NoteItem = ({ id, content, getNoteId, openModal, isDelete }) => {
             }}
           ></Card.Text>
           <div className="w-100 position-absolute d-flex justify-content-end">
+          <div className="text-secondary small  me-1">{timestamp}</div>
             {!isDelete || !isDeleteThis ? (
               <BsTrash3
                 onClick={() => {

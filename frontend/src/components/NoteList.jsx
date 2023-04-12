@@ -47,7 +47,7 @@ const NoteList = ({
           </Button>
         </Col>
       </Row>
-      <Row className="my-4">
+      <Row className="my-5">
         {user && (
           <>
             {bookNotes?.reviews.length !== 0 ? (
@@ -73,6 +73,7 @@ const NoteList = ({
                   >
                     <NoteItem
                       id={note._id}
+                      timestamp={note.time}
                       content={note.content}
                       openModal={openModal}
                       getNoteId={getNoteId}
