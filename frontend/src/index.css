@@ -91,6 +91,7 @@ body {
   background-image: linear-gradient(
     #f8ece1,
     #fef2e6,
+    #fef2e6,
     #fef2e6
   ) !important;
   background-repeat: repeat;
@@ -102,7 +103,7 @@ body {
 }
 
 .note-text {
-  color: #555;
+  color: #777;
 }
 
 .all-note-list {
