@@ -2,9 +2,9 @@
   --toastify-color-success: #369;
 }
 
-/* body {
-  background-color: rgba(245, 231, 36, 0.001) !important;
-} */
+body {
+  background-color: #fdfefe !important;
+}
 
 .loadingSpinner {
   width: 5rem !important;
@@ -30,10 +30,10 @@
 }
 
 .circle-1 {
- left: 4px;
+  left: 4px;
 }
 .circle-3 {
-  right: 4px
+  right: 4px;
 }
 
 .login-button {
@@ -56,10 +56,10 @@
 }
 
 .smooth {
-  animation: smooth 0.6s ease-out
+  animation: smooth 0.6s ease-out;
 }
 .smoothLittle {
-  animation: smooth 0.3s ease-out
+  animation: smooth 0.3s ease-out;
 }
 
 @keyframes smooth {
@@ -87,12 +87,17 @@
   outline: none !important;
 }
 
-.note{
-  background-image:linear-gradient(rgba(245, 231, 36, 0.199), rgba(245, 231, 36, 0.164)) !important;
+.note {
+  background-image: linear-gradient(
+    #fbf5a8,
+    #fcf8be,
+    #fcf8be,
+    #fcf8be
+  ) !important;
   background-repeat: repeat;
   background-position: center;
   transition: all 3s ease-in;
-  border-color: rgb(240, 240, 185) !important;
+  border-color: #faf392 !important;
 }
 
 .note-text {
@@ -110,7 +115,6 @@
   top: 1px;
 }
 
-
 .form-check-input:checked {
   background-color: #369 !important;
   border-color: #369 !important;
@@ -122,7 +126,8 @@
   cursor: pointer;
 }
 
-.note-textinput:focus, .note-textinput:active {
+.note-textinput:focus,
+.note-textinput:active {
   border-color: #369 !important;
 }
 
@@ -142,7 +147,6 @@ input:focus,
 input:active {
   border: solid 1px #369 !important;
 }
-
 
 .shelfItem {
   padding-left: 28px !important;

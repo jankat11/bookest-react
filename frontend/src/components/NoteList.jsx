@@ -47,7 +47,7 @@ const NoteList = ({
           </Button>
         </Col>
       </Row>
-      <Row className="mt-4">
+      <Row className="my-4">
         {user && (
           <>
             {bookNotes?.reviews.length !== 0 ? (
