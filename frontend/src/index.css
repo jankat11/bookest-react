@@ -89,11 +89,12 @@ body {
 
 .note {
   background-image: linear-gradient(
-    #faf392,
     #fbf5a8,
     #fcf8be,
     #fcf8be,
     #fcf8be
+ 
+    
   ) !important;
   background-repeat: repeat;
   background-position: center;
@@ -106,7 +107,8 @@ body {
 }
 
 .all-note-list {
-  background-image: linear-gradient(hsla(0, 0%, 100%, 0.863), hsla(0, 0%, 100%, 0.856)), url("/gripPaper.png") !important;
+  background-image: linear-gradient(hsla(0, 0%, 100%, 0.753), hsla(0, 0%, 100%, 0.753)), url("/gripPaper.png") !important;
+
 }
 
 .detail-button {

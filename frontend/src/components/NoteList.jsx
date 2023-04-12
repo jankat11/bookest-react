@@ -47,19 +47,19 @@ const NoteList = ({
           </Button>
         </Col>
       </Row>
-      <Container className="my-5 py-3 border border-secondary shadow-sm all-note-list">
+      <Container className="my-5 py-3 px-0 shadow-sm all-note-list">
         {user && (
           <>
             {bookNotes?.reviews.length !== 0 ? (
               <span>
                 {!isNotesLoading ? (
-                  <p className="blockquote text-muted px-0"><SlNote className="p-0 mb-1" /> Your notes:</p>
+                  <p className="blockquote text-muted px-0"><SlNote className="p-0 mb-1 ms-3" /> Your notes:</p>
                 ) : (
                   <LoadingBar />
                 )}
               </span>
             ) : (
-              <p className="blockquote text-muted"><SlNote className="p-0 mb-1" /> No notes yet!</p>
+              <p className="blockquote text-muted"><SlNote className="p-0 mb-1 ms-3" /> No notes yet!</p>
             )}
 
             <div className="mb-2">
