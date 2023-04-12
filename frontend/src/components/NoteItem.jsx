@@ -7,7 +7,7 @@ const NoteItem = ({ id, content, getNoteId, openModal, isDelete, timestamp }) =>
   const [isDeleteThis, setIsDeleteThis] = useState(false);
 
   return (
-    <Card className="rounded-0 shadow-sm note mb-3">
+    <Card className="rounded-0 shadow-sm note my-4">
       <Card.Body>
         <div className="position-relative pb-3">
           <Card.Text

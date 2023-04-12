@@ -1,5 +1,5 @@
 import { SlNote } from "react-icons/sl";
-import { Row, Button, Col } from "react-bootstrap";
+import { Row, Button, Col, Container } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
 import NoteItem from "./NoteItem";
 import LoadingBar from "./UI/LoadingBar";
@@ -47,7 +47,7 @@ const NoteList = ({
           </Button>
         </Col>
       </Row>
-      <Row className="my-5">
+      <Container className="my-5 py-3 border border-secondary shadow-sm all-note-list">
         {user && (
           <>
             {bookNotes?.reviews.length !== 0 ? (
@@ -85,7 +85,7 @@ const NoteList = ({
             </div>
           </>
         )}
-      </Row>
+      </Container>
     </>
   );
 };

@@ -104,6 +104,10 @@ body {
   color: #555;
 }
 
+.all-note-list {
+  background-image: linear-gradient(hsla(0, 0%, 100%, 0.863), hsla(0, 0%, 100%, 0.856)), url("/gripPaper.png") !important;
+}
+
 .detail-button {
   white-space: nowrap;
   width: 100%;
