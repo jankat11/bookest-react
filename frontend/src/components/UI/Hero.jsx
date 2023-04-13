@@ -19,9 +19,9 @@ const Swiper = () => {
 
   return (
     <>
-      <Container style={{minHeight: "2.4rem"}} className="px-0 position-absolute">
+{/*       <Container style={{minHeight: "2.4rem"}} className="px-0 position-absolute">
         <p className="display-6 ps-1 py-1 hero-brand">BOOKEST</p>
-      </Container>
+      </Container> */}
       <Image fluid src={heroLg} className="hero-img" />
     </>
   );

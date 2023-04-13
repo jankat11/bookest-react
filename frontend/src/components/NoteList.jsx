@@ -47,45 +47,47 @@ const NoteList = ({
           </Button>
         </Col>
       </Row>
-      <Container className="my-5 py-3 pb-2 px-0 shadow-sm all-note-list">
-        {user && (
-          <>
-            {bookNotes?.reviews.length !== 0 ? (
-              <span>
-                {!isNotesLoading ? (
-                  <p className="blockquote text-muted px-0"><SlNote className="p-0 mb-1" /> Your notes:</p>
-                ) : (
-                  <LoadingBar />
-                )}
-              </span>
-            ) : (
-              <p className="blockquote text-muted"><SlNote className="p-0 mb-1 " /> No notes yet!</p>
-            )}
+      {user && (
+        <Container className="my-5 py-3 pb-2 px-0 shadow-sm all-note-list">
+          {bookNotes?.reviews.length !== 0 ? (
+            <span>
+              {!isNotesLoading ? (
+                <p className="blockquote text-muted px-0">
+                  <SlNote className="p-0 mb-1" /> Your notes:
+                </p>
+              ) : (
+                <LoadingBar />
+              )}
+            </span>
+          ) : (
+            <p className="blockquote text-muted">
+              <SlNote className="p-0 mb-1 " /> No notes yet!
+            </p>
+          )}
 
-            <div className="mb-2">
-              <AnimatePresence>
-                {bookNotes?.reviews?.map((note) => (
-                  <motion.div
-                    key={note._id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    <NoteItem
-                      id={note._id}
-                      timestamp={note.time}
-                      content={note.content}
-                      openModal={openModal}
-                      getNoteId={getNoteId}
-                      isDelete={isDelete}
-                    />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
-          </>
-        )}
-      </Container>
+          <div className="mb-2">
+            <AnimatePresence>
+              {bookNotes?.reviews?.map((note) => (
+                <motion.div
+                  key={note._id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <NoteItem
+                    id={note._id}
+                    timestamp={note.time}
+                    content={note.content}
+                    openModal={openModal}
+                    getNoteId={getNoteId}
+                    isDelete={isDelete}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        </Container>
+      )}
     </>
   );
 };
