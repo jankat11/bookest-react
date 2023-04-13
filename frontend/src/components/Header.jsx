@@ -37,8 +37,9 @@ const Header = () => {
         variant="dark"
       >
         <Container className="w-100">
+        <span className="navbar-brand ps-3 pe-0 me-0 ms-0 my-0 py-0" >BOOKEST</span>
             <Nav className="d-flex flex-row justify-content-end  w-100 ms-auto">
-              <Nav.Link className="shadow-none" name="" onClick={redirect}>
+              <Nav.Link className="shadow-none ps-0" name="" onClick={redirect}>
                 Home
               </Nav.Link>
               <Nav.Link className="shadow-none" name="about" onClick={redirect}>

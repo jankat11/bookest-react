@@ -120,10 +120,10 @@ body {
 }
 
 .hero-brand {
-  left: 0%;
-  top: 0.5%;
-  color: #99b3cc !important;
-  scale: 0.8;
+  left: -5rem;
+  top: -0.3rem;
+  color: #9e8e8d !important;
+  scale: 0.3;
 }
 
 .detail-button {
