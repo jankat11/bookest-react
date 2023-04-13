@@ -19,7 +19,7 @@ const Swiper = () => {
 
   return (
     <>
-      <p className={`display-4 position-absolute hero-brand`}>
+      <p className={`display-4 hero-brand`}>
         <strong>Your Humble Library</strong>
       </p>
       <Image fluid src={heroLg} />

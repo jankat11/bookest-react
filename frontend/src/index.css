@@ -6,6 +6,10 @@ body {
   background-color: #fdfefe !important;
 }
 
+main {
+  min-height: 100vh;
+}
+
 .loadingSpinner {
   width: 5rem !important;
   height: 5rem !important;
@@ -120,9 +124,10 @@ body {
 }
 
 .hero-brand {
-  left: -5rem;
+  position: absolute !important;
+  right: -5.7rem;
   top: -0.3rem;
-  color: #9e8e8d !important;
+  color: #e6ecf3 !important;
   scale: 0.3;
 }
 

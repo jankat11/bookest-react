@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import React from "react";
 import Hero from "./Hero";
+import Footer from "./Footer";
 
 const Layout = () => {
   return (
@@ -17,6 +18,7 @@ const Layout = () => {
           <Outlet />
         </Container>
       </main>
+      <Footer />
     </>
   );
 };
