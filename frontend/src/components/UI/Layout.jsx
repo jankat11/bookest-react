@@ -4,14 +4,15 @@ import { Container } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import React from "react";
-import Hero from "./Hero";
 import Footer from "./Footer";
+import { Image } from "react-bootstrap";
+import heroLg from "../../assets/heroPhotoLg.png";
 
 const Layout = () => {
   return (
     <section className="layout d-flex flex-column">
       <ToastContainer />
-      <Hero />
+      <Image fluid src={heroLg} className="hero-img" />
       <Header />
       <main className="py-3 h-100">
         <Container>
