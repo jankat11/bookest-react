@@ -15,7 +15,7 @@ body {
   height: 5rem !important;
 }
 
-.about-icon{
+.about-icon {
   scale: 1.1;
 }
 
@@ -23,7 +23,7 @@ body {
   height: 2rem;
 }
 
-.navbar-brand:hover{
+.navbar-brand:hover {
   cursor: default;
 }
 
@@ -131,7 +131,6 @@ body {
   height: 300px;
 }
 
-
 .hero-img {
   min-height: 2.4rem !important;
   max-height: 5rem !important;
@@ -210,6 +209,8 @@ input:active {
 
 .linkedin {
   scale: 1.2;
+  position: relative;
+  bottom: 1px;
 }
 
 /* html * {
