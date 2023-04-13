@@ -16,7 +16,7 @@ const MyBooks = () => {
   return (
     <>
       {!isBooksLoading ? (
-        <div className="smoothLittle">
+        <div className="smoothLittle mb-3">
           <MyBookList userBooks={userBooks} shelf="will_be_read" />
           <MyBookList userBooks={userBooks} shelf="has_been_read" />
           <MyBookList userBooks={userBooks} shelf="noted_books" />

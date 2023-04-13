@@ -278,7 +278,7 @@ const BookDetails = () => {
               isDelete={isNoteDeleteLoading}
               user={user}
             />
-            <Row>
+            <Row className="mt-5">
               <p
                 dangerouslySetInnerHTML={{
                   __html: book?.volumeInfo?.description,

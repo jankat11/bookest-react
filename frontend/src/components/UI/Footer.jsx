@@ -17,7 +17,7 @@ const Footer = () => {
             target="_blank"
             href="https://www.linkedin.com/in/cankat-g%C3%BCven-248a84157/"
           >
-            Cankat Güven <AiFillLinkedin className="linkedin mb-1" />
+            Cankat Güven <AiFillLinkedin className="linkedin  mb-1" />
           </a>
         </span>
         <Link

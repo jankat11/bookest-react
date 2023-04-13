@@ -5,7 +5,7 @@ import { Image } from "react-bootstrap";
 const MyBookList = ({ userBooks, shelf }) => {
   return (
     <>
-      <p className="my-3 display-6 shelfItem">
+      <p className="my-3 blockquote shelfItem">
         {shelf === "noted_books"
           ? "with notes"
           : shelf.replaceAll("_", " ")}{" "}
