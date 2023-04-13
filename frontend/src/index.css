@@ -6,7 +6,7 @@ body {
   background-color: #fdfefe !important;
 }
 
-main {
+.layout {
   min-height: 100vh;
 }
 
@@ -16,7 +16,7 @@ main {
 }
 
 .navbar {
-  height: 47px;
+  height: 2rem;
 }
 
 .bestseller,
@@ -123,12 +123,16 @@ main {
   height: 300px;
 }
 
-.hero-brand {
-  position: absolute !important;
-  right: -4rem;
-  top: -0.3rem;
-  color: #e6ecf3 !important;
-  scale: 0.3;
+.hero-brand{
+  font-weight: 400 !important;
+  scale: 0.9;
+  color: #6c7176 !important;
+}
+
+.hero-img {
+  min-height: 2.4rem !important;
+  object-fit: cover;
+  object-position: top;
 }
 
 .detail-button {

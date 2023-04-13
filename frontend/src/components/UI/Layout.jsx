@@ -9,17 +9,17 @@ import Footer from "./Footer";
 
 const Layout = () => {
   return (
-    <>
+    <section className="layout d-flex flex-column">
       <ToastContainer />
       <Hero />
       <Header />
-      <main className="py-3">
+      <main className="py-3 h-100">
         <Container>
           <Outlet />
         </Container>
       </main>
       <Footer />
-    </>
+    </section>
   );
 };
 export default Layout;

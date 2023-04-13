@@ -16,7 +16,7 @@ const SelectForm = ({ getBooksGenre, genre }) => {
   };
 
   return (
-    <div className=" d-flex shadow-sm my-3">
+    <div className=" d-flex  my-3">
       <span
         className="bestseller input-group-text rounded-0 bg-white border-none border-end-0 pe-1"
         id="inputGroup-sizing-default"

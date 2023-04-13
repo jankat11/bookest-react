@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import hero from "../../assets/heroPhoto.jpg";
-import heroLg from "../../assets/heroPhotoLg.jpg";
-import { Image } from "react-bootstrap";
+import heroLg from "../../assets/heroPhotoLg.png";
+import { Image, Container } from "react-bootstrap";
 
 const Swiper = () => {
   const [screenSize, setScreenSize] = useState(window.innerWidth);
@@ -18,12 +18,12 @@ const Swiper = () => {
   }, [screenSize]);
 
   return (
-    <div className="position-relative w-100">
-{/*       <p className={`display-4 hero-brand`}>
-        <strong>Your Humble Library</strong>
-      </p> */}
-      <Image fluid src={heroLg} />
-    </div>
+    <>
+      <Container style={{minHeight: "2.4rem"}} className="px-0 position-absolute">
+        <p className="display-6 ps-1 py-1 hero-brand">BOOKEST</p>
+      </Container>
+      <Image fluid src={heroLg} className="hero-img" />
+    </>
   );
 };
 
