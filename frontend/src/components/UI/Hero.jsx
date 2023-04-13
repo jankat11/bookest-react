@@ -18,12 +18,12 @@ const Swiper = () => {
   }, [screenSize]);
 
   return (
-    <>
-      <p className={`display-4 hero-brand`}>
+    <div className="position-relative w-100">
+{/*       <p className={`display-4 hero-brand`}>
         <strong>Your Humble Library</strong>
-      </p>
+      </p> */}
       <Image fluid src={heroLg} />
-    </>
+    </div>
   );
 };
 

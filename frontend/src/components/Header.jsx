@@ -42,9 +42,9 @@ const Header = () => {
               <Nav.Link className="shadow-none ps-0" name="" onClick={redirect}>
                 Home
               </Nav.Link>
-              <Nav.Link className="shadow-none" name="about" onClick={redirect}>
+{/*               <Nav.Link className="shadow-none" name="about" onClick={redirect}>
                 About
-              </Nav.Link>
+              </Nav.Link> */}
               {!user ? (
                 <>
                   <Nav.Link
