@@ -88,18 +88,18 @@ body {
 }
 
 .note {
-  background-image: linear-gradient(
+  /*   background-image: linear-gradient(
     #f8ece1,
     #fef2e6,
     #fef2e6,
     #fef2e6
   ) !important;
   background-repeat: repeat;
-  background-position: center;
+  background-position: center; */
   transition: all 3s ease-in;
-  border-color: #f8ece1!important;
+  background-color: #77777700 !important;
   position: relative;
-  bottom: 5px;
+  bottom: 1rem;
 }
 
 .note-text {
@@ -107,8 +107,23 @@ body {
 }
 
 .all-note-list {
-  background-image: linear-gradient(hsla(0, 0%, 100%, 0.753), hsla(0, 0%, 100%, 0.753)), url("/gripPaper.png") !important;
+  background-image: linear-gradient(
+      hsla(0, 0%, 100%, 0.753),
+      hsla(0, 0%, 100%, 0.753)
+    ),
+    url("/gripPaper.png") !important;
+}
 
+.swipe-photo {
+  object-fit: cover;
+  height: 300px;
+}
+
+.hero-brand {
+  left: 0%;
+  top: 0.5%;
+  color: #99b3cc !important;
+  scale: 0.8;
 }
 
 .detail-button {
