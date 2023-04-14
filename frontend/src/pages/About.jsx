@@ -1,8 +1,105 @@
-import { Container, Image } from "react-bootstrap";
+import React, { useState } from 'react';
+import { GoogleLogin } from '@react-oauth/google';
+
+const GoogleLoginButton = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+
+  const onSuccess = (user) => {
+    setIsLoggedIn(true);
+    setUser(user);
+    // Do something with the user object, such as storing it in local storage
+  };
+
+  const onFailure = (error) => {
+    console.log(error);
+    // Handle the error
+  };
+
+  const config = {
+    clientId: '567487559274-4kmrb337m167lvpsc9j7ja89lm1rkek9.apps.googleusercontent.com',
+    redirectUri: "http://127.0.0.1:8000/auth/convert-token/",
+    scope: 'openid email profile',
+  };
+
+  return (
+    <>
+      {!isLoggedIn ? (
+        <GoogleLogin
+          config={config}
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+          render={(renderProps) => (
+            <button onClick={renderProps.onClick} disabled={renderProps.disabled}>
+              Login with Google
+            </button>
+          )}
+        />
+      ) : (
+        <div>
+          <p>You have successfully logged in with Google!</p>
+          <p>User: {user.name}</p>
+          <p>Email: {user.email}</p>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default GoogleLoginButton;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* import { Container, Image, Button } from "react-bootstrap";
+import axios from "axios";
 
 const About = () => {
+  const handleRequest = async () => {
+    const { data } = await axios.post(
+      "http://127.0.0.1:8000/auth/convert-token/",
+      {
+        "client_id": "client_id",
+        "grant_type": "convert_token",
+        "client_secret": "client_secret",
+        "backend": "google-oauth2",
+        "token" : "ya29.a0Ael9sCP4cDIDN81dWirJv506cTFjy1To72TCqCvtUMxA7AARWQr1zWqUrCE-i5Y-KJ9KxV9lIQPjwcRySqMJ3WlxxlKmal0shD_Inc-GKqbRLVItvvMfNOls0Z4rkmIob-iyc1-sXPQqSt7z1s0tmKYttGckwtwaCgYKAZgSARASFQF4udJhmscawWYSmxCDsvL5aaqN7w0166"
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log("data is: ", data);
+  };
+
   return (
     <div>
+      <Button onClick={handleRequest} >send google request </Button>
       <Container className="blockquote my-3">
         <p className="display-6">Welcome to your humble library</p>
         <p>
@@ -19,14 +116,14 @@ const About = () => {
           in all genres, with a bestsellers section that's constantly updated
           with the latest and most popular books.
         </p>
-        <p className="display-6">Don't Get Confused with Your Books:</p>
+        <p className="display-6">Don't Get Confused with Your Books</p>
         <p>
           One of the most exciting features of my website is the ability to
           create your own library of books. You can track your reading journey
           and keep a record of the books you've read, plan to read, and those
           you've taken notes on.
         </p>
-        <p className="display-6">No Need for a Pen or Paper:</p>
+        <p className="display-6">No Need for a Pen or Paper</p>
         <p>
           I know that many readers like to take notes while they're reading,
           whether it's to jot down their thoughts or to remember important
@@ -46,4 +143,4 @@ const About = () => {
     </div>
   );
 };
-export default About;
+export default About; */
