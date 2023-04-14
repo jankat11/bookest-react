@@ -18,7 +18,7 @@ const GoogleLoginButton = () => {
 
   const config = {
     clientId: '567487559274-4kmrb337m167lvpsc9j7ja89lm1rkek9.apps.googleusercontent.com',
-    redirectUri: "http://127.0.0.1:8000/auth/convert-token/",
+    redirectUri: "https://bookest.netlify.app/",
     scope: 'openid email profile',
   };
 
