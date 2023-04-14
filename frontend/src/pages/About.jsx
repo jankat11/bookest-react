@@ -8,7 +8,7 @@ const GoogleLoginButton = () => {
   const onSuccess = (user) => {
     setIsLoggedIn(true);
     setUser(user);
-    // Do something with the user object, such as storing it in local storage
+    console.log(user);
   };
 
   const onFailure = (error) => {
