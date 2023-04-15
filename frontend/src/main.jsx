@@ -8,7 +8,7 @@ import { store } from "./store";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <GoogleOAuthProvider clientId={"567487559274-4kmrb337m167lvpsc9j7ja89lm1rkek9.apps.googleusercontent.com"} redirectUri={"http://localhost:5173/"}>
+  <GoogleOAuthProvider clientId={"567487559274-4kmrb337m167lvpsc9j7ja89lm1rkek9.apps.googleusercontent.com"} redirectUri={"https://bookest-server.up.railway.app/auth/convert-token"}>
   <Provider store={store}>
     <App />
   </Provider>
