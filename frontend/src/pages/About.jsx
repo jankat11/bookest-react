@@ -1,4 +1,67 @@
-import React, { useState } from 'react';
+import FbLogin from "react-facebook-login";
+
+
+const responseFacebook = () => {}
+
+
+const About = () => {
+  return (
+    <div>
+      <FbLogin
+        appId="742581190893537"
+        fields="name,email,picture"
+        callback={responseFacebook}
+      />
+    </div>
+  );
+};
+export default About;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* import React, { useState } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 
 const GoogleLoginButton = () => {
@@ -47,32 +110,7 @@ const GoogleLoginButton = () => {
 };
 
 export default GoogleLoginButton;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ */
 
 /* import { Container, Image, Button } from "react-bootstrap";
 import axios from "axios";
