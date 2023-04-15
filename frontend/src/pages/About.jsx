@@ -1,67 +1,4 @@
-import FbLogin from "react-facebook-login";
-
-
-const responseFacebook = () => {}
-
-
-const About = () => {
-  return (
-    <div>
-      <FbLogin
-        appId="742581190893537"
-        fields="name,email,picture"
-        callback={responseFacebook}
-      />
-    </div>
-  );
-};
-export default About;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 
 const GoogleLoginButton = () => {
@@ -82,7 +19,7 @@ const GoogleLoginButton = () => {
   const config = {
     clientId: '567487559274-4kmrb337m167lvpsc9j7ja89lm1rkek9.apps.googleusercontent.com',
     redirectUri: "https://bookest-server.up.railway.app/auth/convert-token",
-    scope: 'openid email profile',
+    scope: 'email profile',
   };
 
   return (
@@ -110,7 +47,53 @@ const GoogleLoginButton = () => {
 };
 
 export default GoogleLoginButton;
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* import { Container, Image, Button } from "react-bootstrap";
 import axios from "axios";
@@ -178,6 +161,30 @@ const About = () => {
           resource and a fun place to explore. Happy reading!
         </p>
       </Container>
+    </div>
+  );
+};
+export default About; */
+
+
+
+
+/* import FbLogin from "react-facebook-login";
+
+
+const responseFacebook = (response) => {
+  console.log(response);
+}
+
+
+const About = () => {
+  return (
+    <div>
+      <FbLogin
+        appId="742581190893537"
+        fields="name,email,picture"
+        callback={responseFacebook}
+      />
     </div>
   );
 };
