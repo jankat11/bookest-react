@@ -1,4 +1,193 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import GoogleButton from 'react-google-button';
+
+const GOOGLE_CLIENT_ID = 'your-google-client-id';
+
+function Login() {
+  const [error, setError] = useState(null);
+
+  const handleGoogleResponse = (response) => {
+    const token = response.tokenId;
+    const data = new FormData();
+    data.append('token', token);
+    fetch('/api/auth/google/callback/', {
+      method: 'POST',
+      body: data
+    }).then((response) => {
+      return response.json();
+    }).then((data) => {
+      localStorage.setItem('token', data.token);
+      // Redirect the user to the dashboard or homepage
+    }).catch((error) => {
+      setError(error);
+    });
+  };
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://apis.google.com/js/platform.js';
+    script.onload = () => {
+      const gapi = window.gapi;
+      gapi.load('auth2', function () {
+        gapi.auth2.init({
+          client_id: GOOGLE_CLIENT_ID
+        });
+      });
+    };
+    document.body.appendChild(script);
+  }, []);
+
+  return (
+    <div>
+      <GoogleButton
+        onClick={() => {
+          const gapi = window.gapi;
+          if (gapi && gapi.auth2) {
+            gapi.auth2.getAuthInstance().signIn().then(handleGoogleResponse);
+          } else {
+            setError(new Error('Google API client library not loaded.'));
+          }
+        }}
+      />
+      {error && (
+        <div style={{ color: 'red' }}>
+          {error.message || 'Something went wrong.'}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default Login;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* import React from 'react';
+import { GoogleLogin } from 'react-oauth/google';
+
+const GOOGLE_CLIENT_ID = 'your-google-client-id';
+
+function Login() {
+
+  const handleGoogleResponse = (response) => {
+    const accessToken = response.accessToken;
+    fetch('/api/auth/google/callback/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token: accessToken }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem('token', data.token);
+        // Redirect the user to the dashboard or homepage
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  return (
+    <div>
+      <GoogleLogin
+        clientId={GOOGLE_CLIENT_ID}
+        buttonText="Sign in with Google"
+        onSuccess={handleGoogleResponse}
+        onFailure={(error) => console.error(error)}
+      />
+    </div>
+  );
+}
+
+export default Login; */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* import React, { useState } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Button } from 'react-bootstrap';
@@ -12,9 +201,8 @@ const GoogleLoginButton = () => {
 
 
   const login = useGoogleLogin({
-    onSuccess: tokenResponse => console.log(tokenResponse),
+    onSuccess: tokenResponse => console.log("respnse is :", tokenResponse),
     scope: "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
-
   });
 
   const onSuccess = (user) => {
@@ -30,7 +218,7 @@ const GoogleLoginButton = () => {
 
   const config = {
     clientId: '567487559274-4kmrb337m167lvpsc9j7ja89lm1rkek9.apps.googleusercontent.com',
-    redirectUri: "https://bookest-server.up.railway.app/auth/convert-token",
+    redirectUri: "http://127.0.0.1:8000/api/auth/google/callback/",
     scope: 'email',
   };
 
@@ -60,6 +248,7 @@ const GoogleLoginButton = () => {
 };
 
 export default GoogleLoginButton;
+ */
 
 
 
