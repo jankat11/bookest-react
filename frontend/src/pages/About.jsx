@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin } from '@react-oauth/google';
+import { Button } from 'react-bootstrap';
+
+
+
 
 const GoogleLoginButton = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+
+
+  const login = useGoogleLogin({
+    onSuccess: tokenResponse => console.log(tokenResponse),
+    scope: "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
+
+  });
 
   const onSuccess = (user) => {
     setIsLoggedIn(true);
@@ -19,11 +31,12 @@ const GoogleLoginButton = () => {
   const config = {
     clientId: '567487559274-4kmrb337m167lvpsc9j7ja89lm1rkek9.apps.googleusercontent.com',
     redirectUri: "https://bookest-server.up.railway.app/auth/convert-token",
-    scope: 'email profile',
+    scope: 'email',
   };
 
   return (
     <>
+      <Button onClick={() => login()}>login</Button>
       {!isLoggedIn ? (
         <GoogleLogin
           config={config}
