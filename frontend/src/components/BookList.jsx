@@ -4,14 +4,14 @@ import LoadingSpinner from "../components/UI/Spinner";
 import { useSelector } from "react-redux";
 
 const BookList = () => {
-  const { books, isLoading, isResultsLoading, finishSearch } = useSelector(
+  const { books, isLoading, isResultsLoading, finishSearch, isFromResults, searchPage } = useSelector(
     (store) => store.books
   );
   return (
     <>
       {!isLoading ? (
         <Container className="smoothLittle">
-          <Row className="d-flex justify-content-center bookRow mb-4">
+          <Row className={`d-flex justify-content-center bookRow ${!isResultsLoading && "mb-4"}`}>
             {books.map((book, i) => (
               <BookCover
                 key={i}
@@ -27,9 +27,9 @@ const BookList = () => {
             {isResultsLoading && (
               <LoadingSpinner classes={"more-results-spinner"} />
             )}
-            {finishSearch && (
-              <p className="display-6 blockquote text-secondary text-center">
-                end of results
+            {(finishSearch && isFromResults) && (
+              <p className="display-6 blockquote text-secondary text-center my-1">
+                {searchPage !== 2 ? "end of results" : "no result"}
               </p>
             )}
           </Row>
