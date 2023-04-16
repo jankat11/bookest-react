@@ -228,6 +228,7 @@ input:active {
 
 .shelf-container {
   max-width: 700px;
+  min-width: 384px;
 }
 
 /* html * {
