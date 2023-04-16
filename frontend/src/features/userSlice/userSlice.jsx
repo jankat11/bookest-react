@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchUser } from "./userThunk";
+import { fetchUser, fetchGoogleCallBack } from "./userThunk";
 import { getUserData } from "../../utils";
 
 export const getUser = createAsyncThunk("userSlice/getUser", fetchUser);
+export const getGoogleAuth = createAsyncThunk("userSlice/getGoogleAuth", fetchGoogleCallBack);
 
 const initialState = {
   isLoading: false,
@@ -42,6 +43,24 @@ const userSlice = createSlice({
         state.succesfullyLoggedIn = true
       })
       .addCase(getUser.rejected, (state, action) => {
+        state.isError = true
+        state.isLoading = false
+        state.message = action.payload
+        state.succesfullyLoggedIn = false
+        console.log(action.payload);
+      })
+      .addCase(getGoogleAuth.pending, (state) => {
+        state.succesfullyLoggedIn = false
+        state.isLoading = true;
+        state.isError = false;
+        state.message = ""
+      })
+      .addCase(getGoogleAuth.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload;
+        state.succesfullyLoggedIn = true
+      })
+      .addCase(getGoogleAuth.rejected, (state, action) => {
         state.isError = true
         state.isLoading = false
         state.message = action.payload

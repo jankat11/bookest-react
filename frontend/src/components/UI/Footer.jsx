@@ -9,7 +9,7 @@ const Footer = () => {
       className="text-center p-3 pb-0 mt-auto"
       style={{ backgroundColor: "#369" }}
     >
-      <p className="text-light p-0 d-flex small justify-content-evenly w-100">
+      <p className="text-light p-0 d-flex small justify-content-center w-100">
         <span>
           © 2023 Copyright:
           <a
@@ -22,7 +22,7 @@ const Footer = () => {
         </span>
         <Link
           to="/about"
-          className="text-decoration-none text-light shadow-none text-nowrap"
+          className="text-decoration-none ms-3 text-light shadow-none text-nowrap"
         >
           About <GoInfo className="about-icon mb-1" />
         </Link>

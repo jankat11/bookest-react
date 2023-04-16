@@ -7,6 +7,9 @@ import { userSliceActions } from "../features/userSlice/userSlice";
 import FormConfirm from "../components/FormConfirm";
 import React from "react";
 import { toast } from "react-toastify";
+import { useGoogleLogin } from "@react-oauth/google";
+import { getGoogleAuth } from "../features/userSlice/userSlice";
+import { GoogleButton } from "react-google-button";
 
 const Login = () => {
   const navigate = useNavigate("/");
@@ -33,6 +36,12 @@ const Login = () => {
     }
     dispatch(getUser({ email, password, isRegister }));
   };
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: (codeResponse) => {
+      dispatch(getGoogleAuth(codeResponse.access_token));
+    },
+  });
 
   useEffect(() => {
     dispatch(emptyMessage());
@@ -110,6 +119,12 @@ const Login = () => {
               mode={searchParams.get("mode")}
             />
           </Form>
+          <GoogleButton
+            className="my-5 w-100 ps-1 shadow-sm border google-button"
+            style={{ height: "3.2rem" }}
+            type="light"
+            onClick={() => googleLogin()}
+          />
         </Col>
       </Row>
     </Container>
