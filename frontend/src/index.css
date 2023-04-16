@@ -226,8 +226,11 @@ input:active {
   font-size: x-large;
 }
 
+.shelf-container {
+  max-width: 700px;
+}
 
 /* html * {
   border: solid 1px purple;
-}
- */
+} */
+

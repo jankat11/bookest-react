@@ -16,11 +16,13 @@ const MyBooks = () => {
   return (
     <>
       {!isBooksLoading ? (
-        <div className="smoothLittle mb-3">
-          <MyBookList userBooks={userBooks} shelf="will_be_read" />
-          <MyBookList userBooks={userBooks} shelf="has_been_read" />
-          <MyBookList userBooks={userBooks} shelf="noted_books" />
-        </div>
+        <section className="smoothLittle mb-3 d-flex flex-column align-items-center w-100">
+          <div>
+            <MyBookList userBooks={userBooks} shelf="will_be_read" />
+            <MyBookList userBooks={userBooks} shelf="has_been_read" />
+            <MyBookList userBooks={userBooks} shelf="noted_books" />
+          </div>
+        </section>
       ) : (
         <LoadingSpinner />
       )}
