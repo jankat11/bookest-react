@@ -11,6 +11,7 @@ const initialState = {
   user: getUserData(),
   message: "",
   succesfullyLoggedIn: false,
+  isAuthLoading: false,
 };
 
 const userSlice = createSlice({
@@ -51,18 +52,18 @@ const userSlice = createSlice({
       })
       .addCase(getGoogleAuth.pending, (state) => {
         state.succesfullyLoggedIn = false
-        state.isLoading = true;
+        state.isAuthLoading = true;
         state.isError = false;
         state.message = ""
       })
       .addCase(getGoogleAuth.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.isAuthLoading = false;
         state.user = action.payload;
         state.succesfullyLoggedIn = true
       })
       .addCase(getGoogleAuth.rejected, (state, action) => {
         state.isError = true
-        state.isLoading = false
+        state.isAuthLoading = false
         state.message = action.payload
         state.succesfullyLoggedIn = false
         console.log(action.payload);

@@ -10,19 +10,20 @@ import { toast } from "react-toastify";
 import { useGoogleLogin } from "@react-oauth/google";
 import { getGoogleAuth } from "../features/userSlice/userSlice";
 import { GoogleButton } from "react-google-button";
+import { blacklist } from "../utils";
+import LoadingBar from "../components/UI/LoadingBar";
 
 const Login = () => {
   const navigate = useNavigate("/");
   const [searchParams] = useSearchParams();
-  const [email, setUsername] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const { emptyMessage, resetSuccessStatus } = userSliceActions;
-  const emailRef = useRef();
+  const usernameRef = useRef();
   const dispatch = useDispatch();
-  const { isLoading, message, succesfullyLoggedIn } = useSelector(
-    (store) => store.user
-  );
+  const { isLoading, message, succesfullyLoggedIn, isAuthLoading } =
+    useSelector((store) => store.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,8 +34,16 @@ const Login = () => {
         toast.warning("Passwords does not match", { autoClose: 2500 });
         return;
       }
+      const isEvery = blacklist.every((letter) => !username.includes(letter));
+      if (!isEvery) {
+        toast.warning("Invalid username! Please use letters or numbers", {
+          autoClose: 2500,
+        });
+        usernameRef.current.focus();
+        return;
+      }
     }
-    dispatch(getUser({ email, password, isRegister }));
+    dispatch(getUser({ username, password, isRegister }));
   };
 
   const googleLogin = useGoogleLogin({
@@ -52,7 +61,7 @@ const Login = () => {
 
   useEffect(() => {
     if (message) {
-      emailRef.current.focus();
+      usernameRef.current.focus();
       toast.warning(message, { autoClose: 2500 });
     } else if (!message && succesfullyLoggedIn) {
       toast.success("logged in!", { autoClose: 1500 });
@@ -66,22 +75,22 @@ const Login = () => {
       <Row className="justify-content-center">
         <Col md={6}>
           <p className="display-6 mt-3">
-            {searchParams.get("mode") === "register" ? "Register" : "Login"}
+            {searchParams.get("mode") === "register" ? "Sign up" : "Sign in"}
           </p>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label className=" w-100 position-relative label">
-                Email address
+                Username
               </Form.Label>
 
               <Form.Control
-                ref={emailRef}
-                value={email}
-                name="email"
+                ref={usernameRef}
+                value={username}
+                name="username"
                 onChange={(e) => setUsername(e.target.value)}
                 className="rounded-0"
-                type="email"
-                placeholder="Enter email"
+                type="text"
+                placeholder="Enter username"
                 required
               />
             </Form.Group>
@@ -120,6 +129,7 @@ const Login = () => {
             />
           </Form>
           <GoogleButton
+            label={!isAuthLoading ? "Sign in with Google" : <LoadingBar />}
             className="my-5 w-100 ps-1 shadow-sm border google-button"
             style={{ height: "3.2rem" }}
             type="light"

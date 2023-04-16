@@ -44,20 +44,21 @@ const Header = () => {
               </Nav.Link>
               {!user ? (
                 <>
+                 <Nav.Link
+                    className="shadow-none"
+                    name="about"
+                    onClick={redirect}
+                  >
+                    About
+                  </Nav.Link>
                   <Nav.Link
                     className="shadow-none"
                     name="login/?mode=login"
                     onClick={redirect}
                   >
-                    Login
+                    Sign in
                   </Nav.Link>
-                  <Nav.Link
-                    className="shadow-none"
-                    name="login/?mode=register"
-                    onClick={redirect}
-                  >
-                    Register
-                  </Nav.Link>
+                 
                 </>
               ) : (
                 <>

@@ -19,6 +19,7 @@ const ShiftButtons = ({
       <Checkboxes handleCheckBoxes={handleCheckBoxes} state={state} />
       <Col className="d-flex justify-content-between align-items-center flex-wrap">
         <Button
+          disabled={isBookAdding}
           type="button"
           className="mt-3 me-md-3  d-flex justify-content-center rounded-0 btn-info detail-button"
           onClick={addToBookShelf}
@@ -34,6 +35,7 @@ const ShiftButtons = ({
         </Button>
         {removeButton && (
           <Button
+          disabled={isRemoving}
             onClick={() => {
               handleRemove(true);
               openModal(true);

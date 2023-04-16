@@ -15,9 +15,9 @@ const FormConfirm = ({ mode, isLoading }) => {
       >
         {!isLoading ? (
           isRegister ? (
-            "Register"
+            "Sign up"
           ) : (
-            "Login"
+            "Sign in"
           )
         ) : (
           <LoadingBar />
@@ -25,8 +25,8 @@ const FormConfirm = ({ mode, isLoading }) => {
       </Button>
       <p className="mx-3 my-0 small">
         {isRegister ? "have an account? " : "don't have an account? "}
-        <Link className="text-info" to={`/login/?mode=${isRegister ? "login" : "register"}`}>
-          {isRegister ? "login" : "register"}
+        <Link className="text-info text-nowrap" to={`/login/?mode=${isRegister ? "login" : "register"}`}>
+          {isRegister ? "sign in" : "sign up"}
         </Link>
       </p>
     </Container>

@@ -32,3 +32,36 @@ export const getNoteTimestamp = () => {
   const year = date.getFullYear();
   return `${month} ${year}`;
 };
+
+export const blacklist = [
+  "@",
+  "{",
+  "}",
+  "<",
+  ">",
+  "=",
+  "!",
+  '"',
+  "'",
+  ",",
+  "?",
+  "+",
+  "(",
+  ")",
+  ":",
+  ";",
+  "%",
+  "&",
+  "^",
+  "/",
+  "|",
+  ".",
+  "*",
+  "_",
+  "-",
+  "`",
+  "$",
+  "#",
+  "[",
+  "]",
+];

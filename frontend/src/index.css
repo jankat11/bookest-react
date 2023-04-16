@@ -218,7 +218,16 @@ input:active {
   border-color: #369  !important;
 }
 
+.google-button:last-child {
+  padding-right: 2.2rem!important;
+}
+
+.bullet {
+  font-size: x-large;
+}
+
 
 /* html * {
   border: solid 1px purple;
-} */
+}
+ */

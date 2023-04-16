@@ -7,13 +7,20 @@ const About = () => {
 
   return (
     <div>
-      <Container className="blockquote my-3">
-        <p className="display-6">Welcome to your humble library</p>
+      <Container className="blockquote my-4">
+        <p className="">Welcome to your humble library!</p>
         <p>
           THE BOOKEST is the ultimate destination for book lovers everywhere! As
           an avid reader and book enthusiast, I created THE BOOKEST to share my
           passion for literature and make it easy for you to find the books
           you're looking for.
+        </p>
+        <p className=""><span className="bullet pe-1">•</span>Don't Get Confused with Your Books:</p>
+        <p>
+          One of the most exciting features of my website is the ability to
+          create your own library of books. You can track your reading journey
+          and keep a record of the books you've read, plan to read, and those
+          you've taken notes on.
         </p>
         <p>
           Whether you're searching for the latest bestsellers, timeless
@@ -23,14 +30,8 @@ const About = () => {
           in all genres, with a bestsellers section that's constantly updated
           with the latest and most popular books.
         </p>
-        <p className="display-6">Don't Get Confused with Your Books</p>
-        <p>
-          One of the most exciting features of my website is the ability to
-          create your own library of books. You can track your reading journey
-          and keep a record of the books you've read, plan to read, and those
-          you've taken notes on.
-        </p>
-        <p className="display-6">No Need for a Pen or Paper</p>
+ 
+        <p><span className="bullet pe-1">•</span>No Need for a Pen or Paper:</p>
         <p>
           I know that many readers like to take notes while they're reading,
           whether it's to jot down their thoughts or to remember important
