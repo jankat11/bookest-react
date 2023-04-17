@@ -34,13 +34,15 @@ const SelectForm = ({ getBooksGenre, genre }) => {
             select a genre
           </option>
         )}
+        <option value="hardcover-nonfiction">hardcover nonfiction</option>
         <option value="hardcover-fiction">hardcover fiction</option>
         <option value="trade-fiction-paperback">trade fiction paperback</option>
-        <option value="hardcover-nonfiction">hardcover nonfiction</option>
         <option value="advice-how-to-and-miscellaneous">
           advice how to and miscellaneous
         </option>
         <option value="paperback-nonfiction">paperback nonfiction</option>
+        <option value="young-adult-hardcover">young adult hardcover</option>
+        <option value="childrens-middle-grade-hardcover">children's</option>
       </Form.Select>
     </div>
   );
