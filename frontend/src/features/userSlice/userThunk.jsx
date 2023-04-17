@@ -1,8 +1,8 @@
 import axios from "axios";
+/* const BASE_URL = "http://127.0.0.1:8000/api/users/";
+const GOOGLE_AUTH_URL = "http://127.0.0.1:8000/api/auth/google/callback/"; */
 const BASE_URL = "https://bookest-server.up.railway.app/api/users/";
-/* const BASE_URL = "http://127.0.0.1:8000/api/users/"; */
-const GOOGLE_AUTH_URL = "http://127.0.0.1:8000/api/auth/google/callback/";
-/* const GOOGLE_AUTH_URL = "https://bookest-server.up.railway.app/api/auth/google/callback/"; */
+const GOOGLE_AUTH_URL = "https://bookest-server.up.railway.app/api/auth/google/callback/";
 
 export const fetchUser = async (userData, thunkAPI) => {
   const { isRegister, ...userCredentials } = userData;
@@ -14,7 +14,7 @@ export const fetchUser = async (userData, thunkAPI) => {
       isRegister
         ? userCredentials
         : {
-            username: userCredentials.email,
+            username: userCredentials.username,
             password: userCredentials.password,
           },
       {
