@@ -151,6 +151,7 @@ const BookDetails = () => {
   }, [state.googleId]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     if (user && !userBooks) {
       dispatch(myBooks(user));
     }
