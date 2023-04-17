@@ -48,7 +48,13 @@ const Login = () => {
 
   const googleLogin = useGoogleLogin({
     onSuccess: (codeResponse) => {
-      dispatch(getGoogleAuth(codeResponse.access_token));
+      dispatch(getGoogleAuth(codeResponse.access_token)).then((data) => {
+        if (data.meta.requestStatus === "rejected") {
+          toast.warning("something went wrong:( try later", {
+            autoClose: 2500,
+          });
+        }
+      });
     },
   });
 
