@@ -1,20 +1,22 @@
 import axios from "axios";
-const BASE_URL = import.meta.env.VITE_NYT_URL;
-const API_KEY = import.meta.env.VITE_API_KEY;
-const GOOGLE_URL = "https://www.googleapis.com/books/v1/volumes?q=";
+const BASE_URL = import.meta.env.VITE_BOOKEST_GENRE_URL;
+const GOOGLE_URL = import.meta.env.VITE_GOOGLE_URL
 const BOOK_AMOUNT_PER_PAGE = 36;
+
+
 
 const fetchBooks = async (genre, thunkAPI) => {
   try {
     const { data } = await axios.get(
-      `${BASE_URL}${genre}.json?api-key=${API_KEY}`
+      `${BASE_URL}/${genre}`
     );
-    return data.results.books;
+    return data.results.books
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 };
 export default fetchBooks;
+
 
 export const searchBooks = async (searchData, thunkAPI) => {
   try {
@@ -30,3 +32,18 @@ export const searchBooks = async (searchData, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 };
+
+
+
+
+/* const fetchBooks = async (genre, thunkAPI) => {
+  try {
+    const { data } = await axios.get(
+      `${BASE_URL}${genre}.json?api-key=${API_KEY}`
+    );
+    return data.results.books;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+};
+export default fetchBooks; */

@@ -6,14 +6,11 @@ import "./theme.min.css";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+const clientId = import.meta.env.VITE_CLIENT_ID;
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <GoogleOAuthProvider
-    clientId={
-      "567487559274-4kmrb337m167lvpsc9j7ja89lm1rkek9.apps.googleusercontent.com"
-    }
-    redirectUri={"https://bookest-server.up.railway.app/api/auth/google/callback/"}
-  >
+  <GoogleOAuthProvider clientId={clientId}>
     <Provider store={store}>
       <App />
     </Provider>

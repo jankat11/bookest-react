@@ -38,12 +38,8 @@ export const fetchGoogleCallBack = async (access_token, thunkAPI) => {
       { token: access_token },
       { "Content-Type": "application/json" },
     );
-    console.log("data from thunk : ", data);
     localStorage.setItem("user", JSON.stringify(data));
     return data
-
-
-    
   } catch (error) {
     return thunkAPI.rejectWithValue(error)
   }
