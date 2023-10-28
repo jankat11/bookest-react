@@ -33,14 +33,14 @@ const BookCover = ({
         to={`/book/${isbn13 || isbn10 || google_id}`}
         className="text-decoration-none w-100"
       >
-        <Card className="h-100 w-100 rounded-0 border-0 shadow">
-          <span style={{ minHeight: "240px", maxHeight: "370px" }}>
+        <Card className="h-100 w-100 rounded-0 border border-gray shadow-sm book-cover-card">
+          <span className="d-flex justify-content-center pt-4" style={{minHeight: "220px",  maxHeight: "370px" }}>
             <img
-              className="rounded-0 w-100 h-100" loading="lazy"
+              className="rounded-0 book-cover-image mx-auto" loading="lazy"
               src={image || defaultImage}
             />
           </span>
-          <Card.Body className="bg-light border-0 w-100 d-flex flex-column justify-content-start">
+          <Card.Body className="text-dark border-0 w-100 d-flex flex-column justify-content-start">
             <Card.Title className="py-0 blockquote my-0 text-center w-100 border-0 ">
               {title?.length > 25
                 ? title.slice(0, 25) + "..."

@@ -10,23 +10,23 @@ const About = () => {
     <>
       <Container className="blockquote my-4 about-container">
         <p className="about-title">Welcome to your library!</p>
-        <p>
-          THE BOOKEST is the ultimate destination for book lovers everywhere! As
-          an avid reader and book enthusiast, I created THE BOOKEST to share my
+        <p className="about-text">
+          The Bookest is the ultimate destination for book lovers everywhere! As
+          an avid reader and book enthusiast, I created The Bookest to share my
           passion for literature and make it easy for you to find the books
           you're looking for.
         </p>
         <p className="">
-          <span className="bullet "></span>Don't Get Confused with Your
-          Books:
+          <span className="bullet ">• </span>Don't Get Confused with Your
+          Books
         </p>
-        <p>
+        <p className="about-text">
           One of the most exciting features of my website is the ability to
           create your own library of books. You can track your reading journey
           and keep a record of the books you've read, plan to read, and those
           you've taken notes on.
         </p>
-        <p>
+        <p className="about-text">
           Whether you're searching for the latest bestsellers, timeless
           classics, or hidden gems, my user-friendly interface lets you search
           by genre, author, title, or any other keyword to find your next
@@ -35,9 +35,9 @@ const About = () => {
           with the latest and most popular books.
         </p>
         <p>
-          <span className="bullet"></span>No Need for a Pen or Paper:
+          <span className="bullet">• </span>No Need for a Pen or Paper
         </p>
-        <p>
+        <p className="about-text">
           I know that many readers like to take notes while they're reading,
           whether it's to jot down their thoughts or to remember important
           details. That's why I've created a tool that lets you take notes right
@@ -46,8 +46,8 @@ const About = () => {
           save them to your "books with notes" shelf. This makes it easy to go
           back and reference your thoughts and observations about a book.
         </p>
-        <p>
-          At THE BOOKEST, my goal is to make the reading experience as enjoyable
+        <p className="about-text">
+          At The Bookest, my goal is to make the reading experience as enjoyable
           and seamless as possible. Whether you're a lifelong book lover or just
           getting started, I hope you'll find my website to be a valuable
           resource and a fun place to explore. Happy reading!
