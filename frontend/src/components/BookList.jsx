@@ -22,6 +22,7 @@ const BookList = () => {
                 isbn10={book.primary_isbn10}
                 google_id={book.google_id}
                 selfLink={book.selfLink}
+                search={isFromResults}
               />
             ))}
             {isResultsLoading && (

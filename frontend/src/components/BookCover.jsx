@@ -12,6 +12,7 @@ const BookCover = ({
   isbn13,
   google_id,
   selfLink,
+  search,
 }) => {
   const { getSelfLink } = bookActions;
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const BookCover = ({
       >
         <Card className="h-100 w-100 rounded-0 shadow-sm book-cover-card">
           <span
-            className="d-flex justify-content-center"
+            className={`d-flex justify-content-center ${search && "pt-4"}`}
             style={{ minHeight: "240px", maxHeight: "370px" }}
           >
             <LazyLoad offset={200}>
