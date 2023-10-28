@@ -8,8 +8,8 @@ const About = () => {
 
   return (
     <>
-      <Container className="blockquote my-4">
-        <p className="">Welcome to your humble library!</p>
+      <Container className="blockquote my-4 content-container">
+        <p className="about-title">Welcome to your library!</p>
         <p>
           THE BOOKEST is the ultimate destination for book lovers everywhere! As
           an avid reader and book enthusiast, I created THE BOOKEST to share my
@@ -17,7 +17,7 @@ const About = () => {
           you're looking for.
         </p>
         <p className="">
-          <span className="bullet pe-1">•</span>Don't Get Confused with Your
+          <span className="bullet "></span>Don't Get Confused with Your
           Books:
         </p>
         <p>
@@ -35,7 +35,7 @@ const About = () => {
           with the latest and most popular books.
         </p>
         <p>
-          <span className="bullet pe-1">•</span>No Need for a Pen or Paper:
+          <span className="bullet"></span>No Need for a Pen or Paper:
         </p>
         <p>
           I know that many readers like to take notes while they're reading,

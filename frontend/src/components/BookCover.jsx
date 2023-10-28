@@ -2,8 +2,7 @@ import { Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { bookActions } from "../features/bookSlice/bookSlice";
 import { useDispatch } from "react-redux";
-import defaultImage from "../assets/nocover.png"
-
+import defaultImage from "../assets/nocover.png";
 const BookCover = ({
   image,
   title,
@@ -20,10 +19,10 @@ const BookCover = ({
       dispatch(getSelfLink(selfLink));
     }
   };
-
+  console.log(image);
   return (
     <Col
-      xl={2}
+   
       lg={3}
       md={4}
       sm={6}
@@ -36,7 +35,10 @@ const BookCover = ({
       >
         <Card className="h-100 w-100 rounded-0 border-0 shadow">
           <span style={{ minHeight: "240px", maxHeight: "370px" }}>
-            <Card.Img className="rounded-0" variant="top" src={image || defaultImage} />
+            <img
+              className="rounded-0 w-100 h-100" loading="lazy"
+              src={image || defaultImage}
+            />
           </span>
           <Card.Body className="bg-light border-0 w-100 d-flex flex-column justify-content-start">
             <Card.Title className="py-0 blockquote my-0 text-center w-100 border-0 ">

@@ -235,3 +235,30 @@ input:active {
   border: solid 1px purple;
 } */
 
+.about-title {
+  line-height: 1.5 !important;
+  font-size: x-large !important;
+}
+
+.content-container {
+  max-width: 50rem !important;
+}
+
+.main-nav-wrapper {
+  position: relative;
+  right: .5rem;
+}
+
+@media (min-width: 991px) {
+  .header-content {
+    max-width: 50rem !important;
+  }
+  .main-nav-wrapper {
+    position: relative;
+    left: .5rem;
+  }
+  .navbar-brand{
+    position: relative;
+    right: .8rem;
+  }
+}

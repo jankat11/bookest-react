@@ -34,7 +34,7 @@ const HomePageLayout = () => {
 
   return (
     <>
-      <Container className="w-100">
+      <Container className="w-100 content-container">
         <Row className="d-flex">
           <Col>
             <SelectForm genre={genre} getBooksGenre={getBooksGenre}/>
