@@ -253,12 +253,19 @@ input:active {
 }
 
 .book-cover-card {
- background-color: #ced4da0a !important;
+ background-color: #fff !important;
+ border: solid 1px #ced4da80  !important;
+ transition: all .2s ease-in-out;
+ overflow: hidden;
 }
 
+
+
+
 .book-cover-image {
-  width: 60%;
+  width: 100%;
   height: fit-content;
+  transition: all .2s ease-in-out;
 }
 
 
