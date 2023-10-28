@@ -39,7 +39,7 @@ const BookCover = ({
             className={`d-flex justify-content-center ${search && "pt-4"}`}
             style={{ minHeight: "240px", maxHeight: "370px" }}
           >
-            <LazyLoad offset={200}>
+            <LazyLoad offset={300}>
               <Card.Img
                 className="rounded-0 book-cover-image mx-auto"
                 loading="lazy"
