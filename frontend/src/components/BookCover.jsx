@@ -35,7 +35,7 @@ const BookCover = ({
       >
         <Card className="h-100 w-100 rounded-0 shadow-sm book-cover-card">
           <span className="d-flex justify-content-center" style={{minHeight: "240px",  maxHeight: "370px" }}>
-            <img
+            <Card.Img
               className="rounded-0 book-cover-image mx-auto" loading="lazy"
               src={image || defaultImage}
             />

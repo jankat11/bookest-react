@@ -263,8 +263,7 @@ input:active {
 
 
 .book-cover-image {
-  width: 100%;
-  height: fit-content;
+  height: fit-content !important;
   transition: all .2s ease-in-out;
 }
 
