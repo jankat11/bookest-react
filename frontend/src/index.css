@@ -255,17 +255,8 @@ input:active {
 .book-cover-card {
  background-color: #fff !important;
  border: solid 1px #ced4da80  !important;
- transition: all .2s ease-in-out;
- overflow: hidden;
 }
 
-
-
-
-.book-cover-image {
-  height: fit-content !important;
-  transition: all .2s ease-in-out;
-}
 
 
 
