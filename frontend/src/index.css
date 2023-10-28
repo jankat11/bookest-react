@@ -239,6 +239,9 @@ input:active {
   line-height: 1.5 !important;
   font-size: x-large !important;
 }
+.about-container {
+  max-width: 39rem !important;
+}
 
 .content-container {
   max-width: 50rem !important;

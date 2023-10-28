@@ -229,9 +229,9 @@ const BookDetails = () => {
       {!isLoading ? (
         <Container
           fluid
-          className={`px-3 smooth ${
+          className={` smooth ${
             !show && "opacity-0"
-          } w-100 d-flex justify-content-center`}
+          } w-100 d-flex justify-content-center content-container`}
         >
           {showModal && (
             <Modal
