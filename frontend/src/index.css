@@ -258,8 +258,6 @@ input:active {
 }
 
 
-
-
 @media (min-width: 991px) {
   .header-content {
     max-width: 60rem !important;
