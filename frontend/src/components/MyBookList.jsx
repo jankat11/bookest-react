@@ -5,7 +5,7 @@ import { Image } from "react-bootstrap";
 const MyBookList = ({ userBooks, shelf }) => {
   return (
 
-      <section className="shelf-container">
+      <section className="shelf-container my-5">
         <p className="my-3 blockquote shelfItem">
           {shelf === "noted_books"
             ? "with notes"
