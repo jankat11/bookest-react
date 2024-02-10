@@ -241,10 +241,11 @@ input:active {
 
 .about-title {
   line-height: 1.5 !important;
-  font-size: x-large !important;
+  
 }
 .about-container {
   max-width: 39rem !important;
+  padding-bottom: 56px !important;
 }
 
 .content-container {
