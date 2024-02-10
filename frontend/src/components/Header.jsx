@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userSliceActions } from "../features/userSlice/userSlice";
@@ -7,11 +7,17 @@ import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
 import { toast } from "react-toastify";
 
 const Header = () => {
+  const location = useLocation()
   const navigate = useNavigate();
   const navref = useRef();
   const redirect = (e) => {
     navigate(`/${e.target.name}`);
   };
+  
+  
+  const isOnHomePage =  location.pathname.split("/")[1] === ""
+  const isOnAboutPage =  location.pathname.split("/")[1] === "about"
+  const isOnSingIn =  location.pathname.split("/")[1] === "login"
 
   const { user } = useSelector((store) => store.user);
   const { setEmptyUserBooks } = userBooksActions;
@@ -25,7 +31,6 @@ const Header = () => {
     localStorage.removeItem("user");
     toast.success("logged out!", { autoClose: 1500 });
   };
-
   return (
     <>
       <Navbar ref={navref} className="navbar" bg="info" variant="dark">
@@ -36,20 +41,20 @@ const Header = () => {
             </span>
           </a>
           <Nav className="d-flex flex-row main-nav-wrapper justify-content-end  w-100 ms-auto">
-            <Nav.Link className="shadow-none ps-0" name="" onClick={redirect}>
+            <Nav.Link className={`shadow-none ps-0 ${isOnHomePage && "active-header-link"}`} name="" onClick={redirect}>
               Home
             </Nav.Link>
             {!user ? (
               <>
                 <Nav.Link
-                  className="shadow-none"
+                  className={`shadow-none ${isOnAboutPage && "active-header-link"}`}
                   name="about"
                   onClick={redirect}
                 >
                   About
                 </Nav.Link>
                 <Nav.Link
-                  className="shadow-none"
+                  className={`shadow-none ${isOnSingIn && "active-header-link"}`}
                   name="login/?mode=login"
                   onClick={redirect}
                 >

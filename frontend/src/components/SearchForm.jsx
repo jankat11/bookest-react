@@ -46,7 +46,6 @@ const SearchForm = () => {
     ) {
       removeEventListener("scroll", handleScroll);
       getMoreResult();
-      console.log("ok");
     }
   };
 

@@ -11,7 +11,7 @@ const Footer = () => {
     >
       <p className="text-light p-0 d-flex small justify-content-center w-100">
         <span>
-          © 2023 Copyright:
+          © 2024 Copyright:
           <a
             className="text-decoration-none text-light ms-1"
             target="_blank"

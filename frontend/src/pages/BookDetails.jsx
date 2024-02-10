@@ -136,7 +136,6 @@ const BookDetails = () => {
       } else if (data.meta.requestStatus === "fulfilled") {
         if (bookNotes.reviews.length === 1) {
           const currentBook = state.googleId;
-          console.log("inside");
           dispatch(deleteNotedBook(currentBook));
         }
       }

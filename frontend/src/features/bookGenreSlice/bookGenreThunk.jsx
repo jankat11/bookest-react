@@ -21,7 +21,6 @@ export default fetchBooks;
 export const searchBooks = async (searchData, thunkAPI) => {
   try {
     const page = searchData.searchPage;
-    console.log("page: ", searchData.searchPage);
     const start = (page - 1) * BOOK_AMOUNT_PER_PAGE
    
     const { data } = await axios.get(

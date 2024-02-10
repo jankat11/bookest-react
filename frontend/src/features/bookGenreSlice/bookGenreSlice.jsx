@@ -87,7 +87,6 @@ const bookGenreSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isFromResults = true;
-        console.log(Boolean(payload), state.finishSearch);
       })
       .addCase(getResults.rejected, (state, { payload }) => {
         state.isResultsLoading = false;

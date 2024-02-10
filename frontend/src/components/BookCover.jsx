@@ -21,7 +21,7 @@ const BookCover = ({
       dispatch(getSelfLink(selfLink));
     }
   };
-  console.log(image);
+
   return (
     <Col
       lg={3}

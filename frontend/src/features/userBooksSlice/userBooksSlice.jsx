@@ -55,7 +55,6 @@ const userBooksSlice = createSlice({
       .addCase(getBooks.rejected, (state, action) => {
         state.isBookError = true;
         state.isBooksLoading = false;
-        console.log(action.payload);
       })
       .addCase(addBook.pending, (state) => {
         state.isBookAdding = true;

@@ -48,7 +48,6 @@ const userSlice = createSlice({
         state.isLoading = false
         state.message = action.payload
         state.succesfullyLoggedIn = false
-        console.log(action.payload);
       })
       .addCase(getGoogleAuth.pending, (state) => {
         state.succesfullyLoggedIn = false
@@ -66,7 +65,6 @@ const userSlice = createSlice({
         state.isAuthLoading = false
         state.message = action.payload
         state.succesfullyLoggedIn = false
-        console.log(action.payload);
       })
   },
 });

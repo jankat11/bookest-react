@@ -27,6 +27,10 @@ body {
   cursor: pointer;
 }
 
+.active-header-link {
+  color: white !important;
+}
+
 .bestseller,
 .genreSelectForm,
 .search-input {
