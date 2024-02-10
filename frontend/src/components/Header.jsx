@@ -18,6 +18,7 @@ const Header = () => {
   const isOnHomePage =  location.pathname.split("/")[1] === ""
   const isOnAboutPage =  location.pathname.split("/")[1] === "about"
   const isOnSingIn =  location.pathname.split("/")[1] === "login"
+  const isOnMyBooks =  location.pathname.split("/")[1] === "mybooks"
 
   const { user } = useSelector((store) => store.user);
   const { setEmptyUserBooks } = userBooksActions;
@@ -64,7 +65,7 @@ const Header = () => {
             ) : (
               <>
                 <Nav.Link
-                  className="shadow-none"
+                  className={`shadow-none ${isOnMyBooks && "active-header-link"}`}
                   name="mybooks"
                   onClick={redirect}
                 >
