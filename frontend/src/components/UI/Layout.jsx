@@ -12,7 +12,9 @@ const Layout = () => {
   return (
     <section className="layout d-flex flex-column">
       <ToastContainer />
-      <Image fluid src={heroLg} className="hero-img" />
+      <div className="d-flex justify-content-center">
+        <Image fluid src={heroLg} className="hero-img" />
+      </div>
       <Header />
       <main className="py-3 h-100">
         <Container>
