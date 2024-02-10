@@ -30,9 +30,11 @@ const Header = () => {
     <>
       <Navbar ref={navref} className="navbar" bg="info" variant="dark">
         <Container className="header-content ">
-          <span className="navbar-brand ps-3 pe-0 me-0 ms-0 my-0 py-0">
-            THE BOOKEST
-          </span>
+          <a  href="/" className="text-decoration-none">
+            <span className="navbar-brand ps-3 pe-0 me-0 ms-0 my-0 py-0">
+              THE BOOKEST
+            </span>
+          </a>
           <Nav className="d-flex flex-row main-nav-wrapper justify-content-end  w-100 ms-auto">
             <Nav.Link className="shadow-none ps-0" name="" onClick={redirect}>
               Home

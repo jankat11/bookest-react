@@ -1,7 +1,7 @@
 import axios from "axios";
 const BASE_URL = "https://www.googleapis.com/books/v1/volumes";
-const NOTE_URL = "https://bookest-server.up.railway.app/api/users/";
-/* const NOTE_URL = "http://127.0.0.1:8000/api/users/"; */
+/* const NOTE_URL = "https://bookest-server.up.railway.app/api/users/"; */
+const NOTE_URL = "http://127.0.0.1:8000/api/users/";
 
 export const fetchBook = async (idData, thunkAPI) => {
   try {

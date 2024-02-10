@@ -24,7 +24,7 @@ body {
 }
 
 .navbar-brand:hover {
-  cursor: default;
+  cursor: pointer;
 }
 
 .bestseller,
