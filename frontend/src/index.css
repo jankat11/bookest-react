@@ -136,7 +136,7 @@ body {
 }
 
 .hero-img {
-  min-height: 3rem !important;
+  min-height: 4rem !important;
   max-height: 5rem !important;
   object-fit: cover;
   object-position: top;
