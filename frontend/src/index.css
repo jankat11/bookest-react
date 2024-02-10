@@ -201,6 +201,12 @@ input:active {
     padding-left: 15px !important;
   }
 }
+@media (max-width: 767px) {
+  .hero-img {
+    min-height: 3rem !important;
+    max-width: 13rem !important;
+  }
+}
 
 .defaultImage {
   opacity: 0.22;
