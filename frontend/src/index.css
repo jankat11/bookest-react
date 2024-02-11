@@ -204,7 +204,7 @@ input:active {
 @media (max-width: 767px) {
   .hero-img {
     min-height: 3rem !important;
-    max-width: 12.5rem !important;
+    max-width: 11.5rem !important;
   }
 }
 
