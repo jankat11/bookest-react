@@ -12,7 +12,7 @@ const Layout = () => {
   return (
     <section className="layout d-flex flex-column">
       <ToastContainer />
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center hero-img-container">
         <Image fluid src={heroLg} className="hero-img" />
       </div>
       <Header />

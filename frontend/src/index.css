@@ -206,6 +206,9 @@ input:active {
     min-height: 3rem !important;
     max-width: 11.5rem !important;
   }
+  .hero-img-container {
+    min-height: 58px !important;
+  }
 }
 
 .defaultImage {
