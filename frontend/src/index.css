@@ -142,6 +142,11 @@ body {
   object-position: top;
 }
 
+.hero-img-container {
+  min-height: 76px !important;
+}
+
+
 .detail-button {
   white-space: nowrap;
   width: 100%;
