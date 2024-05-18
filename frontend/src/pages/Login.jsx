@@ -7,11 +7,11 @@ import { userSliceActions } from "../features/userSlice/userSlice";
 import FormConfirm from "../components/FormConfirm";
 import React from "react";
 import { toast } from "react-toastify";
-import { useGoogleLogin } from "@react-oauth/google";
+/* import { useGoogleLogin } from "@react-oauth/google";
 import { getGoogleAuth } from "../features/userSlice/userSlice";
-import { GoogleButton } from "react-google-button";
+import { GoogleButton } from "react-google-button"; */
 import { blacklist } from "../utils";
-import LoadingBar from "../components/UI/LoadingBar";
+/* import LoadingBar from "../components/UI/LoadingBar"; */
 
 const Login = () => {
   const navigate = useNavigate("/");
@@ -46,7 +46,7 @@ const Login = () => {
     dispatch(getUser({ username, password, isRegister }));
   };
 
-  const googleLogin = useGoogleLogin({
+  /* const googleLogin = useGoogleLogin({
     onSuccess: (codeResponse) => {
       dispatch(getGoogleAuth(codeResponse.access_token)).then((data) => {
         if (data.meta.requestStatus === "rejected") {
@@ -56,7 +56,7 @@ const Login = () => {
         }
       });
     },
-  });
+  }); */
 
   useEffect(() => {
     dispatch(emptyMessage());
