@@ -134,13 +134,13 @@ const Login = () => {
               mode={searchParams.get("mode")}
             />
           </Form>
-          <GoogleButton
+          {/* <GoogleButton
             label={!isAuthLoading ? "Sign in with Google" : <LoadingBar />}
             className="my-5 w-100 ps-1 shadow-sm border google-button"
             style={{ height: "3.2rem" }}
             type="light"
             onClick={() => googleLogin()}
-          />
+          /> */}
         </Col>
       </Row>
     </Container>
