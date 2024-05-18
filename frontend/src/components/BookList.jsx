@@ -11,7 +11,7 @@ const BookList = () => {
     <>
       {!isLoading ? (
         <Container className="smoothLittle content-container">
-          <Row className={`d-flex justify-content-center bookRow ${!isResultsLoading && "mb-4"}`}>
+          <Row className={`d-flex justify-content-center bookRow ${!isResultsLoading && "mb-5"}`}>
             {books.map((book, i) => (
               <BookCover
                 key={i}
