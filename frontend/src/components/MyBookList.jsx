@@ -7,11 +7,13 @@ const MyBookList = ({ userBooks, shelf }) => {
     <section className="shelf-container my-5">
       <p className="my-3 blockquote shelfItem">
         {shelf === "noted_books"
-          ? "with notes"
+          ? "Books with Notes"
           : shelf.replaceAll("_", " ") === "will be read"
-          ? "to be read"
-          : "completed books"}{" "}
-        ({userBooks ? userBooks[shelf]?.length : 0})
+          ? "To Be Read"
+          : "Finished Reading"}{" "}
+        <span className="">
+          ({userBooks ? userBooks[shelf]?.length : 0})
+        </span>
       </p>
       <div
         style={{ minHeight: "100px" }}

@@ -118,9 +118,6 @@ body {
   bottom: 1rem;
 }
 
-.note-text {
-  color: #777;
-}
 
 .all-note-list {
   background-image: linear-gradient(
@@ -276,6 +273,9 @@ input:active {
  border: solid 1px #ced4da80  !important;
 }
 
+.number-of-books {
+  
+}
 
 @media (min-width: 991px) {
   .header-content {

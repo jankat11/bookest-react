@@ -16,7 +16,7 @@ const Checkboxes = ({state, handleCheckBoxes}) => {
       />
       <Form.Check
         type="checkbox"
-        label="completed books"
+        label="finished reading"
         id="disabled-default-checkbox"
         name="has_been_read"
         value={state.hasBeenRead}

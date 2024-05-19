@@ -11,7 +11,7 @@ const NoteItem = ({ id, content, getNoteId, openModal, isDelete, timestamp }) =>
       <Card.Body>
         <div className="position-relative pb-3">
           <Card.Text
-            className="note-text blockquote"
+            className="text-muted blockquote"
             dangerouslySetInnerHTML={{
               __html: content,
             }}

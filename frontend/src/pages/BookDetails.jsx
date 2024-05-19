@@ -161,7 +161,13 @@ const BookDetails = () => {
 
   useEffect(() => {
     if (removeMessage && isBookError) {
-      toast.warning(removeMessage.replaceAll("_", " "), { autoClose: 2500 });
+      const message = removeMessage.replaceAll("_", " ");
+      const lastMessage = message.includes("will be read")
+        ? message.replaceAll("will be read", "'to be read'")
+        : message.includes("has been read")
+        ? message.replaceAll("has been read", "'Finished Reading'")
+        : message;
+      toast.warning(lastMessage, { autoClose: 2500 });
       dispatch(setEmptyRemoveMessage());
     }
   }, [removeMessage, isBookError]);
@@ -239,7 +245,7 @@ const BookDetails = () => {
               body={
                 !removeBookModal
                   ? ""
-                  : "Your notes will remain. If book has note you will continue to see in 'with notes' shelf."
+                  : "Your notes will remain. If the book contains notes, you will continue to see it on the 'Books with Notes' shelf."
               }
               show={showModal}
               handleClose={() => {
