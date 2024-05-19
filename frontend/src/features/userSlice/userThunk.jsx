@@ -25,7 +25,7 @@ export const fetchUser = async (userData, thunkAPI) => {
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(
-      isRegister ? "user already exists" : "email or password is wrong"
+      isRegister ? "user already exists" : "username or password is wrong"
     );
   }
 };
