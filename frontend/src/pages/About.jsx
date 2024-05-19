@@ -21,14 +21,14 @@ const About = () => {
           Books
         </p>
         <p className="about-text">
-          One of the most exciting features of my website is the ability to
+          One of the most exciting features of this website is the ability to
           create your own library of books. You can track your reading journey
           and keep a record of the books you've read, plan to read, and those
           you've taken notes on.
         </p>
         <p className="about-text">
           Whether you're searching for the latest bestsellers, timeless
-          classics, or hidden gems, my user-friendly interface lets you search
+          classics, or hidden gems, user-friendly interface lets you search
           by genre, author, title, or any other keyword to find your next
           favorite read. You'll have access to an extensive collection of books
           in all genres, with a bestsellers section that's constantly updated
@@ -41,7 +41,7 @@ const About = () => {
           I know that many readers like to take notes while they're reading,
           whether it's to jot down their thoughts or to remember important
           details. That's why I've created a tool that lets you take notes right
-          on my website, without the need for a pen or paper. With the
+          on this site, without the need for a pen or paper. With the
           note-taking tool, you can write notes for any book you're reading and
           save them to your "books with notes" shelf. This makes it easy to go
           back and reference your thoughts and observations about a book.
@@ -49,7 +49,7 @@ const About = () => {
         <p className="about-text">
           At The Bookest, my goal is to make the reading experience as enjoyable
           and seamless as possible. Whether you're a lifelong book lover or just
-          getting started, I hope you'll find my website to be a valuable
+          getting started, I hope you'll find The Bookest to be a valuable
           resource and a fun place to explore. Happy reading!
         </p>
       </Container>
