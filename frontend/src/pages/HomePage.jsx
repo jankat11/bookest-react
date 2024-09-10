@@ -7,10 +7,11 @@ import { getBooks } from "../features/bookGenreSlice/bookGenreSlice";
 import SearchForm from "../components/SearchForm";
 import SelectForm from "../components/SelectForm";
 import { getBooks as myBooks } from "../features/userBooksSlice/userBooksSlice";
+import UpArrow from "../components/UpArrow";
 
 const HomePageLayout = () => {
   const dispatch = useDispatch();
-  const {user} = useSelector((store) => store.user);
+  const { user } = useSelector((store) => store.user);
   const { genre, isFromResults, books } = useSelector((store) => store.books);
   const { userBooks } = useSelector((store) => store.userBooks);
   const { getGenre } = bookGenreActions;
@@ -37,17 +38,16 @@ const HomePageLayout = () => {
       <Container className="w-100 content-container">
         <Row className="d-flex">
           <Col>
-            <SelectForm genre={genre} getBooksGenre={getBooksGenre}/>
+            <SelectForm genre={genre} getBooksGenre={getBooksGenre} />
           </Col>
-        <Col sm={12} md={6} /* className="order-md-2" */>
-          <SearchForm />
-        </Col>
+          <Col sm={12} md={6} /* className="order-md-2" */>
+            <SearchForm />
+          </Col>
         </Row>
       </Container>
       <Outlet />
+      <UpArrow />
     </>
   );
 };
 export default HomePageLayout;
-
-
