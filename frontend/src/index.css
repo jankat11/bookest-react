@@ -280,15 +280,27 @@ input:active {
 .up-scroll {
   position: fixed;
   right: 25px;
-  bottom:80px;
-  border: solid 1px #777;
-  color: #777;
-  padding: .5rem !important;
+  bottom: 55px;
+  border: solid 1px #888;
+  color: #888;
+  padding: 0.5rem !important;
   line-height: 0;
   border-radius: 100%;
   cursor: pointer;
   background-color: white;
+  opacity: 0; /* Start with invisible */
+  visibility: hidden; /* Prevent interaction when hidden */
+  scale: .3;
+  transition: opacity 0.3s ease, visibility 0.3s ease, scale 0.3s ease;
 }
+
+/* When the .up-scroll is visible */
+.up-scroll.show {
+  opacity: 1;  /* Fully visible */
+  visibility: visible; /* Make it visible */
+  scale: 1;
+}
+
 
 @media (min-width: 991px) {
   .header-content {

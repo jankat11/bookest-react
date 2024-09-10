@@ -26,13 +26,9 @@ const UpArrow = () => {
   }, []);
 
   return (
-    <>
-      {appear && (
-        <div onClick={goToUp} className="up-scroll ">
-          <RiArrowUpSLine size={25} />
-        </div>
-      )}
-    </>
+    <div onClick={goToUp} className={`up-scroll ${appear ? "show" : ""}`}>
+      <RiArrowUpSLine size={25} />
+    </div>
   );
 };
 
