@@ -79,7 +79,7 @@ const Login = () => {
   return (
     <Container className="smoothLittle">
       <Row className="justify-content-center">
-        <Col md={6}>
+        <Col md={6}  className="login-section">
           <p className="display-6 mt-3">
             {searchParams.get("mode") === "register" ? "Sign up" : "Sign in"}
           </p>
@@ -134,14 +134,17 @@ const Login = () => {
               mode={searchParams.get("mode")}
             />
           </Form>
-
-          <GoogleButton
-            label={!isAuthLoading ? "Sign in with Google" : <LoadingBar />}
-            className="my-5 w-100 ps-1 shadow-sm border google-button"
-            style={{ height: "3.2rem" }}
-            type="light"
-            onClick={() => googleLogin()}
+{/*           <p className="my-4">
+            or
+          </p> */}
+          <div className=" w-100  google-button">
+            <GoogleButton
+              label={!isAuthLoading ? "Sign in with Google" : <LoadingBar />}
+              style={{ width: "100%", boxShadow: "none"}}
+              type="light"
+              onClick={() => googleLogin()}
             />
+          </div>
         </Col>
       </Row>
     </Container>

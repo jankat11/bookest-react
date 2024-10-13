@@ -261,14 +261,24 @@ input:active {
   bottom: 1px;
 }
 
-.google-button:hover, .google-button:active {
-  box-shadow: 0 0 1px 1px rgba(51, 102, 153, 0.267) !important;
-  border-color: #369  !important;
+.google-button {
+  margin-top: 50px !important;
+  border: solid 1px #ced4da  !important;
 }
 
-.google-button:last-child {
-  padding-right: 2.2rem!important;
+
+.google-button:hover, .google-button:active {
+  box-shadow: 0 0 5px 2px rgba(51, 102, 153, 0.267) !important;
+ 
 }
+
+.login-section {
+  max-width: 500px !important;
+}
+
+/* .google-button:last-child {
+  padding-right: 2.2rem!important;
+} */
 
 .bullet {
   font-size: x-large;
