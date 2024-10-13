@@ -68,7 +68,7 @@ const NoteList = ({
             </span>
           ) : (
             <p className="blockquote text-muted ps-3 pb-3 note-title-2">
-              You haven’t added any notes yet.
+              No notes yet.
             </p>
           )}
 
