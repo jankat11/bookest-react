@@ -58,6 +58,10 @@ body {
   width: 4.3rem;
 }
 
+.loading-bar {
+  scale: .7;
+}
+
 .register-button {
   width: 5.2rem;
 }

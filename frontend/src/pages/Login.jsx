@@ -139,7 +139,7 @@ const Login = () => {
           </p> */}
           <div className=" w-100  google-button">
             <GoogleButton
-              label={!isAuthLoading ? "Sign in with Google" : <LoadingBar />}
+              label={!isAuthLoading ? "Sign in with Google" : <div className="opacity-25"><LoadingBar /></div> }
               style={{ width: "100%", boxShadow: "none"}}
               type="light"
               onClick={() => googleLogin()}
