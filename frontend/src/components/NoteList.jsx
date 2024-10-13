@@ -3,6 +3,7 @@ import { Row, Button, Col, Container } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
 import NoteItem from "./NoteItem";
 import LoadingBar from "./UI/LoadingBar";
+import { BsPinAngleFill } from "react-icons/bs";
 
 const NoteList = ({
   bookNotes,
@@ -50,11 +51,14 @@ const NoteList = ({
       </Row>
       {user && (
         <Container className="my-5 py-3 pb-2 px-0 shadow-md all-note-list">
+            <div className="position-absolute note-pin">
+              <BsPinAngleFill fill="#369" size={30} />
+            </div>
           {bookNotes?.reviews.length !== 0 ? (
             <span>
               {!isNotesLoading ? (
                 <p className="blockquote text-muted px-0 ps-3 mb-5">
-                  <SlNote className="p-0 mb-1" /> Your notes:
+                  {/* <SlNote className="p-0 mb-1" /> */} Your notes:
                 </p>
               ) : (
                 <div className="note-loadingbar opacity-25">
@@ -64,7 +68,7 @@ const NoteList = ({
             </span>
           ) : (
             <p className="blockquote text-muted ps-3">
-              <SlNote className="p-0 mb-1 " /> No notes yet!
+              {/* <SlNote className="p-0 mb-1 " /> */} No notes yet!
             </p>
           )}
 

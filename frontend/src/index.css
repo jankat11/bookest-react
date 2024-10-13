@@ -123,11 +123,16 @@ body {
   bottom: 1rem;
 }
 
+.note-pin {
+  right: 5px;
+  top: 5px;
+}
 
 .all-note-list {
+  position: relative;
   background-image: linear-gradient(
-      hsla(0, 0%, 100%, 0.53),
-      hsla(0, 0%, 100%, 0.53)
+      hsla(0, 0%, 100%, 0.653),
+      hsla(0, 0%, 100%, 0.653)
     ),
     url("/gripPaper.png") !important;
 }
