@@ -263,13 +263,13 @@ input:active {
 
 .google-button {
   margin-top: 50px !important;
-  border: solid 1px #ced4da  !important;
+  border: solid 1px #ced4da;
 }
 
 
 .google-button:hover, .google-button:active {
-  box-shadow: 0 0 5px 2px rgba(51, 102, 153, 0.267) !important;
- 
+  box-shadow: 0 0 3px 2px rgba(51, 102, 153, 0.267) !important;
+  border: solid 1px #ced4da00;
 }
 
 .login-section {
