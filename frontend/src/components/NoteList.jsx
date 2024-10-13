@@ -49,7 +49,7 @@ const NoteList = ({
         </Col>
       </Row>
       {user && (
-        <Container className="my-5 py-3 pb-2 px-0 shadow-sm all-note-list">
+        <Container className="my-5 py-3 pb-2 px-0 shadow-md all-note-list">
           {bookNotes?.reviews.length !== 0 ? (
             <span>
               {!isNotesLoading ? (

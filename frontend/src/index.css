@@ -126,8 +126,8 @@ body {
 
 .all-note-list {
   background-image: linear-gradient(
-      hsla(0, 0%, 100%, 0.753),
-      hsla(0, 0%, 100%, 0.753)
+      hsla(0, 0%, 100%, 0.53),
+      hsla(0, 0%, 100%, 0.53)
     ),
     url("/gripPaper.png") !important;
 }
