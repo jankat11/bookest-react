@@ -15,8 +15,9 @@ export const fetchBooks = async (userData, thunkAPI) => {
     }
     return data;
   } catch (error) {
+    console.log("err iss: ", error);
     return thunkAPI.rejectWithValue(
-      "something went wrong but dont worry for that!"
+      "The books cannot be accessed, please try re-logging in."
     );
   }
 };

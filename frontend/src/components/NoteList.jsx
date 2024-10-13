@@ -53,15 +53,17 @@ const NoteList = ({
           {bookNotes?.reviews.length !== 0 ? (
             <span>
               {!isNotesLoading ? (
-                <p className="blockquote text-muted px-0 mb-5">
+                <p className="blockquote text-muted px-0 ps-3 mb-5">
                   <SlNote className="p-0 mb-1" /> Your notes:
                 </p>
               ) : (
-                <LoadingBar />
+                <div className="note-loadingbar opacity-25">
+                  <LoadingBar />
+                </div>
               )}
             </span>
           ) : (
-            <p className="blockquote text-muted">
+            <p className="blockquote text-muted ps-3">
               <SlNote className="p-0 mb-1 " /> No notes yet!
             </p>
           )}

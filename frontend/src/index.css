@@ -46,10 +46,10 @@ body {
 }
 
 .circle-1 {
-  left: 4px;
+  left: -2px;
 }
 .circle-3 {
-  right: 4px;
+  right: -1px;
 }
 
 .login-button {
@@ -58,6 +58,11 @@ body {
 
 .register-button {
   width: 5.2rem;
+}
+
+.note-loadingbar {
+  position: relative;
+  left: 20px;
 }
 
 .detailImage {
