@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import NoteItem from "./NoteItem";
 import LoadingBar from "./UI/LoadingBar";
 import { BsPinAngleFill } from "react-icons/bs";
+import { useEffect } from "react";
 
 const NoteList = ({
   bookNotes,
@@ -17,6 +18,12 @@ const NoteList = ({
   getNoteId,
   user,
 }) => {
+
+  useEffect(() => {
+    console.log("notes: ", bookNotes);
+    
+  }, [bookNotes])
+
   return (
     <>
       <Row className="mt-5 ">
@@ -49,28 +56,23 @@ const NoteList = ({
           </Button>
         </Col>
       </Row>
-      {user && (
+      {(user && bookNotes?.reviews.length !== 0) && (
         <Container className="my-5 py-3 pb-2 px-0 shadow-sm all-note-list">
           <div className="position-absolute note-pin">
             <BsPinAngleFill fill="#369" size={30} />
           </div>
-          {bookNotes?.reviews.length !== 0 ? (
-            <span>
-              {!isNotesLoading ? (
-                <p className="blockquote text-muted note-title px-0 ps-3 mb-4 mt-4">
-                  Your notes:
-                </p>
-              ) : (
-                <div className="note-loadingbar d-flex  justify-content-center opacity-25">
-                  <LoadingBar />
-                </div>
-              )}
-            </span>
-          ) : (
-            <p className="blockquote text-muted ps-3 pb-3 note-title-2">
-              No notes yet.
-            </p>
-          )}
+
+          <span>
+            {!isNotesLoading ? (
+              <p className="blockquote text-muted note-title px-0 ps-3 mb-4 mt-4">
+                Your notes:
+              </p>
+            ) : (
+              <div className="note-loadingbar d-flex  justify-content-center opacity-25">
+                <LoadingBar />
+              </div>
+            )}
+          </span>
 
           <div className="mb-2">
             <AnimatePresence>
