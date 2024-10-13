@@ -17,7 +17,7 @@ const NoteItem = ({ id, content, getNoteId, openModal, isDelete, timestamp }) =>
             }}
           ></Card.Text>
           <div className="w-100 position-absolute d-flex justify-content-end">
-          <div className="text-secondary small  me-1">{timestamp}</div>
+          <div className="small note-date-item  me-1">{timestamp}</div>
             {!isDelete || !isDeleteThis ? (
               <BsTrash3
                 onClick={() => {
@@ -25,7 +25,8 @@ const NoteItem = ({ id, content, getNoteId, openModal, isDelete, timestamp }) =>
                   openModal(true);
                   setIsDeleteThis(true);
                 }}
-                className="text-secondary blockquote note-delete"
+                className=" blockquote note-delete"
+                fill="#777"
               />
             ) : (
               isDeleteThis && (

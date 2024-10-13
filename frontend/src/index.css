@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Patrick+Hand&display=swap');
+
 :root {
   --toastify-color-success: #369;
 }
@@ -62,7 +64,8 @@ body {
 
 .note-loadingbar {
   position: relative;
-  left: 20px;
+  margin-top: 25px;
+  padding-bottom: 23px;
 }
 
 .detailImage {
@@ -117,7 +120,7 @@ body {
   ) !important;
   background-repeat: repeat;
   background-position: center; */
-  transition: all 3s ease-in;
+  transition: all .3s ease-in;
   background-color: #77777700 !important;
   position: relative;
   bottom: 1rem;
@@ -128,13 +131,33 @@ body {
   top: 5px;
 }
 
+.note-title {
+  font-size: 25px !important;
+  text-align: center;
+}
+.note-title-2 {
+  margin-top: 18px !important;
+  font-size: 20px !important;
+  text-align: center;
+  position: relative;
+  right: 14px;
+  top: 5px;
+}
+
+.note-date-item {
+  color: #777 !important;
+}
+
 .all-note-list {
+  font-family: "Patrick Hand";
+  font-weight: 400;
   position: relative;
   background-image: linear-gradient(
       hsla(0, 0%, 100%, 0.653),
       hsla(0, 0%, 100%, 0.653)
     ),
     url("/gripPaper.png") !important;
+    letter-spacing: .7px;
 }
 
 .swipe-photo {

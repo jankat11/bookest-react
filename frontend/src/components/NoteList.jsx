@@ -50,25 +50,25 @@ const NoteList = ({
         </Col>
       </Row>
       {user && (
-        <Container className="my-5 py-3 pb-2 px-0 shadow-md all-note-list">
-            <div className="position-absolute note-pin">
-              <BsPinAngleFill fill="#369" size={30} />
-            </div>
+        <Container className="my-5 py-3 pb-2 px-0 shadow-sm all-note-list">
+          <div className="position-absolute note-pin">
+            <BsPinAngleFill fill="#369" size={30} />
+          </div>
           {bookNotes?.reviews.length !== 0 ? (
             <span>
               {!isNotesLoading ? (
-                <p className="blockquote text-muted px-0 ps-3 mb-5">
-                  {/* <SlNote className="p-0 mb-1" /> */} Your notes:
+                <p className="blockquote text-muted note-title px-0 ps-3 mb-4 mt-4">
+                  Your notes:
                 </p>
               ) : (
-                <div className="note-loadingbar opacity-25">
+                <div className="note-loadingbar d-flex  justify-content-center opacity-25">
                   <LoadingBar />
                 </div>
               )}
             </span>
           ) : (
-            <p className="blockquote text-muted ps-3">
-              {/* <SlNote className="p-0 mb-1 " /> */} No notes yet!
+            <p className="blockquote text-muted ps-3 pb-3 note-title-2">
+              You haven’t added any notes yet.
             </p>
           )}
 
