@@ -31,7 +31,7 @@ export const searchBooks = async (searchData, thunkAPI) => {
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
-};
+}; 
 
 
 
