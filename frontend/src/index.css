@@ -39,6 +39,11 @@ body {
   color: #666 !important;
 }
 
+.bestseller {
+  font-weight: 500 !important;
+  color: #369 !important;
+}
+
 .genreSelectForm {
   border-color: #ddd !important;
 }
