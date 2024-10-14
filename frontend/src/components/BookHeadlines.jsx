@@ -13,6 +13,9 @@ const BookHeadlines = ({ book, show, setShow }) => {
     }
   }, [imageRef?.current?.offsetHeight, imageRef?.current?.offsetWidth, show]);
 
+  console.log("img1 ",  book?.volumeInfo?.imageLinks?.thumbnail.split("zoom=1")[0] + "zoom=2");
+  
+
   return (
     <>
       <p className="display-6">
@@ -24,7 +27,7 @@ const BookHeadlines = ({ book, show, setShow }) => {
           className="detailImage"
           ref={imageRef}
           src={
-            book?.volumeInfo?.imageLinks?.thumbnail || defaultImage
+            book?.volumeInfo?.imageLinks?.thumbnail.split("zoom=1")[0] + "zoom=1" || defaultImage
           }
         />
       </span>
