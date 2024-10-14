@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
+import UpArrow from "../components/UpArrow";
 
 const About = () => {
   useEffect(() => {
@@ -53,6 +54,7 @@ const About = () => {
           resource and a fun place to explore. Happy reading!
         </p>
       </Container>
+      <UpArrow />
     </>
   );
 };

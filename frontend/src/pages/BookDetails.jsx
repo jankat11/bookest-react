@@ -11,7 +11,7 @@ import NoteList from "../components/NoteList";
 import ShiftButtons from "../components/ShiftButtons";
 import { toast } from "react-toastify";
 import Modal from "../components/UI/Modal";
-
+import UpArrow from "../components/UpArrow";
 import uuid from "react-uuid";
 import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
 import {
@@ -299,6 +299,7 @@ const BookDetails = () => {
           <LoadingSpinner variant={"primary"} size={"xl"} />
         </Container>
       )}
+      <UpArrow />
     </>
   );
 };

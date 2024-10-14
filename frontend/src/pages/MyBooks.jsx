@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import MyBookList from "../components/MyBookList";
 import LoadingSpinner from "../components/UI/Spinner";
 import AlertMessage from "../components/UI/Alert";
+import UpArrow from "../components/UpArrow";
 
 const MyBooks = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const MyBooks = () => {
       ) : (
         <LoadingSpinner />
       )}
+      <UpArrow />
     </>
   );
 };
