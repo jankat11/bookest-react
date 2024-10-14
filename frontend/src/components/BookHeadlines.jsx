@@ -27,7 +27,7 @@ const BookHeadlines = ({ book, show, setShow }) => {
           className="detailImage"
           ref={imageRef}
           src={
-            book?.volumeInfo?.imageLinks?.thumbnail.split("zoom=1")[0] + "zoom=1" || defaultImage
+            book?.volumeInfo?.imageLinks?.thumbnail.split("zoom=1")[0] + "zoom=2" || defaultImage
           }
         />
       </span>
