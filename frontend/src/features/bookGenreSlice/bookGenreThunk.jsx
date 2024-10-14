@@ -24,7 +24,7 @@ export const searchBooks = async (searchData, thunkAPI) => {
     const start = (page - 1) * BOOK_AMOUNT_PER_PAGE
    
     const { data } = await axios.get(
-      `${GOOGLE_URL}${searchData.words}&startIndex=${start}&maxResults=${BOOK_AMOUNT_PER_PAGE}`
+      `${GOOGLE_URL}${searchData.words}&startIndex=${start}&maxResults=${BOOK_AMOUNT_PER_PAGE}` + "&key=AIzaSyAi820diB7qeAnxQXLdHoSZ_IVfHYVX40c"
     );
     return data.items;
   } catch (error) {
