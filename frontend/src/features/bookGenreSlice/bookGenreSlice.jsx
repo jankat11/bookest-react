@@ -76,7 +76,7 @@ const bookGenreSlice = createSlice({
         const results = payload ? payload.map((book) => ({
           title: book.volumeInfo?.title,
           author: book.volumeInfo?.authors,
-          book_image: book.volumeInfo?.imageLinks?.thumbnail,
+          book_image: book.volumeInfo?.imageLinks?.thumbnail ,
           google_id: book.id,
           selfLink: book.selfLink,
         })) : []
