@@ -25,7 +25,7 @@ const Header = () => {
   const { logout } = userSliceActions;
   const dispatch = useDispatch();
 
-  console.log("user is: ", user);
+/*   console.log("user is: ", user); */
   const handleLogout = ({ error = false }) => {
     navigate("/");
     dispatch(logout());

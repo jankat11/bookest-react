@@ -19,7 +19,7 @@ const NoteList = ({
   user,
 }) => {
   useEffect(() => {
-    console.log("notes: ", bookNotes?.reviews.length);
+    /* console.log("notes: ", bookNotes?.reviews.length); */
   }, [bookNotes?.reviews.length]);
 
   return (
