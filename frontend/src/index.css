@@ -353,6 +353,18 @@ input:active {
 }
 
 
+@media (min-width: 1024px) {
+  .up-scroll {
+    padding: .8rem !important;
+  }
+}
+@media (min-width: 1410px) {
+  .up-scroll {
+    padding: .8rem !important;
+    right: 40px;
+  }
+}
+
 @media (min-width: 991px) {
   .header-content {
     max-width: 60rem !important;
