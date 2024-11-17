@@ -143,8 +143,8 @@ body {
 }
 
 .note-pin {
-  right: 5px;
-  top: 5px;
+  right: 12px;
+  top: 12px;
 }
 
 .note-title {
@@ -168,12 +168,10 @@ body {
   font-family: "Patrick Hand";
   font-weight: 400;
   position: relative;
-  background-image: linear-gradient(
-      hsla(0, 0%, 100%, 0.653),
-      hsla(0, 0%, 100%, 0.653)
-    ),
-    url("/gripPaper.png") !important;
-  letter-spacing: 0.7px;
+  background-image: linear-gradient(#fefefe, #fff)  !important;
+  border: solid 1px #eee ;
+  letter-spacing: 0.8px;
+
 }
 
 .swipe-photo {
