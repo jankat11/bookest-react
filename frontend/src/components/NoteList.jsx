@@ -56,46 +56,40 @@ const NoteList = ({
       </Row>
       {user && (
         <>
-          {(bookNotes?.reviews.length !== 0 && bookNotes !== null) && (
-            <Container className="my-5 py-3 pt-5 pb-2 px-2 shadow-sm all-note-list">
+          {bookNotes?.reviews.length !== 0 && bookNotes !== null && (
+            <div className="my-5 container px-2 shadow-sm all-note-list">
               <div className="position-absolute note-pin">
                 <BsPinAngleFill fill="#369" size={35} />
               </div>
 
-              <span>
-{/*                 {!isNotesLoading ? (
-                  <p className="blockquote text-muted note-title px-0 ps-3 mb-4 mt-4">
-                    Your notes:
-                  </p>
-                ) : (
-                  <div className="note-loadingbar d-flex  justify-content-center opacity-25">
-                    <LoadingBar />
-                  </div>
-                )} */}
-              </span>
-
-              <div className="mb-2 mt-3">
-                <AnimatePresence>
-                  {bookNotes?.reviews?.map((note) => (
-                    <motion.div
-                      key={note._id}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      <NoteItem
-                        id={note._id}
-                        timestamp={note.time}
-                        content={note.content}
-                        openModal={openModal}
-                        getNoteId={getNoteId}
-                        isDelete={isDelete}
-                      />
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-              </div>
-            </Container>
+              {!isNotesLoading ? (
+                <div className="mb-2 mt-3">
+                  <AnimatePresence>
+                    {bookNotes?.reviews?.map((note) => (
+                      <motion.div
+                        key={note._id}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        <NoteItem
+                          id={note._id}
+                          timestamp={note.time}
+                          content={note.content}
+                          openModal={openModal}
+                          getNoteId={getNoteId}
+                          isDelete={isDelete}
+                        />
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <div className="note-loadingbar d-flex  justify-content-center opacity-25">
+                  <LoadingBar />
+                </div>
+              )}
+            </div>
           )}
         </>
       )}
