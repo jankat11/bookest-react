@@ -15,18 +15,18 @@ const ShiftButtons = ({
   state,
 }) => {
   return (
-    <Col className="col-12 mt-3">
+    <Col className="col-12 mt-4 mb-4">
       <Checkboxes handleCheckBoxes={handleCheckBoxes} state={state} />
-      <Col className="d-flex justify-content-between align-items-center flex-wrap">
+      <Col className="d-flex justify-content-start align-items-center flex-wrap">
         <Button
           disabled={isBookAdding}
           type="button"
-          className="mt-3 me-md-3  d-flex justify-content-center rounded-0 btn-info detail-button"
+          className="mt-3 me-md-3 py-2 d-flex justify-content-center rounded-0 btn-info detail-button"
           onClick={addToBookShelf}
         >
           {!isBookAdding ? (
             <>
-              <ImBooks className="mt-1 me-1 position-relative add-icon" />{" "}
+              <ImBooks className="mt-1 me-1 position-relative add-icon " />{" "}
               <span>Add To Bookshelf</span>
             </>
           ) : (
@@ -40,7 +40,7 @@ const ShiftButtons = ({
               handleRemove(true);
               openModal(true);
             }}
-            className="mt-3 d-flex justify-content-center btn-primary rounded-0 detail-button"
+            className="mt-3 d-flex py-2 justify-content-center btn-primary rounded-0 detail-button"
           >
             {!isRemoving ? (
               <>

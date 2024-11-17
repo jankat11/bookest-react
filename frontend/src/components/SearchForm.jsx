@@ -69,7 +69,7 @@ const SearchForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="input-group rounded-0 my-3"
+      className="input-group rounded-0 mt-2 "
     >
       <input
         type="text"

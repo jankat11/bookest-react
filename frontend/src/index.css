@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Patrick+Hand&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Tamil:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Patrick+Hand&family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap");
+
 :root {
   --toastify-color-success: #369;
 }
@@ -22,7 +22,7 @@ body {
 }
 
 .navbar {
-  height: 2.4rem;
+  height: 3rem;
 }
 
 .navbar-brand {
@@ -71,7 +71,7 @@ body {
 }
 
 .loading-bar {
-  scale: .7;
+  scale: 0.7;
 }
 
 .register-button {
@@ -136,7 +136,7 @@ body {
   ) !important;
   background-repeat: repeat;
   background-position: center; */
-  transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
   background-color: #77777700 !important;
   position: relative;
   bottom: 1rem;
@@ -173,7 +173,7 @@ body {
       hsla(0, 0%, 100%, 0.653)
     ),
     url("/gripPaper.png") !important;
-    letter-spacing: .7px;
+  letter-spacing: 0.7px;
 }
 
 .swipe-photo {
@@ -191,7 +191,6 @@ body {
 .hero-img-container {
   min-height: 76px !important;
 }
-
 
 .detail-button {
   white-space: nowrap;
@@ -282,8 +281,8 @@ input:active {
   border: solid 1px #ced4da;
 }
 
-
-.google-button:hover, .google-button:active {
+.google-button:hover,
+.google-button:active {
   box-shadow: 0 0 3px 2px rgba(51, 102, 153, 0.267) !important;
   border: solid 1px #ced4da00;
 }
@@ -311,7 +310,6 @@ input:active {
 
 .about-title {
   line-height: 1.5 !important;
-  
 }
 .about-container {
   max-width: 39rem !important;
@@ -324,15 +322,13 @@ input:active {
 
 .main-nav-wrapper {
   position: relative;
-  right: .5rem;
+  right: 0.5rem;
 }
 
 .book-cover-card {
- background-color: #fff !important;
- border: solid 1px #ced4da80  !important;
+  background-color: #fff !important;
+  border: solid 1px #ced4da80 !important;
 }
-
-
 
 .up-scroll {
   position: fixed;
@@ -346,26 +342,25 @@ input:active {
   background-color: white;
   opacity: 0; /* Start with invisible */
   visibility: hidden; /* Prevent interaction when hidden */
-  scale: .3;
+  scale: 0.3;
   transition: opacity 0.3s ease, visibility 0.3s ease, scale 0.3s ease;
 }
 
 /* When the .up-scroll is visible */
 .up-scroll.show {
-  opacity: 1;  /* Fully visible */
+  opacity: 1; /* Fully visible */
   visibility: visible; /* Make it visible */
   scale: 1;
 }
 
-
 @media (min-width: 1024px) {
   .up-scroll {
-    padding: .8rem !important;
+    padding: 0.8rem !important;
   }
 }
 @media (min-width: 1410px) {
   .up-scroll {
-    padding: .8rem !important;
+    padding: 0.8rem !important;
     right: 40px;
   }
 }
@@ -376,10 +371,10 @@ input:active {
   }
   .main-nav-wrapper {
     position: relative;
-    left: .5rem;
+    left: 0.5rem;
   }
-  .navbar-brand{
+  .navbar-brand {
     position: relative;
-    right: .8rem;
+    right: 0.8rem;
   }
 }

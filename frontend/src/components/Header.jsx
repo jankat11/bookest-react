@@ -45,10 +45,10 @@ const Header = () => {
   return (
     <>
       <Navbar ref={navref} className="navbar" bg="info" variant="dark">
-        <Container className="header-content ">
+        <Container className="header-content align-items-baseline">
           <a href="/" className="text-decoration-none">
-            <span className="navbar-brand ps-3 pe-0 me-0 ms-0 my-0 py-0">
-            BOOK<span style={{ color: "#20c997" }}>E</span>ST
+            <span style={{ color: "#f8f9fa" }} className="navbar-brand ps-3 pe-0 me-0 ms-0 my-0 py-0">
+            BOOK<span style={{ color: "#eb6864" }}>E</span>ST
     
             </span>
           </a>

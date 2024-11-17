@@ -42,7 +42,7 @@ const NoteList = ({
           <Button
             disabled={isNoteLoading}
             onClick={stickNote}
-            className={`rounded-0 btn-info detail-button w-100`}
+            className={`rounded-0  py-2 btn-info detail-button w-100`}
           >
             {!isNoteLoading ? (
               <>
