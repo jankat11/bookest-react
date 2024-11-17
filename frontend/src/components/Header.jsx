@@ -48,7 +48,7 @@ const Header = () => {
         <Container className="header-content ">
           <a href="/" className="text-decoration-none">
             <span className="navbar-brand ps-3 pe-0 me-0 ms-0 my-0 py-0">
-            BOOK<span style={{ color: "#f57a00" }}>E</span>ST
+            BOOK<span style={{ color: "#20c997" }}>E</span>ST
     
             </span>
           </a>
