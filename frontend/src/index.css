@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Patrick+Hand&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Tamil:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
   --toastify-color-success: #369;
 }
@@ -23,6 +23,13 @@ body {
 
 .navbar {
   height: 2.4rem;
+}
+
+.navbar-brand {
+  font-family: MuseoModerno !important;
+  font-size: 1.25rem !important;
+  letter-spacing: 1px !important;
+  font-weight: bold !important;
 }
 
 .navbar-brand:hover {

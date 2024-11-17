@@ -25,7 +25,7 @@ const Header = () => {
   const { logout } = userSliceActions;
   const dispatch = useDispatch();
 
-/*   console.log("user is: ", user); */
+  /*   console.log("user is: ", user); */
   const handleLogout = ({ error = false }) => {
     navigate("/");
     dispatch(logout());
@@ -37,7 +37,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (errorMessage) {      
+    if (errorMessage) {
       handleLogout({ error: true });
     }
   }, [errorMessage]);
@@ -48,7 +48,8 @@ const Header = () => {
         <Container className="header-content ">
           <a href="/" className="text-decoration-none">
             <span className="navbar-brand ps-3 pe-0 me-0 ms-0 my-0 py-0">
-              THE BOOKEST
+            BOOK<span style={{ color: "#f57a00" }}>E</span>ST
+    
             </span>
           </a>
           <Nav className="d-flex flex-row main-nav-wrapper justify-content-end  w-100 ms-auto">
