@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { bookActions } from "../features/bookSlice/bookSlice";
 import { useDispatch } from "react-redux";
 import defaultImage from "../assets/nocover.png";
-import LazyLoad from "react-lazy-load";
 const BookCover = ({
   image,
   title,
@@ -39,13 +38,11 @@ const BookCover = ({
             className={`d-flex justify-content-center ${search && "pt-4"}`}
             style={{ minHeight: "240px", maxHeight: "370px" }}
           >
-            <LazyLoad offset={300}>
-              <Card.Img
-                className="rounded-0 book-cover-image mx-auto"
-                loading="lazy"
-                src={image || defaultImage}
-              />
-            </LazyLoad>
+            <Card.Img
+              className="rounded-0 book-cover-image mx-auto"
+              loading="lazy"
+              src={image || defaultImage}
+            />
           </span>
           <Card.Body className="text-dark border-0 w-100 d-flex flex-column justify-content-start">
             <Card.Title className="py-0 blockquote my-0 text-center w-100 border-0 ">

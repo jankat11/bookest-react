@@ -12,7 +12,6 @@ import ShiftButtons from "../components/ShiftButtons";
 import { toast } from "react-toastify";
 import Modal from "../components/UI/Modal";
 import UpArrow from "../components/UpArrow";
-import uuid from "react-uuid";
 import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
 import {
   addNote,
@@ -103,7 +102,7 @@ const BookDetails = () => {
       const noteItem = {
         ...bookCredentials,
         content: noteContent,
-        _id: uuid(),
+        _id: crypto.randomUUID(),
       };
       dispatch(addNote({ user, noteItem })).then((data) => {
         if (data.meta.requestStatus === "rejected") {

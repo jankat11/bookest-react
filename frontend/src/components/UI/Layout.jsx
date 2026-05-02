@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../Header";
 import { Container } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
+import "react-toastify/ReactToastify.css";
 import React from "react";
 import Footer from "./Footer";
 import { Image } from "react-bootstrap";
