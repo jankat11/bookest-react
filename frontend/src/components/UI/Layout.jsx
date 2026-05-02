@@ -11,13 +11,15 @@ import heroLg from "../../assets/heroPhotoLg.png";
 const Layout = () => {
   return (
     <section className="layout d-flex flex-column">
-      <ToastContainer />
-      <div className="d-flex justify-content-center hero-img-container">
-        <Image fluid src={heroLg} className="hero-img" />
-      </div>
-      <Header />
-      <main className="py-3 h-100">
-        <Container>
+      <ToastContainer position="top-center" />
+      <header className="site-masthead">
+        <div className="d-flex justify-content-center hero-img-container">
+          <Image fluid src={heroLg} className="hero-img" />
+        </div>
+        <Header />
+      </header>
+      <main className="app-main h-100">
+        <Container className="app-shell">
           <Outlet />
         </Container>
       </main>

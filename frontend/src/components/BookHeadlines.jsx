@@ -1,50 +1,42 @@
-import { Container, Col, Image } from "react-bootstrap";
-import { useRef, useEffect } from "react";
+import { Col, Image } from "react-bootstrap";
 import defaultImage from "../assets/nocover.png";
 
-const imageDesignHeight = 195; // 12.18rem * 16 -> 13 * 16px
-
-const BookHeadlines = ({ book, show, setShow }) => {
-  const imageRef = useRef();
-
-  useEffect(() => {
-    if (imageRef?.current?.offsetHeight === imageDesignHeight) {
-      setShow(true);
-    }
-  }, [imageRef?.current?.offsetHeight, imageRef?.current?.offsetWidth, show]);
-
+const BookHeadlines = ({ book }) => {
+  const volumeInfo = book?.volumeInfo || {};
+  const authors = volumeInfo.authors || [];
+  const publishedYear = volumeInfo.publishedDate?.slice(0, 4);
+  const category = volumeInfo.categories?.[0];
 
   return (
-    <>
-      <p className="display-6">
-      <strong>{book?.volumeInfo?.title}</strong>
-        </p>
-        <Col className="d-flex w-100 mt-3 " sm={12}>
-      <span style={{ width: "128px", height: "195px" }}>
-        <Image
-          className="detailImage"
-          ref={imageRef}
-          src={
-            book?.volumeInfo?.imageLinks?.thumbnail || defaultImage
-          }
-        />
-      </span>
-        <Container className="mx-3">
-          <p>
-            {book?.volumeInfo?.authors?.map((author, index, authorsArr) => (
-              <li className="list-unstyled" key={index}>
-                {author}
-                {index !== authorsArr.length - 1 && ","}
-              </li>
-            ))}
-          </p>
-          <p className="text-smaller">
-            published: {book?.volumeInfo?.publishedDate?.slice(0, 4)}
-          </p>
-          <p>{book?.volumeInfo?.categories?.slice(0, 1)}</p>
-        </Container>
-      </Col>
-    </>
+    <Col sm={12}>
+      <section className="book-detail-hero">
+        <span className="book-detail-cover-frame">
+          <Image
+            className={`detailImage ${
+              !volumeInfo.imageLinks?.thumbnail ? "defaultImage" : ""
+            }`}
+            src={volumeInfo.imageLinks?.thumbnail || defaultImage}
+          />
+        </span>
+        <div className="book-detail-meta">
+          <p className="book-detail-eyebrow">Book details</p>
+          <h1 className="book-detail-title">{volumeInfo.title || "Untitled"}</h1>
+          <div className="book-detail-authors">
+            {authors.length
+              ? authors.map((author) => <span key={author}>{author}</span>)
+              : "Unknown author"}
+          </div>
+          <div className="detail-facts">
+            {publishedYear && (
+              <span className="detail-chip detail-chip-year">{publishedYear}</span>
+            )}
+            {category && (
+              <span className="detail-chip detail-chip-category">{category}</span>
+            )}
+          </div>
+        </div>
+      </section>
+    </Col>
   );
 };
 export default BookHeadlines;

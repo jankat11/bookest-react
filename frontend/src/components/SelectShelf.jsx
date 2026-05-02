@@ -1,29 +1,27 @@
-import { Container, Form } from "react-bootstrap";
+const Checkboxes = ({ state, handleCheckBoxes }) => {
+  const handleShelfChange = (name) => {
+    handleCheckBoxes({ target: { name } });
+  };
 
-
-const Checkboxes = ({state, handleCheckBoxes}) => {
   return (
-    <Container className="p-0 d-flex">
-      <Form.Check
-        type="checkbox"
-        id="default-checkbox"
-        label="to be read"
-        name="will_be_read"
-        value={state.willBeRead}
-        checked={state.willBeRead}
-        onChange={handleCheckBoxes}
-        className="me-3"
-      />
-      <Form.Check
-        type="checkbox"
-        label="finished reading"
-        id="disabled-default-checkbox"
-        name="has_been_read"
-        value={state.hasBeenRead}
-        checked={state.hasBeenRead}
-        onChange={handleCheckBoxes}
-      />
-    </Container>
+    <div className="shelf-segmented-control" role="group" aria-label="Reading status">
+      <button
+        type="button"
+        aria-pressed={state.willBeRead}
+        className={`shelf-segment ${state.willBeRead ? "is-active" : ""}`}
+        onClick={() => handleShelfChange("will_be_read")}
+      >
+        To read
+      </button>
+      <button
+        type="button"
+        aria-pressed={state.hasBeenRead}
+        className={`shelf-segment ${state.hasBeenRead ? "is-active" : ""}`}
+        onClick={() => handleShelfChange("has_been_read")}
+      >
+        Finished
+      </button>
+    </div>
   );
 };
 export default Checkboxes;

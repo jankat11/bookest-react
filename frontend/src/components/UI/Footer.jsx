@@ -5,10 +5,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer
-      className="text-center p-3 pb-0 mt-auto"
-      style={{ backgroundColor: "#369" }}
-    >
+    <footer className="app-footer text-center p-3 pb-0 mt-auto">
       <p className="text-light p-0 d-flex small justify-content-center w-100">
         <span>
           © 2024 Copyright:

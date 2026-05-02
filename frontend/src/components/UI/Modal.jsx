@@ -10,7 +10,7 @@ const ModalSection = ({
 }) => {
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header>
           {header && (
             <Modal.Title>

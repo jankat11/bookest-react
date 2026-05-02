@@ -9,7 +9,7 @@ const About = () => {
 
   return (
     <>
-      <Container className="blockquote my-md-5 my-4 about-container">
+      <Container className="blockquote my-md-5 my-4 about-container surface-panel">
         <h1 className="about-title mb-md-5 mb-4">Welcome to your library!</h1>
         <p className="about-text">
           The Bookest is the ultimate destination for book lovers everywhere! As

@@ -36,11 +36,11 @@ const HomePageLayout = () => {
   return (
     <>
       <Container className="w-100 content-container">
-        <Row className="d-flex mt-3 mb-4">
-          <Col>
+        <Row className="discovery-toolbar d-flex mt-3 mb-4">
+          <Col sm={12} md={6}>
             <SelectForm genre={genre} getBooksGenre={getBooksGenre} />
           </Col>
-          <Col sm={12} md={6} /* className="order-md-2" */>
+          <Col sm={12} md={6}>
             <SearchForm />
           </Col>
         </Row>

@@ -1,6 +1,6 @@
 import { ImBooks } from "react-icons/im";
 import { CgPlayListRemove } from "react-icons/cg";
-import { Col, Button, Spinner } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import Checkboxes from "./SelectShelf";
 import LoadingBar from "./UI/LoadingBar";
 
@@ -15,13 +15,14 @@ const ShiftButtons = ({
   state,
 }) => {
   return (
-    <Col className="col-12 mt-4 mb-4">
+    <div className="detail-actions">
       <Checkboxes handleCheckBoxes={handleCheckBoxes} state={state} />
-      <Col className="d-flex justify-content-start align-items-center flex-wrap">
+      <div className="detail-action-buttons">
         <Button
+          variant="positive"
           disabled={isBookAdding}
           type="button"
-          className="mt-3 me-md-3 py-2 d-flex justify-content-center rounded-0 btn-info detail-button"
+          className="py-2 d-flex justify-content-center detail-button"
           onClick={addToBookShelf}
         >
           {!isBookAdding ? (
@@ -35,12 +36,13 @@ const ShiftButtons = ({
         </Button>
         {removeButton && (
           <Button
-          disabled={isRemoving}
+            variant="danger-action"
+            disabled={isRemoving}
             onClick={() => {
               handleRemove(true);
               openModal(true);
             }}
-            className="mt-3 d-flex py-2 justify-content-center btn-primary rounded-0 detail-button"
+            className="d-flex py-2 justify-content-center detail-button"
           >
             {!isRemoving ? (
               <>
@@ -59,8 +61,8 @@ const ShiftButtons = ({
             )}
           </Button>
         )}
-      </Col>
-    </Col>
+      </div>
+    </div>
   );
 };
 export default ShiftButtons;

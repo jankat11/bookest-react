@@ -7,17 +7,17 @@ const NoteItem = ({ id, content, getNoteId, openModal, isDelete, timestamp }) =>
   const [isDeleteThis, setIsDeleteThis] = useState(false);
 
   return (
-    <Card className="rounded-0 border-0 note my-0 pt-0">
+    <Card className="border-0 note my-0 pt-0">
       <Card.Body>
         <div className="position-relative pb-3">
           <Card.Text
-            className="text-muted blockquote"
+            className="note-copy blockquote"
             dangerouslySetInnerHTML={{
               __html: content,
             }}
           ></Card.Text>
-          <div className="w-100 position-absolute d-flex justify-content-end">
-          <div className="small note-date-item  me-1">{timestamp}</div>
+          <div className="note-meta w-100 position-absolute d-flex justify-content-end">
+            <div className="small note-date-item me-1">{timestamp}</div>
             {!isDelete || !isDeleteThis ? (
               <BsTrash3
                 onClick={() => {
@@ -40,4 +40,3 @@ const NoteItem = ({ id, content, getNoteId, openModal, isDelete, timestamp }) =>
   );
 };
 export default NoteItem;
-

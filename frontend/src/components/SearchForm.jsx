@@ -69,19 +69,19 @@ const SearchForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="input-group rounded-0 mt-2 "
+      className="input-group mt-2 search-form"
     >
       <input
         type="text"
         value={words}
         onChange={handleChange}
-        className="form-control rounded-0 search-input"
+        className="form-control search-input"
         placeholder="Search a book or author"
         aria-label="Search a book or author"
         aria-describedby="button-addon2"
       />
       <button
-        className="btn btn-info rounded-0 px-0 search-button"
+        className="btn btn-info px-0 search-button"
         type="submit"
         id="button-addon2"
       >

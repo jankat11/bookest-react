@@ -1,4 +1,4 @@
-import { Container, Button, Spinner } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LoadingBar from "./UI/LoadingBar";
 
@@ -7,7 +7,7 @@ const FormConfirm = ({ mode, isLoading }) => {
   return (
     <Container className="p-0 d-flex align-items-center">
       <Button
-        className={`px-0 d-flex justify-content-center rounded-0 ${
+        className={`px-0 d-flex justify-content-center auth-submit-button ${
           !isRegister ? "login-button" : "register-button"
         }`}
         variant="info"

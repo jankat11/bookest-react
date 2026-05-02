@@ -14,7 +14,7 @@ import { blacklist } from "../utils";
 import LoadingBar from "../components/UI/LoadingBar";
 
 const Login = () => {
-  const navigate = useNavigate("/");
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -77,10 +77,10 @@ const Login = () => {
   }, [message, succesfullyLoggedIn]);
 
   return (
-    <Container className="smoothLittle">
+    <Container className="smoothLittle auth-page">
       <Row className="justify-content-center">
-        <Col md={6}  className="login-section">
-          <p className="display-6 mt-3">
+        <Col md={6} className="login-section auth-card">
+          <p className="auth-title display-6 mt-3">
             {searchParams.get("mode") === "register" ? "Sign up" : "Sign in"}
           </p>
           <Form onSubmit={handleSubmit}>
@@ -94,7 +94,7 @@ const Login = () => {
                 value={username}
                 name="username"
                 onChange={(e) => setUsername(e.target.value)}
-                className="rounded-0"
+                className="auth-input"
                 type="text"
                 placeholder="Enter username"
                 required
@@ -110,7 +110,7 @@ const Login = () => {
                 value={password}
                 name="password"
                 onChange={(e) => setPassword(e.target.value)}
-                className="rounded-0"
+                className="auth-input"
                 type="password"
                 placeholder="Password"
                 required
@@ -121,7 +121,7 @@ const Login = () => {
                 <Form.Control
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="rounded-0"
+                  className="auth-input"
                   type="password"
                   placeholder="Confirm password"
                   required
@@ -137,10 +137,18 @@ const Login = () => {
 {/*           <p className="my-4">
             or
           </p> */}
-          <div className=" w-100  google-button">
+          <div className="w-100 google-button">
             <GoogleButton
-              label={!isAuthLoading ? "Sign in with Google" : <div className="opacity-25"><LoadingBar /></div> }
-              style={{ width: "100%", boxShadow: "none"}}
+              label={
+                !isAuthLoading ? (
+                  "Sign in with Google"
+                ) : (
+                  <div className="opacity-25">
+                    <LoadingBar />
+                  </div>
+                )
+              }
+              style={{ width: "100%", boxShadow: "none" }}
               type="light"
               onClick={() => googleLogin()}
             />

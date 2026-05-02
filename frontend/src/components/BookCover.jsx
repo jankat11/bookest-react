@@ -20,40 +20,40 @@ const BookCover = ({
       dispatch(getSelfLink(selfLink));
     }
   };
+  const displayTitle =
+    title?.length > 34 ? `${title.slice(0, 34)}...` : title || "no title";
+  const displayAuthor =
+    typeof author !== "string" && author?.length > 1
+      ? `${author[0]}...`
+      : author || "no author info";
 
   return (
     <Col
-      lg={3}
-      md={4}
+      xs={6}
       sm={6}
+      md={4}
+      lg={3}
       onClick={handleClick}
-      className="py-3 col-6 mw-50 hide"
+      className="book-card-col"
     >
       <Link
         to={`/book/${isbn13 || isbn10 || google_id}`}
-        className="text-decoration-none w-100"
+        className="book-card-link text-decoration-none w-100"
       >
-        <Card className="h-100 w-100 rounded-0 shadow-sm book-cover-card">
-          <span
-            className={`d-flex justify-content-center ${search && "pt-4"}`}
-            style={{ minHeight: "240px", maxHeight: "370px" }}
-          >
+        <Card className="h-100 w-100 book-cover-card">
+          <span className={`book-cover-media ${search ? "is-search" : ""}`}>
             <Card.Img
-              className="rounded-0 book-cover-image mx-auto"
+              className={`book-cover-image mx-auto ${!image ? "defaultImage" : ""}`}
               loading="lazy"
               src={image || defaultImage}
             />
           </span>
-          <Card.Body className="text-dark border-0 w-100 d-flex flex-column justify-content-start">
-            <Card.Title className="py-0 blockquote my-0 text-center w-100 border-0 ">
-              {title?.length > 25
-                ? title.slice(0, 25) + "..." 
-                : title || "no title"}
+          <Card.Body className="book-card-copy text-dark border-0 w-100 d-flex flex-column justify-content-start">
+            <Card.Title className="book-card-title text-center w-100 border-0">
+              {displayTitle}
             </Card.Title>
-            <Card.Text className="py-0 my-0 text-center">
-              {typeof author !== "string" && author?.length > 1
-                ? `${author[0]}...`
-                : author || "no author info"}
+            <Card.Text className="book-card-author text-center">
+              {displayAuthor}
             </Card.Text>
           </Card.Body>
         </Card>

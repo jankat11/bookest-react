@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userSliceActions } from "../features/userSlice/userSlice";
@@ -44,15 +44,14 @@ const Header = () => {
 
   return (
     <>
-      <Navbar ref={navref} className="navbar" bg="info" variant="dark">
+      <Navbar ref={navref} className="navbar app-navbar" bg="info" variant="dark">
         <Container className="header-content align-items-baseline">
-          <a href="/" className="text-decoration-none">
-            <span style={{ color: "#f8f9fa" }} className="navbar-brand ps-3 pe-0 me-0 ms-0 my-0 py-0">
-            BOOK<span style={{ color: "#eb6864" }}>E</span>ST
-    
+          <Link to="/" className="text-decoration-none">
+            <span className="navbar-brand ps-3 pe-0 me-0 ms-0 my-0 py-0">
+              BOOK<span>E</span>ST
             </span>
-          </a>
-          <Nav className="d-flex flex-row main-nav-wrapper justify-content-end  w-100 ms-auto">
+          </Link>
+          <Nav className="d-flex flex-row main-nav-wrapper justify-content-end w-100 ms-auto">
             <Nav.Link
               className={`shadow-none ps-0 ${
                 isOnHomePage && "active-header-link"

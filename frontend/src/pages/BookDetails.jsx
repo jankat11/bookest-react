@@ -2,7 +2,7 @@ import { useEffect, useState, useReducer } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBooks as myBooks } from "../features/userBooksSlice/userBooksSlice";
-import LoadingSpinner from "../components/UI/Spinner";
+import { BookDetailsSkeleton } from "../components/UI/Skeleton";
 import AlertMessage from "../components/UI/Alert";
 import BookHeadlines from "../components/BookHeadlines";
 import { addBook } from "../features/userBooksSlice/userBooksSlice";
@@ -33,7 +33,6 @@ const BookDetails = () => {
   const navigate = useNavigate();
   const params = useParams();
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [noteId, setNoteId] = useState("");
   const [removeButton, setRemoveButton] = useState(false);
@@ -231,12 +230,7 @@ const BookDetails = () => {
   return (
     <>
       {!isLoading ? (
-        <Container
-          fluid
-          className={` smooth ${
-            !show && "opacity-0"
-          } w-100 d-flex justify-content-center content-container`}
-        >
+        <Container fluid className="smooth content-container book-detail-page">
           {showModal && (
             <Modal
               header={!removeBookModal ? "Delete note?" : "Remove book?"}
@@ -254,49 +248,57 @@ const BookDetails = () => {
               handleConfirm={!removeBookModal ? handleDeleteNote : handleRemove}
             />
           )}
-          <Col xl={9} className="col-12 p-o">
+          <Col xl={10} className="col-12 mx-auto p-0">
             <Row className="my-3">
-              <BookHeadlines book={book} setShow={setShow} show={show} />
+              <BookHeadlines book={book} />
             </Row>
-            <Row>
-              <ShiftButtons
-                addToBookShelf={addToBookShelf}
-                handleCheckBoxes={handleCheckBoxes}
-                handleRemove={setRemoveBookModal}
-                openModal={setShowModal}
-                removeButton={removeButton}
-                isRemoving={isRemoving}
-                isBookAdding={isBookAdding}
-                state={state}
-              />
-            </Row>
-            <NoteList
-              bookNotes={bookNotes}
-              stickNote={stickNote}
-              setNoteContent={setNoteContent}
-              noteContent={noteContent}
-              removeButton={removeButton}
-              getNoteId={setNoteId}
-              openModal={setShowModal}
-              isNoteLoading={isNoteLoading}
-              isNotesLoading={isNotesLoading}
-              isDelete={isNoteDeleteLoading}
-              user={user}
-            />
-            <Row className="mt-5 pt-4 mb-5">
+            <section className="reader-workspace">
+              <div className="reader-workspace-section shelf-workspace">
+                <div className="workspace-section-header">
+                  <h2>Bookshelf</h2>
+                </div>
+                <ShiftButtons
+                  addToBookShelf={addToBookShelf}
+                  handleCheckBoxes={handleCheckBoxes}
+                  handleRemove={setRemoveBookModal}
+                  openModal={setShowModal}
+                  removeButton={removeButton}
+                  isRemoving={isRemoving}
+                  isBookAdding={isBookAdding}
+                  state={state}
+                />
+              </div>
+              <div className="reader-workspace-section note-workspace">
+                <div className="workspace-section-header">
+                  <h2>Quick note</h2>
+                </div>
+                <NoteList
+                  bookNotes={bookNotes}
+                  stickNote={stickNote}
+                  setNoteContent={setNoteContent}
+                  noteContent={noteContent}
+                  removeButton={removeButton}
+                  getNoteId={setNoteId}
+                  openModal={setShowModal}
+                  isNoteLoading={isNoteLoading}
+                  isNotesLoading={isNotesLoading}
+                  isDelete={isNoteDeleteLoading}
+                  user={user}
+                />
+              </div>
+            </section>
+            <Row className="mt-5 mb-5">
               <p
                 dangerouslySetInnerHTML={{
                   __html: book?.volumeInfo?.description,
                 }}
-                className="blockquote"
+                className="description-panel blockquote"
               ></p>
             </Row>
           </Col>
         </Container>
       ) : (
-        <Container className="d-flex justify-content-center w-100 h-100 my-3">
-          <LoadingSpinner variant={"primary"} size={"xl"} />
-        </Container>
+        <BookDetailsSkeleton />
       )}
       <UpArrow />
     </>

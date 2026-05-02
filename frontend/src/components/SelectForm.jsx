@@ -16,9 +16,9 @@ const SelectForm = ({ getBooksGenre, genre }) => {
   };
 
   return (
-    <div className=" d-flex  my-2">
+    <div className="d-flex my-2 genre-filter">
       <span
-        className="bestseller input-group-text rounded-0 bg-white border-none border-end-0 pe-1"
+        className="bestseller input-group-text bg-white border-none border-end-0 pe-1"
         id="inputGroup-sizing-default"
       >
         Bestseller:
@@ -26,7 +26,7 @@ const SelectForm = ({ getBooksGenre, genre }) => {
       <Form.Select
         value={!isSearchActive ? genre || "hardcover-fiction" : ""}
         onChange={handleChange}
-        className="genreSelectForm w-100 rounded-0 border-start-0 ps-2 shadow-none"
+        className="genreSelectForm w-100 border-start-0 ps-2 shadow-none"
         aria-describedby="inputGroup-sizing-default"
       >
         {isSearchActive && (
