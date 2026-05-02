@@ -7,13 +7,9 @@ import { useState, useEffect } from "react";
 import LoadingBar from "./UI/LoadingBar";
 
 const SearchForm = () => {
-  const {
-    isResultsLoading,
-    isSearchActive,
-    searchWords,
-    searchPage,
-    finishSearch,
-  } = useSelector((store) => store.books);
+  const { isLoading, isSearchActive, searchWords } = useSelector(
+    (store) => store.books
+  );
   const { changeSearchActiveStatus, setSearchWords, resetPage } =
     bookGenreActions;
   const [words, setWords] = useState("");
@@ -21,44 +17,27 @@ const SearchForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (words.trim().length !== 0) {
-      dispatch(resetPage());
-      dispatch(setSearchWords(words));
-      if (!isSearchActive) {
-        dispatch(changeSearchActiveStatus());
-      }
-      dispatch(getResults({ words, searchPage: 1 }));
-    }
-  };
+    const trimmedWords = words.trim();
 
-  const getMoreResult = () => {
-    dispatch(getResults({ words, searchPage }));
+    if (!trimmedWords || isLoading) {
+      return;
+    }
+
+    dispatch(resetPage());
+    dispatch(setSearchWords(trimmedWords));
+    if (!isSearchActive) {
+      dispatch(changeSearchActiveStatus());
+    }
+    dispatch(getResults({ words: trimmedWords, searchPage: 1 }));
   };
 
   const handleChange = (e) => {
     setWords(e.target.value);
   };
 
-  const handleScroll = () => {
-    if (
-      window.innerHeight + window.scrollY >= document.body.offsetHeight - 30 &&
-      !finishSearch
-    ) {
-      removeEventListener("scroll", handleScroll);
-      getMoreResult();
-    }
-  };
-
-  useEffect(() => {
-    if (isSearchActive) {
-      window.addEventListener("scroll", handleScroll);
-    }
-    return () => removeEventListener("scroll", handleScroll);
-  }, [words, searchPage]);
-
   useEffect(() => {
     setWords(searchWords);
-  }, []);
+  }, [searchWords]);
 
   useEffect(() => {
     if (!isSearchActive) {
@@ -67,10 +46,7 @@ const SearchForm = () => {
   }, [isSearchActive]);
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="input-group mt-2 search-form"
-    >
+    <form onSubmit={handleSubmit} className="input-group mt-2 search-form">
       <input
         type="text"
         value={words}
@@ -84,8 +60,9 @@ const SearchForm = () => {
         className="btn btn-info px-0 search-button"
         type="submit"
         id="button-addon2"
+        disabled={isLoading || words.trim().length === 0}
       >
-        {!isResultsLoading ? "Search" : <LoadingBar />}
+        {!isLoading ? "Search" : <LoadingBar />}
       </button>
     </form>
   );

@@ -352,6 +352,12 @@ input,
   margin: 0.45rem 0 0;
 }
 
+.load-more-sentinel {
+  flex: 0 0 100%;
+  height: 1px;
+  padding: 0 !important;
+}
+
 .result-end-message {
   color: var(--bookest-muted);
   flex: 0 0 100%;
