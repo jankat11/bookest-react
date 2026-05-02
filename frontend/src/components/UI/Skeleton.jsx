@@ -6,7 +6,7 @@ const SkeletonBlock = ({ className = "" }) => {
 
 export const BookCardSkeleton = () => {
   return (
-    <Col xs={6} sm={6} md={4} lg={3} className="book-card-col">
+    <div className="book-card-col">
       <div className="book-cover-card skeleton-card" aria-hidden="true">
         <div className="book-cover-media">
           <SkeletonBlock className="skeleton-cover" />
@@ -16,19 +16,21 @@ export const BookCardSkeleton = () => {
           <SkeletonBlock className="skeleton-line skeleton-line-short mx-auto" />
         </div>
       </div>
-    </Col>
+    </div>
   );
 };
 
 export const BookGridSkeleton = ({ count = 8 }) => {
   return (
-    <Container className="smoothLittle content-container">
-      <Row className="book-grid mb-5">
-        {Array.from({ length: count }).map((_, index) => (
-          <BookCardSkeleton key={index} />
-        ))}
-      </Row>
-    </Container>
+    <Row className="mb-5">
+      <Col xs={12}>
+        <div className="book-grid smoothLittle">
+          {Array.from({ length: count }).map((_, index) => (
+            <BookCardSkeleton key={index} />
+          ))}
+        </div>
+      </Col>
+    </Row>
   );
 };
 
@@ -106,6 +108,11 @@ export const BookDetailsSkeleton = () => {
             <SkeletonBlock className="skeleton-button skeleton-note-submit" />
           </div>
         </div>
+
+        <section className="book-notes-section" aria-hidden="true">
+          <SkeletonBlock className="skeleton-line skeleton-line-heading" />
+          <NotesSkeleton />
+        </section>
 
         <Row className="mt-5 mb-5">
           <div

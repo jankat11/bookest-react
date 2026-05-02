@@ -1,6 +1,6 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userSliceActions } from "../features/userSlice/userSlice";
 import { userBooksActions } from "../features/userBooksSlice/userBooksSlice";
@@ -24,8 +24,13 @@ const Header = () => {
   const { setEmptyUserBooks } = userBooksActions;
   const { logout } = userSliceActions;
   const dispatch = useDispatch();
+  const homeHref = import.meta.env.BASE_URL || "/";
 
-  /*   console.log("user is: ", user); */
+  const handleLogoNavigate = (e) => {
+    e.preventDefault();
+    window.location.assign(homeHref);
+  };
+
   const handleLogout = ({ error = false }) => {
     navigate("/");
     dispatch(logout());
@@ -45,12 +50,16 @@ const Header = () => {
   return (
     <>
       <Navbar ref={navref} className="navbar app-navbar" bg="info" variant="dark">
-        <Container className="header-content align-items-baseline">
-          <Link to="/" className="text-decoration-none">
-            <span className="navbar-brand ps-3 pe-0 me-0 ms-0 my-0 py-0">
+        <Container className="app-shell align-items-baseline">
+          <a
+            href={homeHref}
+            className="text-decoration-none"
+            onClick={handleLogoNavigate}
+          >
+            <span className="navbar-brand ps-0 pe-0 me-0 ms-0 my-0 py-0">
               BOOK<span>E</span>ST
             </span>
-          </Link>
+          </a>
           <Nav className="d-flex flex-row main-nav-wrapper justify-content-end w-100 ms-auto">
             <Nav.Link
               className={`shadow-none ps-0 ${

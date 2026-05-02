@@ -1,4 +1,4 @@
-import { Card, Col } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { bookActions } from "../features/bookSlice/bookSlice";
 import { useDispatch } from "react-redux";
@@ -28,14 +28,7 @@ const BookCover = ({
       : author || "no author info";
 
   return (
-    <Col
-      xs={6}
-      sm={6}
-      md={4}
-      lg={3}
-      onClick={handleClick}
-      className="book-card-col"
-    >
+    <div onClick={handleClick} className="book-card-col">
       <Link
         to={`/book/${isbn13 || isbn10 || google_id}`}
         className="book-card-link text-decoration-none w-100"
@@ -58,7 +51,7 @@ const BookCover = ({
           </Card.Body>
         </Card>
       </Link>
-    </Col>
+    </div>
   );
 };
 export default BookCover;

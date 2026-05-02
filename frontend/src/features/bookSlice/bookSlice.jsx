@@ -36,8 +36,11 @@ const bookSlice = createSlice({
   initialState,
   reducers: {
     setBookEmpty(state) {
-      state.book = {}
-      state.bookNotes = null
+      state.book = {};
+      state.bookNotes = null;
+      state.isLoading = false;
+      state.isError = false;
+      state.message = "";
     },
     getSelfLink(state, action) {
       state.selfLink = action.payload;
@@ -47,6 +50,8 @@ const bookSlice = createSlice({
     builder
       .addCase(getBook.pending, (state) => {
         state.isLoading = true;
+        state.isError = false;
+        state.message = "";
       })
       .addCase(getBook.fulfilled, (state, { payload }) => {
         state.book = payload;
@@ -60,6 +65,8 @@ const bookSlice = createSlice({
       })
       .addCase(getResult.pending, (state) => {
         state.isLoading = true;
+        state.isError = false;
+        state.message = "";
       })
       .addCase(getResult.fulfilled, (state, { payload }) => {
         state.book = payload;

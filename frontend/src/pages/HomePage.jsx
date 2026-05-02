@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { bookGenreActions } from "../features/bookGenreSlice/bookGenreSlice";
 import { getBooks } from "../features/bookGenreSlice/bookGenreSlice";
@@ -22,9 +22,9 @@ const HomePageLayout = () => {
     }
   }, []);
 
-  const getBooksGenre = (e) => {
-    dispatch(getGenre(e.target.value));
-    dispatch(getBooks(e.target.value));
+  const getBooksGenre = (genreValue) => {
+    dispatch(getGenre(genreValue));
+    dispatch(getBooks(genreValue));
   };
 
   useEffect(() => {
@@ -35,16 +35,20 @@ const HomePageLayout = () => {
 
   return (
     <>
-      <Container className="w-100 content-container">
-        <Row className="discovery-toolbar d-flex mt-3 mb-4">
-          <Col sm={12} md={6}>
-            <SelectForm genre={genre} getBooksGenre={getBooksGenre} />
-          </Col>
-          <Col sm={12} md={6}>
-            <SearchForm />
-          </Col>
-        </Row>
-      </Container>
+      <Row className="mt-3 mb-4">
+        <Col xs={12}>
+          <div className="discovery-toolbar">
+            <div className="discovery-toolbar-inner">
+              <div className="discovery-field discovery-field-genre">
+                <SelectForm genre={genre} getBooksGenre={getBooksGenre} />
+              </div>
+              <div className="discovery-field discovery-field-search">
+                <SearchForm />
+              </div>
+            </div>
+          </div>
+        </Col>
+      </Row>
       <Outlet />
       <UpArrow />
     </>

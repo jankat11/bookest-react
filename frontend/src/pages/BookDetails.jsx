@@ -8,6 +8,7 @@ import BookHeadlines from "../components/BookHeadlines";
 import { addBook } from "../features/userBooksSlice/userBooksSlice";
 import { removeBook } from "../features/userBooksSlice/userBooksSlice";
 import NoteList from "../components/NoteList";
+import BookNotesPanel from "../components/BookNotesPanel";
 import ShiftButtons from "../components/ShiftButtons";
 import { toast } from "react-toastify";
 import Modal from "../components/UI/Modal";
@@ -273,20 +274,22 @@ const BookDetails = () => {
                   <h2>Quick note</h2>
                 </div>
                 <NoteList
-                  bookNotes={bookNotes}
                   stickNote={stickNote}
                   setNoteContent={setNoteContent}
                   noteContent={noteContent}
-                  removeButton={removeButton}
-                  getNoteId={setNoteId}
-                  openModal={setShowModal}
                   isNoteLoading={isNoteLoading}
-                  isNotesLoading={isNotesLoading}
-                  isDelete={isNoteDeleteLoading}
                   user={user}
                 />
               </div>
             </section>
+            <BookNotesPanel
+              bookNotes={bookNotes}
+              isDelete={isNoteDeleteLoading}
+              isNotesLoading={isNotesLoading}
+              openModal={setShowModal}
+              getNoteId={setNoteId}
+              user={user}
+            />
             <Row className="mt-5 mb-5">
               <p
                 dangerouslySetInnerHTML={{
