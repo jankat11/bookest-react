@@ -300,6 +300,7 @@ a:hover {
   border-radius: var(--bookest-radius-sm);
   box-sizing: border-box;
   display: flex;
+  max-width: 100%;
   min-height: 0;
   overflow: hidden;
   width: 100%;
@@ -328,9 +329,10 @@ a:hover {
   box-sizing: border-box;
   color: #526171 !important;
   display: inline-flex;
+  flex: 0 0 auto;
   font-weight: 800;
-  min-width: min(10rem, 42%);
   padding: 0 0.95rem !important;
+  white-space: nowrap;
 }
 
 .genre-trigger {
@@ -341,14 +343,16 @@ a:hover {
   box-sizing: border-box;
   color: #526171;
   display: flex;
-  flex: 1;
+  flex: 1 1 0%;
   font-size: 1.03rem;
   gap: 0.55rem;
   justify-content: space-between;
   min-height: 0;
+  min-width: 0;
+  overflow: hidden;
   padding: 0 0.9rem 0 0.95rem;
   text-align: left;
-  width: 100%;
+  width: 0;
 }
 
 .genre-trigger:focus-visible {
@@ -356,6 +360,8 @@ a:hover {
 }
 
 .genre-trigger-label {
+  flex: 1 1 0%;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1360,7 +1366,6 @@ input,
   }
 
   .bestseller {
-    min-width: 7.8rem;
     padding: 0 0.72rem !important;
   }
 

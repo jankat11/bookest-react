@@ -85,7 +85,9 @@ const SelectForm = ({ getBooksGenre, genre }) => {
           aria-expanded={isOpen}
           onClick={() => setIsOpen((open) => !open)}
         >
-          <span className="genre-trigger-label">{selectedOption.label}</span>
+          <span className="genre-trigger-label" title={selectedOption.label}>
+            {selectedOption.label}
+          </span>
           <IoChevronDownOutline
             className={`genre-chevron ${isOpen ? "is-open" : ""}`}
             aria-hidden="true"
